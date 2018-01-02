@@ -1,35 +1,55 @@
-<?php
-
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \common\models\LoginForm */
-
+﻿<?php
+use backend\assets\LoginAsset;
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use yii\helpers\Url;
+use yii\widgets\ActiveForm;
 
-$this->title = 'Login';
+// $this 代表视图对象
+LoginAsset::register($this);  
 $this->params['breadcrumbs'][] = $this->title;
+$this->title = '登录';
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+<?php $this->beginPage() ?>
+<!DOCTYPE html>
+<html lang="<?= Yii::$app->language ?>">
 
-    <p>Please fill out the following fields to login:</p>
+<head>
+    <meta charset="<?= Yii::$app->charset ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta name="keywords" content="H+后台主题,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题。">
+    <?= Html::csrfMetaTags() ?>
+    <title><?= Html::encode($this->title) ?></title>
+    <?php $this->head() ?>
+</head>
 
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+<body class="gray-bg">
+    <?php $this->beginBody() ?>
+    <div class="middle-box text-center loginscreen  animated fadeInDown">
+        <div>
+            <div>
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                <h1 class="logo-name">琯</h1>
 
+            </div>
+            <h3>欢迎使用 H+</h3>
+            <?php $form = ActiveForm::begin([
+                'id' => 'login-form',
+                'options' => ['class' => 'm-t'],
+            ]) ?>
+            <div class="form-group">
+                <?= $form->field($model, 'username')->textInput() ?>
+            </div>
+            <div class="form-group">
                 <?= $form->field($model, 'password')->passwordInput() ?>
-
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
-
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                </div>
-
-            <?php ActiveForm::end(); ?>
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
+            <?php ActiveForm::end() ?>
         </div>
     </div>
-</div>
+    <?php $this->endBody() ?>
+</body>
+
+</html>
+<?php $this->endPage() ?>

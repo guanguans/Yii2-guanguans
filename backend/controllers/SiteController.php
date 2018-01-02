@@ -12,6 +12,8 @@ use common\models\LoginForm;
  */
 class SiteController extends Controller
 {
+    public $layout = false;
+    
     /**
      * @inheritdoc
      */
@@ -35,7 +37,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    // 'logout' => ['post'],
                 ],
             ],
         ];
