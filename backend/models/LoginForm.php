@@ -1,16 +1,22 @@
 <?php
-namespace common\models;
+namespace backend\models;
 
 use Yii;
 use yii\base\Model;
+use yii\captcha\Captcha;
+use backend\models\AdminUser;
 
 /**
  * Login form
  */
 class LoginForm extends Model
 {
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 10;
+
     public $username;
     public $password;
+    public $verifyCode;
     public $rememberMe = true;
 
     private $_user;
@@ -23,14 +29,25 @@ class LoginForm extends Model
     {
         return [
             // username and password are both required
-            [['username', 'password'], 'required'],
+            [['username', 'password', 'verifyCode'], 'required'],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
+            // 验证码
+            ['verifyCode', 'captcha', 'message' => '验证码错误'],
         ];
     }
 
+    public function attributeLabels()
+    {
+        return [
+               'username' => '用户名',
+               'password' => '密码',
+               'rememberMe' => '记住密码',
+               'verifyCode' => '验证码',
+        ];
+    }
     /**
      * Validates the password.
      * This method serves as the inline validation for password.
@@ -43,7 +60,8 @@ class LoginForm extends Model
         if (!$this->hasErrors()) {
             $user = $this->getUser();
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+
+                $this->addError($attribute, '用户名或密码错误');
             }
         }
     }
@@ -70,7 +88,7 @@ class LoginForm extends Model
     protected function getUser()
     {
         if ($this->_user === null) {
-            $this->_user = User::findByUsername($this->username);
+            $this->_user = AdminUser::findByUsername($this->username);
         }
 
         return $this->_user;

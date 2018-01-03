@@ -5,7 +5,7 @@ use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 // $this 代表视图对象
-LoginAsset::register($this);  
+LoginAsset::register($this);
 $this->params['breadcrumbs'][] = $this->title;
 $this->title = '登录';
 ?>
@@ -29,9 +29,7 @@ $this->title = '登录';
     <div class="middle-box text-center loginscreen  animated fadeInDown">
         <div>
             <div>
-
                 <h1 class="logo-name">琯</h1>
-
             </div>
             <h3>欢迎使用 H+</h3>
             <?php $form = ActiveForm::begin([
@@ -39,10 +37,29 @@ $this->title = '登录';
                 'options' => ['class' => 'm-t'],
             ]) ?>
             <div class="form-group">
-                <?= $form->field($model, 'username')->textInput() ?>
+                <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'placeholder'=>$model->username])->label(false) ?>
             </div>
             <div class="form-group">
-                <?= $form->field($model, 'password')->passwordInput() ?>
+                <?= $form->field($model, 'password')->passwordInput()->label(false) ?>
+            </div>
+            <div class="form-group">
+                <?= yii\captcha\Captcha::widget([
+                    'name'=>'captchaimg',
+                    'captchaAction'=>'captcha',
+                    'imageOptions'=>[
+                        'id'=>'captchaimg',
+                        'title'=>'换一个',
+                        'alt'=>'换一个',
+                        'style'=>'cursor:pointer;'
+                     ],
+                     'template'=>'{image}'
+                 ]);?>
+            </div>
+            <div class="form-group">
+                <?= $form->field($model, 'verifyCode')->passwordInput()->label(false) ?>
+            </div>
+            <div class="form-group">
+                <?= $form->field($model, 'rememberMe')->checkbox() ?>
             </div>
             <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
             <?php ActiveForm::end() ?>

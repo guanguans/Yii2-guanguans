@@ -9,7 +9,7 @@ use yii\web\IdentityInterface;
 /**
  * This is the model class for table "{{%admin_user}}".
  *
- * @property string $id 
+ * @property string $id
  * @property string $username 用户名
  * @property string $auth_key 授权token
  * @property string $password_hash 密码
@@ -22,6 +22,8 @@ use yii\web\IdentityInterface;
  */
 class AdminUser extends ActiveRecord implements IdentityInterface
 {
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 10;
     /**
      * @inheritdoc
      */
@@ -43,6 +45,7 @@ class AdminUser extends ActiveRecord implements IdentityInterface
             [['username'], 'unique'],
             [['email'], 'unique'],
             [['password_reset_token'], 'unique'],
+            [['captcha'], 'unique'],
         ];
     }
 
@@ -112,5 +115,25 @@ class AdminUser extends ActiveRecord implements IdentityInterface
         return $this->getAuthKey() === $authKey;
     }
 
+    /**
+     * Finds user by username
+     *
+     * @param string $username
+     * @return static|null
+     */
+    public static function findByUsername($username)
+    {
+        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+    }
 
+    /**
+     * Validates password
+     *
+     * @param string $password password to validate
+     * @return bool if password provided is valid for current user
+     */
+    public function validatePassword($password)
+    {
+        return Yii::$app->security->validatePassword($password, $this->password_hash);
+    }
 }

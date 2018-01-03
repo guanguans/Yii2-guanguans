@@ -5,7 +5,7 @@ use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use common\models\LoginForm;
+use backend\models\LoginForm;
 
 /**
  * Site controller
@@ -13,7 +13,7 @@ use common\models\LoginForm;
 class SiteController extends Controller
 {
     public $layout = false;
-    
+
     /**
      * @inheritdoc
      */
@@ -22,6 +22,8 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
+                //这里一定要加
+                'only' => ['login','logout'],
                 'rules' => [
                     [
                         'actions' => ['login', 'error'],
@@ -52,9 +54,20 @@ class SiteController extends Controller
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                //'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,//本行可能引起更换验证码失效，必须刷新浏览器
+                'backColor' => 0x66b3ff,//背景颜色
+                'maxLength' => 4,//最大显示个数
+                'minLength' => 4,//最少显示个数
+                'padding' => 4,//验证码字体大小，数值越小字体越大
+                'height' => 34,//高度
+                'width' => 300,//宽度
+                'foreColor' => 0xffffff,//字体颜色
+                'offset' => 80,//设置字符偏移量
+            ],
         ];
     }
-
     /**
      * Displays homepage.
      *

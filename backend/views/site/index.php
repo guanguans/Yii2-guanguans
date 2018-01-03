@@ -5,7 +5,7 @@ use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 // $this 代表视图对象
-MyAppAsset::register($this);  
+MyAppAsset::register($this);
 $this->params['breadcrumbs'][] = $this->title;
 $this->title = '主页';
 ?>
@@ -36,7 +36,7 @@ $this->title = '主页';
                              </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                                 <span class="text-muted text-xs block">超级管理员 <b class="caret"></b></span> </span>
-                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">admin</strong></span>  
+                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">admin123</strong></span>
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                 <li><a href="contacts.html">联系我们</a>
@@ -47,7 +47,7 @@ $this->title = '主页';
                             </ul>
                         </div>
                         <div class="logo-element">
-                            H+
+                            琯琯
                         </div>
 
                     </li>
@@ -66,7 +66,7 @@ $this->title = '主页';
                     </li>
                     <li>
                         <a href="layouts.html"><i class="fa fa-columns"></i> <span class="nav-label">布局</span></a>
-                    </li>                    
+                    </li>
                     <li>
                         <a href="index.html#"><i class="fa fa-sitemap"></i> <span class="nav-label">菜单 </span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -125,47 +125,45 @@ $this->title = '主页';
 
                 </nav>
             </div>
-            <div class="row wrapper border-bottom white-bg page-heading">
-                <div class="col-sm-4">
-                    <h2>标题</h2>
-                    <ol class="breadcrumb">
-                        <li>
-                            <a href="index.html">主页</a>
-                        </li>
-                        <li>
-                            <strong>包屑导航</strong>
-                        </li>
-                    </ol>
-                </div>
-                <div class="col-sm-8">
-                    <div class="title-action">
-                        <a href="empty_page.html" class="btn btn-primary">活动区域</a>
+
+            <div class="row content-tabs">
+                <button class="roll-nav roll-left J_tabLeft"><i class="fa fa-backward"></i>
+                </button>
+                <nav class="page-tabs J_menuTabs">
+                    <div class="page-tabs-content">
+                        <a href="javascript:;" class="active J_menuTab"
+                           data-id="<?= Url::to(['site/main']) ?>">首页</a>
                     </div>
+                </nav>
+                <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i>
+                </button>
+                <div class="btn-group roll-nav roll-right">
+                    <button class="dropdown J_tabClose" data-toggle="dropdown">关闭操作<span
+                                class="caret"></span>
+                    </button>
+                    <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                        <li class="J_tabShowActive"><a>定位当前选项卡</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="J_tabCloseAll"><a>关闭全部选项卡</a>
+                        </li>
+                        <li class="J_tabCloseOther"><a>关闭其他选项卡</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="wrapper wrapper-content">
-                        <div class="middle-box text-center animated fadeInRightBig">
-                            <h3 class="font-bold">这里是页面内容</h3>
-
-                            <div class="error-desc">
-                                您可以在这里添加栅格，参考首页及其他页面完成不同的布局
-                                <br/><a href="index.html" class="btn btn-primary m-t">打开主页</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="row J_mainContent" id="content-main">
+                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src=""
+                        frameborder="0" data-id="<?= Url::to(['site/main']) ?>" seamless></iframe>
             </div>
             <div class="footer">
                 <div class="pull-right">
-                    By：<a href="http://www.zi-han.net" target="_blank">zihan's blog</a>
+                    By：<a href="#" target="_blank">guanguan's blog</a>
                 </div>
                 <div>
-                    <strong>Copyright</strong> H+ &copy; 2014
+                    <strong>Copyright</strong> 琯琯 &copy; 2014
                 </div>
             </div>
-
         </div>
     </div>
     </div>

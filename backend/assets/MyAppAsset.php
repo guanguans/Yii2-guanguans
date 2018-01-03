@@ -24,7 +24,12 @@ class MyAppAsset extends AssetBundle
         'static/js/plugins/slimscroll/jquery.slimscroll.min.js',
         'static/js/hplus.js?v=2.2.0',
         'static/js/plugins/pace/pace.min.js',
+
+        "static/js/plugins/layer/layer.min.js",
+        "static/js/contabs.min.js",
     ];
     public $depends = [
+        /*'yii\web\YiiAsset',
+        'yii\bootstrap\BootstrapAsset',*/
     ];
 }
