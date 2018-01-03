@@ -23,7 +23,7 @@ $this->title = '主页';
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
     <?php $this->beginBody() ?>
     <div id="wrapper">
         <nav class="navbar-default navbar-static-side" role="navigation">
@@ -52,7 +52,7 @@ $this->title = '主页';
 
                     </li>
                     <li>
-                        <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">主页</span> <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">主页</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="index_1.html">主页示例一</a>
                             </li>
@@ -65,7 +65,7 @@ $this->title = '主页';
                         </ul>
                     </li>
                     <li>
-                        <a href="layouts.html"><i class="fa fa-columns"></i> <span class="nav-label">布局</span></a>
+                        <a href="#"><i class="fa fa-columns"></i> <span class="nav-label">布局</span></a>
                     </li>
                     <li>
                         <a href="index.html#"><i class="fa fa-sitemap"></i> <span class="nav-label">菜单 </span><span class="fa arrow"></span></a>
@@ -125,7 +125,6 @@ $this->title = '主页';
 
                 </nav>
             </div>
-
             <div class="row content-tabs">
                 <button class="roll-nav roll-left J_tabLeft"><i class="fa fa-backward"></i>
                 </button>
@@ -151,10 +150,16 @@ $this->title = '主页';
                         </li>
                     </ul>
                 </div>
+                 <a href="<?= Url::toRoute('site/logout') ?>" class="roll-nav roll-right J_tabExit"><i
+                        class="fa fa fa-sign-out"></i> 退出</a>
             </div>
             <div class="row J_mainContent" id="content-main">
+                <?php echo $this->render('main');?>
                 <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src=""
-                        frameborder="0" data-id="<?= Url::to(['site/main']) ?>" seamless></iframe>
+                        frameborder="0" data-id="<?= Url::to(['site/main']) ?>" seamless>
+                            
+
+                </iframe>
             </div>
             <div class="footer">
                 <div class="pull-right">
@@ -169,6 +174,12 @@ $this->title = '主页';
     </div>
     <?php $this->endBody() ?>
 </body>
-
+<script>
+    function reloadIframe() {
+        var current_iframe = $("iframe:visible");
+        current_iframe[0].contentWindow.location.reload();
+        return false;
+    }
+</script>
 </html>
 <?php $this->endPage() ?>

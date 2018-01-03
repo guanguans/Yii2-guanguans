@@ -31,7 +31,7 @@ $this->title = '登录';
             <div>
                 <h1 class="logo-name">琯</h1>
             </div>
-            <h3>欢迎使用 H+</h3>
+            <!-- <h3>欢迎使用 H+</h3> -->
             <?php $form = ActiveForm::begin([
                 'id' => 'login-form',
                 'options' => ['class' => 'm-t'],

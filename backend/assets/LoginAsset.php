@@ -15,7 +15,9 @@ class LoginAsset extends AssetBundle
         'static/css/bootstrap.min.css?v=3.4.0',
         'static/font-awesome/css/font-awesome.css?v=4.3.0',
         'static/css/animate.css',
+        'static/css/style.min862f.css?v=2.2.0',
         'static/css/style.css?v=2.2.0',
+        
     ];
     public $js = [
         'static/js/jquery-2.1.1.min.js',
