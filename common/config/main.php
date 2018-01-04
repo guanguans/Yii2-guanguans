@@ -7,9 +7,9 @@ return [
     'language' => 'zh-CN',//默认语言
     'timeZone' => 'Asia/Shanghai',//默认时区
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
-    /*'components' => [
+    'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-    ],*/
+    ],
 ];

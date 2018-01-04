@@ -1,27 +1,15 @@
-<?php
+<div class="middle-box text-center animated fadeInDown">
+    <h1>404</h1>
+    <h3 class="font-bold">页面未找到！</h3>
 
-/* @var $this yii\web\View */
-/* @var $name string */
-/* @var $message string */
-/* @var $exception Exception */
-
-use yii\helpers\Html;
-
-$this->title = $name;
-?>
-<div class="site-error">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <div class="alert alert-danger">
-        <?= nl2br(Html::encode($message)) ?>
+    <div class="error-desc">
+        抱歉，页面好像去火星了~
+        <!-- <form class="form-inline m-t" role="form">
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="请输入您需要查找的内容 …">
+            </div>
+            <button type="submit" class="btn btn-primary">搜索</button>
+        </form> -->
     </div>
-
-    <p>
-        The above error occurred while the Web server was processing your request.
-    </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
-    </p>
-
 </div>
+

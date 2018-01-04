@@ -52,23 +52,22 @@ $this->title = '主页';
 
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">主页</span> <span class="fa arrow"></span></a>
+                        <a class="J_menuItem" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">设置管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="index_1.html">主页示例一</a>
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['setting/website']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">网站设置</span></a>
                             </li>
-                            <li><a href="index_2.html">主页示例二</a>
+                            <li>
+                                <a class="J_menuItem" href="index.php?r=gii" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">Gii</span></a>
                             </li>
-                            <li><a href="index_3.html">主页示例三</a>
-                            </li>
-                            <li><a href="index_4.html">主页示例四</a>
+                            <li>
+                                <a class="J_menuItem" href="index.php?r=debug" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">Debug</span></a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-columns"></i> <span class="nav-label">布局</span></a>
-                    </li>
-                    <li>
                         <a href="index.html#"><i class="fa fa-sitemap"></i> <span class="nav-label">菜单 </span><span class="fa arrow"></span></a>
+
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="index.html#">三级菜单 <span class="fa arrow"></span></a>
@@ -107,22 +106,12 @@ $this->title = '主页';
                         <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
                     </div>
                     <ul class="nav navbar-top-links navbar-right">
-                        <li>
-                            <span class="m-r-sm text-muted welcome-message"><a href="#" title="返回首页"><i class="fa fa-home"></i>前台</a></span>
-                        </li>
-                        <li>
-                            <span class="m-r-sm text-muted welcome-message"><a href="#" title="返回首页"><i class="fa fa-home"></i></a>刷新</span>
-                        </li>
-                        <li>
-                            <span class="m-r-sm text-muted welcome-message"><a href="#" title="返回首页"><i class="fa fa-home"></i></a>清除缓冲</span>
-                        </li>
-                        <li>
-                            <a href="<?= Url::to(['site/logout']) ?>">
-                                <i class="fa fa-sign-out"></i> 退出
-                            </a>
-                        </li>
+                        <li><a href="#" title="刷新"><i class="fa fa-home"></i>前台</a></li>
+                        <li title="前台" class="hidden-xs"><a href="javascript:void(0)" onclick="reloadIframe()"><i class="fa fa-refresh"></i>刷新</a></li>
+                        <li><a href="#" title="清除前台缓冲"><i class="fa fa-trash-o"></i>清除前台缓冲</a></li>
+                        <li><a href="#" title="清除后台缓冲"><i class="fa fa-trash-o"></i>清除后台缓冲</a></li>
+                        <li><a href="<?= Url::to(['site/logout']) ?>" title="退出"><i class="fa fa-sign-out"></i>退出</a></li>
                     </ul>
-
                 </nav>
             </div>
             <div class="row content-tabs">
@@ -139,6 +128,7 @@ $this->title = '主页';
                 <div class="btn-group roll-nav roll-right">
                     <button class="dropdown J_tabClose" data-toggle="dropdown">关闭操作<span
                                 class="caret"></span>
+
                     </button>
                     <ul role="menu" class="dropdown-menu dropdown-menu-right">
                         <li class="J_tabShowActive"><a>定位当前选项卡</a>
@@ -150,16 +140,11 @@ $this->title = '主页';
                         </li>
                     </ul>
                 </div>
-                 <a href="<?= Url::toRoute('site/logout') ?>" class="roll-nav roll-right J_tabExit"><i
-                        class="fa fa fa-sign-out"></i> 退出</a>
+                <a href="<?= Url::toRoute('site/logout') ?>" class="roll-nav roll-right J_tabExit"><i
+                            class="fa fa fa-sign-out"></i>退出</a>
             </div>
-            <div class="row J_mainContent" id="content-main">
-                <?php echo $this->render('main');?>
-                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src=""
-                        frameborder="0" data-id="<?= Url::to(['site/main']) ?>" seamless>
-                            
-
-                </iframe>
+            <div class="row J_mainContent" id="content-main" >
+                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="<?= Url::to(['site/main']) ?>" frameborder="0" data-id="<?= Url::to(['site/main']) ?>" seamless></iframe>
             </div>
             <div class="footer">
                 <div class="pull-right">
