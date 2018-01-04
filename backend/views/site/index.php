@@ -102,12 +102,12 @@ $this->title = '主页';
         <div id="page-wrapper" class="gray-bg dashbard-1">
             <div class="row border-bottom">
                 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-                    <div class="navbar-header">
+                    <div class="col-md-2">
                         <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
                     </div>
                     <ul class="nav navbar-top-links navbar-right">
                         <li><a href="#" title="刷新"><i class="fa fa-home"></i>前台</a></li>
-                        <li title="前台" class="hidden-xs"><a href="javascript:void(0)" onclick="reloadIframe()"><i class="fa fa-refresh"></i>刷新</a></li>
+                        <li title="前台" class="hidden-xs"><a href="<?= Url::to(['/']) ?>"><i class="fa fa-refresh"></i>刷新</a></li>
                         <li><a href="#" title="清除前台缓冲"><i class="fa fa-trash-o"></i>清除前台缓冲</a></li>
                         <li><a href="#" title="清除后台缓冲"><i class="fa fa-trash-o"></i>清除后台缓冲</a></li>
                         <li><a href="<?= Url::to(['site/logout']) ?>" title="退出"><i class="fa fa-sign-out"></i>退出</a></li>
@@ -140,8 +140,7 @@ $this->title = '主页';
                         </li>
                     </ul>
                 </div>
-                <a href="<?= Url::toRoute('site/logout') ?>" class="roll-nav roll-right J_tabExit"><i
-                            class="fa fa fa-sign-out"></i>退出</a>
+                <a href="javascript:void(0)" onclick="reloadIframe()" class="roll-nav roll-right J_tabExit"><i class="fa fa-refresh"></i> 刷新</a>
             </div>
             <div class="row J_mainContent" id="content-main" >
                 <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="<?= Url::to(['site/main']) ?>" frameborder="0" data-id="<?= Url::to(['site/main']) ?>" seamless></iframe>

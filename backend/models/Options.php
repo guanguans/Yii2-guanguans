@@ -55,4 +55,13 @@ class Options extends \yii\db\ActiveRecord
             'sort' => 'Sort',
         ];
     }
+
+    /**
+     * @return array
+     */
+    public function getNames()
+    {
+        return array_keys($this->attributeLabels());
+    }
+
 }

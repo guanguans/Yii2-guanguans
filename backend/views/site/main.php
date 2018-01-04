@@ -1,5 +1,5 @@
 <div class="wrapper wrapper-content animated fadeIn" >
-    <div class="row">
+    <div class="row" style="margin-top: -25px;">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
 
