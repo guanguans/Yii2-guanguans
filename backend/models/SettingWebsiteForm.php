@@ -9,19 +9,25 @@
 namespace backend\models;
 
 use yii;
+use yii\base\Model;
 use backend\models\Options;
 
-class SettingWebsiteForm extends Options
+class SettingWebsiteForm extends Model
 {
+    const SCENARIO_WEBSITE = 'website';
+    const SCENARIO_WEBSEO = 'webseo';
+
     public $website_title;
     public $website_email;
-    public $website_icp;
     public $website_status;
+    public $website_icp;
     public $website_statics_script;
 
     public $seo_title;
     public $seo_keywords;
     public $seo_description;
+
+    public $Options;
 
     /**
      * @inheritdoc
@@ -29,22 +35,21 @@ class SettingWebsiteForm extends Options
     public function rules()
     {
         return [
-            [
-                [
-                    'website_title',
-                    'website_email',
-                    'website_icp',
-                    'website_statics_script',
-                    'website_url',
-
-                    'seo_title',
-                    'seo_keywords',
-                    'seo_description'
-                ],
-                'string'
-            ],
+            [['website_title'], 'required', 'on' => self::SCENARIO_WEBSITE],
+            [['seo_title'], 'required', 'on' => self::SCENARIO_WEBSEO],
+            [['website_email'], 'email'],
+            [['website_title', 'website_icp', 'website_statics_script', 'seo_title', 'seo_keywords', 'seo_description'], 'string'],
             [['website_status'], 'integer'],
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
+        $this->Options = new Options();
     }
 
     /**
@@ -73,12 +78,40 @@ class SettingWebsiteForm extends Options
     {
         $names = $this->getNames();
         foreach ($names as $name) {
-            $model = self::findOne(['name' => $name]);
+            $model = $this->Options->findOne(['name' => $name]);
             if ($model != null) {
                 $this->$name = $model->value;
             } else {
-                $this->name = '';
+                // $this->name = '';
             }
         }
+    }
+
+    /**
+     * 写入网站配置到数据库
+     *
+     * @return bool
+     */
+    public function setWebsiteConfig($data)
+    {
+        foreach ($data['SettingWebsiteForm'] as $k => $vo) {
+            $model = $this->Options->findOne(['name' => $k]);
+            if (!empty($model)) {
+                $model->value = $vo;
+                $result = $model->save();
+                if (!$result) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * @return array
+     */
+    public function getNames()
+    {
+        return array_keys($this->attributeLabels());
     }
 }

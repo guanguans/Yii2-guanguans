@@ -76,7 +76,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         // return $this->render('index');
-        return $this->renderPartial('index');
+        return $this->render('index');
     }
 
     /**
@@ -87,17 +87,6 @@ class SiteController extends Controller
     public function actionMain()
     {
         return $this->render('main', ['system_info'=>system_info()]);
-    }
-
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
-    public function actionTest()
-    {
-
-        return $this->render('test');
     }
 
     /**

@@ -56,12 +56,6 @@ class Options extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * @return array
-     */
-    public function getNames()
-    {
-        return array_keys($this->attributeLabels());
-    }
+
 
 }
