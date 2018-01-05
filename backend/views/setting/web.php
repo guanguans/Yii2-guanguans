@@ -9,15 +9,13 @@ use yii\widgets\ActiveForm;
             <div class="ibox float-e-margins">
                 <div class="ibox-title" style="padding: 0px;border-top: 0px;">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="tabs_panels.html#tab-1">网站信息</a>
-                        </li>
-                        <li><a data-toggle="tab" href="tabs_panels.html#tab-2">SEO设置</a>
-                        </li>
+                        <li class="<?= $active=='website'?'active':'';?>"><a data-toggle="tab" href="tabs_panels.html#tab-1">网站信息</a></li>
+                        <li class="<?= $active=='webseo'?'active':'';?>"><a data-toggle="tab" href="tabs_panels.html#tab-2">SEO设置</a></li>
                     </ul>
                 </div>
                 <div class="ibox-content" style="border-top: 0px;">
                     <div class="tab-content">
-                        <div id="tab-1" class="tab-pane active">
+                        <div id="tab-1" class="tab-pane <?= $active=='website'?'active':'';?>">
 							<?php $form = ActiveForm::begin([
 									'action' => ['setting/website'],
 									'fieldConfig' => [
@@ -46,7 +44,7 @@ use yii\widgets\ActiveForm;
 							    </div>
 							<?php ActiveForm::end(); ?>
                         </div>
-                        <div id="tab-2" class="tab-pane">
+                        <div id="tab-2" class="tab-pane <?= $active=='webseo'?'active':'';?>">
 							<?php $form = ActiveForm::begin([
 									'action' => ['setting/webseo'],
 									'fieldConfig' => [

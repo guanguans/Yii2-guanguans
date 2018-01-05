@@ -79,10 +79,8 @@ class SettingWebsiteForm extends Model
         $names = $this->getNames();
         foreach ($names as $name) {
             $model = $this->Options->findOne(['name' => $name]);
-            if ($model != null) {
+            if (!empty($model)) {
                 $this->$name = $model->value;
-            } else {
-                // $this->name = '';
             }
         }
     }
@@ -100,6 +98,13 @@ class SettingWebsiteForm extends Model
                 $model->value = $vo;
                 $result = $model->save();
                 if (!$result) {
+                    return false;
+                }
+            } else {
+                $this->Options->name = $k;
+                $this->Options->value = $vo;
+                $res = $this->Options->save();
+                if (!$res) {
                     return false;
                 }
             }

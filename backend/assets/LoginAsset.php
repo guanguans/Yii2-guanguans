@@ -21,7 +21,7 @@ class LoginAsset extends AssetBundle
         'static/js/plugins/layer/laydate/need/laydate.css',
         //'js/plugins/layer/laydate/skins/default/laydate.css'
         'static/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css',
-        'static/css/plugins/toastr/toastr.min.css',
+        // 'static/css/plugins/toastr/toastr.min.css',
     ];
     public $js = [
         'static/js/feehi.js',
@@ -29,7 +29,7 @@ class LoginAsset extends AssetBundle
         'static/js/plugins/layer/laydate/laydate.js',
         'static/js/plugins/layer/layer.min.js',
         'static/js/plugins/prettyfile/bootstrap-prettyfile.js',
-        'static/js/plugins/toastr/toastr.min.js',
+        // 'static/js/plugins/toastr/toastr.min.js',
         // 统计代码
         // 'http://tajs.qq.com/stats?sId=9051096',
     ];

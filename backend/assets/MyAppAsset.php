@@ -17,6 +17,7 @@ class MyAppAsset extends AssetBundle
         'static/css/bootstrap.min.css',
         'static/font-awesome/css/font-awesome.css?v=4.3.0',
         'static/css/style.min862f.css?v=4.1.0',
+        'static/css/plugins/toastr/toastr.min.css',
     ];
 
     public $js = [
@@ -29,6 +30,8 @@ class MyAppAsset extends AssetBundle
         "static/js/hplus.js?v=4.1.0",
         "static/js/contabs.min.js",
         "static/js/plugins/pace/pace.min.js",
+        "static/js/plugins/toastr/toastr.min.js",
+        "static/js/admin.js",
     ];
 
     public $depends = [
