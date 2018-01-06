@@ -56,7 +56,7 @@ $this->title = '登录';
                  ]);?>
             </div>
             <div class="form-group">
-                <?= $form->field($model, 'verifyCode')->passwordInput()->label(false) ?>
+                <?= $form->field($model, 'verifyCode')->textInput()->label(false) ?>
             </div>
             <div class="form-group">
                 <?= $form->field($model, 'rememberMe')->checkbox() ?>

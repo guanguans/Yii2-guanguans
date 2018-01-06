@@ -52,6 +52,24 @@ function system_info(){
 }
 
 /**
+ * 发送邮件
+ * @return string
+ */
+function send_email($object, $title, $content){
+	$mail= Yii::$app->mailer->compose();
+	$mail->setTo($object);
+	$mail->setSubject($title);
+	// $mail->setTextBody($object);
+	$mail->setHtmlBody($content);
+
+	if(!$mail->send()){
+		return false;
+	}
+
+	return true;
+}
+
+/**
  * 返回带协议的域名
  */
 function sp_get_host(){

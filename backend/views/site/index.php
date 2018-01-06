@@ -58,6 +58,9 @@ $this->title = '主页';
                                 <a class="J_menuItem" href="<?= Url::to(['setting/website']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">网站设置</span></a>
                             </li>
                             <li>
+                                <a class="J_menuItem" href="<?= Url::to(['setting/email']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">邮箱设置</span></a>
+                            </li>
+                            <li>
                                 <a class="J_menuItem" href="index.php?r=gii" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">Gii</span></a>
                             </li>
                             <li>

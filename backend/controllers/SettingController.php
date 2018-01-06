@@ -2,61 +2,80 @@
 
 namespace backend\controllers;
 
-use backend\models\SettingWebsiteForm;
 use Yii;
+use backend\models\SettingWebForm;
+use backend\models\SettingEmailForm;
 
 class SettingController extends \yii\web\Controller
 {
+
     public function actionWebsite()
     {
-        $model = new SettingWebsiteForm();
-        $model->scenario = SettingWebsiteForm::SCENARIO_WEBSITE;
-        // 或者通过构造函数配置
-        // $model = new SettingWebsiteForm(['scenario'=>SettingWebsiteForm::SCENARIO_WEBSITE]);
+        $model = new SettingWebForm();
+        $model->scenario = SettingWebForm::SCENARIO_WEBSITE;
         if (yii::$app->request->isPost) {
-            if ($model->load(yii::$app->request->post()) && $model->validate() && $model->setWebsiteConfig(yii::$app->request->post())) {
-                    yii::$app->session->setFlash('info', '成功');
+            if ($model->load(yii::$app->request->post()) && $model->validate() && $model->setWebConfig(yii::$app->request->post())) {
+                yii::$app->session->setFlash('hintInfo', '成功');
             } else {
                 $errors = $model->getErrors();
                 $err = '';
                 foreach ($errors as $v) {
                     $err .= $v[0] . '<br>';
                 }
-                yii::$app->getSession()->setFlash('info', $err);
+                yii::$app->getSession()->setFlash('hintInfo', $err);
             }
         }
-        $model->getWebsiteSetting();
+        // 设置模型属性值
+        $model->getWebSetting();
         return $this->render('web', [
             'model'  => $model,
-            'active' => SettingWebsiteForm::SCENARIO_WEBSITE,
+            'active' => SettingWebForm::SCENARIO_WEBSITE,
         ]);
     }
 
     public function actionWebseo()
     {
-        $model = new SettingWebsiteForm();
-        $model->scenario = SettingWebsiteForm::SCENARIO_WEBSEO;
-        // 或者通过构造函数配置
-        // $model = new SettingWebsiteForm(['scenario'=>SettingWebsiteForm::SCENARIO_WEBSITE]);
+        $model = new SettingWebForm();
+        $model->scenario = SettingWebForm::SCENARIO_WEBSEO;
         if (yii::$app->request->isPost) {
-            if ($model->load(yii::$app->request->post()) && $model->validate()) {
-                $res = $model->setWebsiteConfig(yii::$app->request->post());
-                if ($res) {
-                    yii::$app->session->setFlash('success', '成功');
-                } else {
-                    $errors = $model->getErrors();
-                    $err = '';
-                    foreach ($errors as $v) {
-                        $err .= $v[0] . '<br>';
-                    }
-                    // yii::$app->getSession()->setFlash('error', $err);
+            if ($model->load(yii::$app->request->post()) && $model->validate() && $model->setWebConfig(yii::$app->request->post())) {
+                yii::$app->session->setFlash('hintInfo', '成功');
+            } else {
+                $errors = $model->getErrors();
+                $err = '';
+                foreach ($errors as $v) {
+                    $err .= $v[0] . '<br>';
                 }
+                yii::$app->getSession()->setFlash('hintInfo', $err);
             }
         }
-        $model->getWebsiteSetting();
+        // 设置模型属性值
+        $model->getWebSetting();
         return $this->render('web', [
             'model'  => $model,
-            'active' => SettingWebsiteForm::SCENARIO_WEBSEO,
+            'active' => SettingWebForm::SCENARIO_WEBSEO,
+        ]);
+    }
+
+    public function actionEmail()
+    {
+        $model = new SettingEmailForm();
+        if (yii::$app->request->isPost) {
+            if ($model->load(yii::$app->request->post()) && $model->validate() && $model->setEmailConfig(yii::$app->request->post())) {
+                yii::$app->session->setFlash('hintInfo', '成功');
+            } else {
+                $errors = $model->getErrors();
+                $err = '';
+                foreach ($errors as $v) {
+                    $err .= $v[0] . '<br>';
+                }
+                yii::$app->getSession()->setFlash('hintInfo', $err);
+            }
+        }
+        // 设置模型属性值
+        $model->getEmailSetting();
+        return $this->render('email', [
+            'model'  => $model,
         ]);
     }
 

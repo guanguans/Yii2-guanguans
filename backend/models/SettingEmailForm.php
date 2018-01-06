@@ -12,20 +12,14 @@ use yii;
 use yii\base\Model;
 use backend\models\Options;
 
-class SettingWebsiteForm extends Model
+class SettingEmailForm extends Model
 {
-    const SCENARIO_WEBSITE = 'website';
-    const SCENARIO_WEBSEO = 'webseo';
-
-    public $website_title;
-    public $website_email;
-    public $website_status;
-    public $website_icp;
-    public $website_statics_script;
-
-    public $seo_title;
-    public $seo_keywords;
-    public $seo_description;
+    public $smtp_host;
+    public $smtp_port;
+    public $smtp_username;
+    public $smtp_password;
+    public $smtp_nickname;
+    public $smtp_encryption;
 
     public $Options;
 
@@ -35,11 +29,9 @@ class SettingWebsiteForm extends Model
     public function rules()
     {
         return [
-            [['website_title'], 'required', 'on' => self::SCENARIO_WEBSITE],
-            [['seo_title'], 'required', 'on' => self::SCENARIO_WEBSEO],
-            [['website_email'], 'email'],
-            [['website_title', 'website_icp', 'website_statics_script', 'seo_title', 'seo_keywords', 'seo_description'], 'string'],
-            [['website_status'], 'integer'],
+            [['smtp_host', 'smtp_port', 'smtp_username', 'smtp_password', 'smtp_nickname', 'smtp_encryption'], 'required'],
+            [['smtp_username'], 'email'],
+            [['smtp_port'], 'integer'],
         ];
     }
 
@@ -58,15 +50,12 @@ class SettingWebsiteForm extends Model
     public function attributeLabels()
     {
         return [
-            'website_title'=>'网站名称',
-            'website_email'=>'站长邮箱',
-            'website_icp'=>'备案信息',
-            'website_status'=>'站点状态',
-            'website_statics_script'=>'统计代码',
-
-            'seo_title'=>'SEO标题',
-            'seo_keywords'=>'SEO关键字',
-            'seo_description'=>'SEO描述',
+            'smtp_nickname'=>'* 发件人',
+            'smtp_host'=>'* SMTP服务器',
+            'smtp_encryption'=>'* 连接方式',
+            'smtp_port'=>'* SMTP服务器端口',
+            'smtp_username'=>'* 发件箱帐号',
+            'smtp_password'=>'* 发件箱密码',
         ];
     }
 
@@ -74,7 +63,7 @@ class SettingWebsiteForm extends Model
      * 填充网站配置
      *
      */
-    public function getWebsiteSetting()
+    public function getEmailSetting()
     {
         $names = $this->getNames();
         foreach ($names as $name) {
@@ -90,9 +79,9 @@ class SettingWebsiteForm extends Model
      *
      * @return bool
      */
-    public function setWebsiteConfig($data)
+    public function setEmailConfig($data)
     {
-        foreach ($data['SettingWebsiteForm'] as $k => $vo) {
+        foreach ($data['SettingEmailForm'] as $k => $vo) {
             $model = $this->Options->findOne(['name' => $k]);
             if (!empty($model)) {
                 $model->value = $vo;

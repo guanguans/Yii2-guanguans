@@ -64,7 +64,7 @@ class SiteController extends Controller
                 'height' => 34,//高度
                 'width' => 300,//宽度
                 'foreColor' => 0xffffff,//字体颜色
-                'offset' => 80,//设置字符偏移量
+                'offset' => 60,//设置字符偏移量
             ],
         ];
     }

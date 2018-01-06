@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本地
+Source Server         : phpstudy
 Source Server Version : 50553
 Source Host           : localhost:3306
-Source Database       : feehi
+Source Database       : yiiblog
 
 Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-01-02 19:59:05
+Date: 2018-01-06 17:58:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,13 +29,11 @@ CREATE TABLE `feehi_admin_log` (
   PRIMARY KEY (`id`),
   KEY `fk_user_id` (`user_id`),
   CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `feehi_admin_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of feehi_admin_log
 -- ----------------------------
-INSERT INTO `feehi_admin_log` VALUES ('1', '1', 'setting/website', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} backend\\models\\SettingWebsiteForm [ {{%options}} ]  {{%UPDATED%}} {{%ID%}} 3 {{%RECORD%}}: <br>Value(value) : Feehi CMS=>Feehi', '1512910748', '1512910748');
-INSERT INTO `feehi_admin_log` VALUES ('2', '1', 'setting/website', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} backend\\models\\SettingWebsiteForm [ {{%options}} ]  {{%UPDATED%}} {{%ID%}} 5 {{%RECORD%}}: <br>Value(value) : admin@feehi.com=>', '1512910748', '1512910748');
 
 -- ----------------------------
 -- Table structure for feehi_admin_roles
@@ -102,11 +100,11 @@ INSERT INTO `feehi_admin_role_user` VALUES ('1', '1', '1', '1476712649', '147671
 -- ----------------------------
 DROP TABLE IF EXISTS `feehi_admin_user`;
 CREATE TABLE `feehi_admin_user` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `auth_key` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `password_reset_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户名',
+  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户名',
+  `auth_key` varchar(32) COLLATE utf8_unicode_ci NOT NULL COMMENT '授权token',
+  `password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '密码',
+  `password_reset_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '重置密码taken',
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `avatar` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
   `status` smallint(6) NOT NULL DEFAULT '10',
@@ -121,7 +119,7 @@ CREATE TABLE `feehi_admin_user` (
 -- ----------------------------
 -- Records of feehi_admin_user
 -- ----------------------------
-INSERT INTO `feehi_admin_user` VALUES ('1', 'admin', 'zr9mY7lt23oAhj_ZYjydbLJKcbE3FJ19', '$2y$13$kvHjRHbzx06dwPbUdoslkOnz.5VBxtyO.rbU3WURBVfb72rNMYoCy', null, 'admin@admin.com', '', '10', '1468288038', '1512477231');
+INSERT INTO `feehi_admin_user` VALUES ('1', 'admin', 'zr9mY7lt23oAhj_ZYjydbLJKcbE3FJ19', '$2y$13$bqUaKgEeU.wXiLqEZIT.DelUYVgSpZeLSZrmho805PLMwukEWEJqG', null, '798314049@qq.como', '', '10', '1468288038', '1512957882');
 
 -- ----------------------------
 -- Table structure for feehi_article
@@ -181,7 +179,7 @@ INSERT INTO `feehi_article` VALUES ('15', '2', '0', '给Java说句公道话', ''
 INSERT INTO `feehi_article` VALUES ('16', '2', '0', 'Java编程入门（1.6）：现代用户界面', '', '算机刚问世时，普通人——包括大多数程序员——都不允许靠近计算机。', '/uploads/article/thumb/2016071214100948.jpg', 'Java编程入门（1.6）：现代用户界面', 'java,用户界面', '算机刚问世时，普通人——包括大多数程序员——都不允许靠近计算机。', '1', '0', '1', 'admin', '1', '0', '1', '1', 'java,用户界面', '0', '0', '1', '0', '0', '0', '0', '1468300356', '1476717356');
 INSERT INTO `feehi_article` VALUES ('17', '3', '0', '精简页面的样式文件，去掉不用的样式', '', '精简css样式', '', '精简页面的样式文件，去掉不用的样式', 'css,样式', '精简css样式', '1', '0', '1', 'admin', '6', '2', '1', '1', 'css,样式', '0', '0', '0', '0', '0', '0', '0', '1468300509', '1476717356');
 INSERT INTO `feehi_article` VALUES ('18', '2', '0', 'Java编程入门：前言', '', 'Java编程入门》是一本使用Java作为入门语言的免费计算机编程课本', '/uploads/article/thumb/2016071213165538.jpg', 'Java编程入门：前言', 'java,入门,编程书籍', 'Java编程入门》是一本使用Java作为入门语言的免费计算机编程课本', '1', '0', '1', 'admin', '0', '0', '1', '1', 'java,入门,编程书籍', '0', '0', '0', '1', '0', '0', '0', '1468300615', '1476717915');
-INSERT INTO `feehi_article` VALUES ('19', '2', '0', 'Java 8最快的垃圾搜集器是什么？', '', 'OpenJDK 8 有多种 GC（Garbage Collector）算法，如 Parallel GC、CMS 和 G1。哪一个才是最快的呢？如果在 Java 9 中将 Java 8 默认的 GC 从 Parallel GC 改为 G1 （目前只是建议）将会怎么样呢？让我们对此进行基准测试。', '/uploads/article/thumb/2016071213182356.jpg', 'Java 8最快的垃圾搜集器是什么？', 'java,java8,垃圾收集', 'OpenJDK 8 有多种 GC（Garbage Collector）算法，如 Parallel GC、CMS 和 G1。哪一个才是最快的呢？如果在 Java 9 中将 Java 8 默认的 GC 从 Parallel GC 改为 G1 （目前只是建议）将会怎么样呢？让我们对此进行基准测试。', '1', '0', '1', 'admin', '34', '7', '1', '1', 'java,java8,垃圾收集', '0', '0', '0', '1', '1', '0', '0', '1468300703', '1476717356');
+INSERT INTO `feehi_article` VALUES ('19', '2', '0', 'Java 8最快的垃圾搜集器是什么？', '', 'OpenJDK 8 有多种 GC（Garbage Collector）算法，如 Parallel GC、CMS 和 G1。哪一个才是最快的呢？如果在 Java 9 中将 Java 8 默认的 GC 从 Parallel GC 改为 G1 （目前只是建议）将会怎么样呢？让我们对此进行基准测试。', '/uploads/article/thumb/2016071213182356.jpg', 'Java 8最快的垃圾搜集器是什么？', 'java,java8,垃圾收集', 'OpenJDK 8 有多种 GC（Garbage Collector）算法，如 Parallel GC、CMS 和 G1。哪一个才是最快的呢？如果在 Java 9 中将 Java 8 默认的 GC 从 Parallel GC 改为 G1 （目前只是建议）将会怎么样呢？让我们对此进行基准测试。', '1', '0', '1', 'admin', '33', '7', '1', '1', 'java,java8,垃圾收集', '0', '0', '0', '1', '1', '0', '0', '1468300703', '1476717356');
 INSERT INTO `feehi_article` VALUES ('20', '2', '0', '使用Memcached改进Java企业级应用性能（1）：架构和设置', '', 'Memcached由Danga Interactive开发，用来提升LiveJournal.com网站性能。Memcached分布式架构支持众多的社交网络应用，Twitter、Facebook还有Wikipedia。在接下来的两部分教程中，Sunil Patil介绍了Memcached分布式哈希表架构，以及利用它帮助你为数据驱动Java企业应用做数据缓存。', '/uploads/article/thumb/201607121325288.png', '使用Memcached改进Java企业级应用性能（1）：架构和设置', 'java,memcached', 'Memcached由Danga Interactive开发，用来提升LiveJournal.com网站性能。Memcached分布式架构支持众多的社交网络应用，Twitter、Facebook还有Wikipedia。在接下来的两部分教程中，Sunil Patil介绍了Memcached分布式哈希表架构，以及利用它帮助你为数据驱动Java企业应用做数据缓存。', '1', '0', '1', 'admin', '1', '0', '1', '1', 'jvm,java', '0', '0', '0', '0', '0', '0', '0', '1468300831', '1476717356');
 INSERT INTO `feehi_article` VALUES ('21', '2', '0', 'JVM的相关知识整理和学习', '', '诺依曼体系结构中，指出计算机处理的数据和指令都是二进制数，采用存储程序方式不加区分的存储在同一个存储器里，并且顺序执行，指令由操作码和地址码组成，操作码决定了操作类型和所操作的数的数字类型，地址码则指出地址码和操作数。', '/uploads/article/thumb/2016071213203123.jpg', 'JVM的相关知识整理和学习', 'jvm,java', '诺依曼体系结构中，指出计算机处理的数据和指令都是二进制数，采用存储程序方式不加区分的存储在同一个存储器里，并且顺序执行，指令由操作码和地址码组成，操作码决定了操作类型和所操作的数的数字类型，地址码则指出地址码和操作数。', '1', '0', '1', 'admin', '0', '0', '1', '1', 'jvm,java', '0', '0', '0', '0', '0', '0', '0', '1468300831', '1476717356');
 INSERT INTO `feehi_article` VALUES ('22', '2', '0', '关于Java集合的小抄', '', '在尽可能短的篇幅里，将所有集合与并发集合的特征，实现方式，性能捋一遍。适合所有”精通Java”其实还不那么自信的人阅读。', '/uploads/article/thumb/2016071213224495.jpg', '关于Java集合的小抄', 'java,java集合', '在尽可能短的篇幅里，将所有集合与并发集合的特征，实现方式，性能捋一遍。适合所有”精通Java”其实还不那么自信的人阅读。', '1', '0', '1', 'admin', '0', '0', '1', '1', 'java,java集合', '0', '0', '0', '0', '0', '0', '0', '1468300964', '1476717385');
@@ -243,12 +241,11 @@ CREATE TABLE `feehi_article_meta` (
   `ip` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of feehi_article_meta
 -- ----------------------------
-INSERT INTO `feehi_article_meta` VALUES ('1', '19', 'like', '1', '127.0.0.1', '1512480697');
 
 -- ----------------------------
 -- Table structure for feehi_category
@@ -487,36 +484,37 @@ CREATE TABLE `feehi_options` (
   `tips` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
   `sort` int(11) unsigned DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of feehi_options
 -- ----------------------------
-INSERT INTO `feehi_options` VALUES ('1', '0', 'seo_keywords', 'FeehiCMS,php,内容管理框架,cms, feehi,framework', '1', '0', '', '0');
-INSERT INTO `feehi_options` VALUES ('2', '0', 'seo_description', 'FeehiCMS是一款基于yii2的高性能快速开发的内容管理框架', '1', '0', '', '0');
-INSERT INTO `feehi_options` VALUES ('3', '0', 'website_title', 'Feehi', '1', '0', '', '0');
+INSERT INTO `feehi_options` VALUES ('1', '0', 'seo_keywords', '琯琯琯琯琯琯琯琯琯琯', '1', '0', '', '0');
+INSERT INTO `feehi_options` VALUES ('2', '0', 'seo_description', '琯琯琯琯琯琯琯琯dffdvf琯琯琯dfgvfdfdv琯琯琯琯琯琯琯琯琯琯琯琯琯琯琯琯琯琯琯琯琯琯琯', '1', '0', '', '0');
+INSERT INTO `feehi_options` VALUES ('3', '0', 'website_title', 'Feehi CMS3333333fsdf', '1', '0', '', '0');
 INSERT INTO `feehi_options` VALUES ('4', '0', 'website_description', 'Based on most popular php framework yii2', '1', '0', '', '0');
-INSERT INTO `feehi_options` VALUES ('5', '0', 'website_email', null, '1', '0', '', '0');
+INSERT INTO `feehi_options` VALUES ('5', '0', 'website_email', 'admin@feehi.com', '1', '0', '', '0');
 INSERT INTO `feehi_options` VALUES ('6', '0', 'website_language', 'zh-CN', '1', '0', '', '0');
 INSERT INTO `feehi_options` VALUES ('7', '0', 'website_icp', '粤ICP备15018643号', '1', '0', '', '0');
-INSERT INTO `feehi_options` VALUES ('8', '0', 'website_statics_script', '', '1', '0', '', '0');
+INSERT INTO `feehi_options` VALUES ('8', '0', 'website_statics_script', 'fdvfdv', '1', '0', '', '0');
 INSERT INTO `feehi_options` VALUES ('9', '0', 'website_status', '1', '1', '0', '', '0');
 INSERT INTO `feehi_options` VALUES ('10', '0', 'website_comment', '1', '1', '0', '', '0');
 INSERT INTO `feehi_options` VALUES ('11', '0', 'website_comment_need_verify', '0', '1', '0', '', '0');
 INSERT INTO `feehi_options` VALUES ('12', '0', 'website_timezone', 'Asia/Shanghai', '1', '0', '', '0');
-INSERT INTO `feehi_options` VALUES ('13', '0', 'website_url', 'http://localhost:8000/', '1', '0', '', '0');
-INSERT INTO `feehi_options` VALUES ('14', '0', 'smtp_host', '', '1', '0', '', '0');
-INSERT INTO `feehi_options` VALUES ('15', '0', 'smtp_username', '', '1', '0', '', '0');
-INSERT INTO `feehi_options` VALUES ('16', '0', 'smtp_password', '', '1', '0', '', '0');
-INSERT INTO `feehi_options` VALUES ('17', '0', 'smtp_port', '', '1', '0', '', '0');
-INSERT INTO `feehi_options` VALUES ('18', '0', 'smtp_encryption', '', '1', '0', '', '0');
-INSERT INTO `feehi_options` VALUES ('19', '0', 'smtp_nickname', '', '1', '0', '', '0');
+INSERT INTO `feehi_options` VALUES ('13', '0', 'website_url', 'http://yiicms.com/', '1', '0', '', '0');
+INSERT INTO `feehi_options` VALUES ('14', '0', 'smtp_host', 'smtp.qq.com', '1', '0', '', '0');
+INSERT INTO `feehi_options` VALUES ('15', '0', 'smtp_username', '798314049@qq.com', '1', '0', '', '0');
+INSERT INTO `feehi_options` VALUES ('16', '0', 'smtp_password', 'ocoxnzwjvpcgbfcf', '1', '0', '', '0');
+INSERT INTO `feehi_options` VALUES ('17', '0', 'smtp_port', '465', '1', '0', '', '0');
+INSERT INTO `feehi_options` VALUES ('18', '0', 'smtp_encryption', 'ssl', '1', '0', '', '0');
+INSERT INTO `feehi_options` VALUES ('19', '0', 'smtp_nickname', '798314049@qq.com', '1', '0', '', '0');
 INSERT INTO `feehi_options` VALUES ('20', '1', 'weibo', 'http://www.weibo.com/feeppp', '1', '1', '新浪微博', '0');
 INSERT INTO `feehi_options` VALUES ('21', '1', 'facebook', 'http://www.facebook.com/liufee', '1', '1', 'facebook', '0');
 INSERT INTO `feehi_options` VALUES ('22', '1', 'wechat', '飞得更高', '1', '1', '微信', '0');
 INSERT INTO `feehi_options` VALUES ('23', '1', 'email', 'admin@feehi.com', '1', '1', '邮箱', '0');
 INSERT INTO `feehi_options` VALUES ('24', '1', 'qq', '1838889850', '1', '1', 'QQ号码', '0');
 INSERT INTO `feehi_options` VALUES ('25', '1', 'rss', 'http://www.feehi.com/rss', '1', '1', 'RSS订阅地址', '0');
+INSERT INTO `feehi_options` VALUES ('26', '0', 'seo_title', '琯琯sdfdf', '1', '1', '', '0');
 
 -- ----------------------------
 -- Table structure for feehi_user

@@ -5,6 +5,7 @@
 
 use backend\assets\MyAppAsset;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 MyAppAsset::register($this);
 ?>
@@ -21,11 +22,27 @@ MyAppAsset::register($this);
 </head>
 <body >
 <?php $this->beginBody() ?>
+
     <?= $content ?>
-    <button id="info"><?= Yii::$app->session->getFlash('info')?></button>
+    <input type="hidden" value="<?= Yii::$app->session->getFlash('hintInfo')?>" id="hintInfo">
 <?php $this->endBody() ?>
 </body>
-
+<script>
+	// iframe 弹出层
+	function layerIframe (title='信息', url='', width='50%', height='50%')
+	{
+		$.layer({
+		    type: 2,
+		    title: title,
+		    skin: 'layui-layer-rim', //加上边框
+		    area: [width, height], //宽高
+		    shade: [0.5, '#000000'], // 遮罩层
+		    shadeClose: true,
+		    iframe: {
+                src : url,
+            },
+		});
+	}
 </script>
 </html>
 <?php $this->endPage() ?>
