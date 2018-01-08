@@ -22,27 +22,57 @@ MyAppAsset::register($this);
 </head>
 <body >
 <?php $this->beginBody() ?>
-
     <?= $content ?>
     <input type="hidden" value="<?= Yii::$app->session->getFlash('hintInfo')?>" id="hintInfo">
 <?php $this->endBody() ?>
 </body>
+
 <script>
-	// iframe 弹出层
-	function layerIframe (title='信息', url='', width='50%', height='50%')
-	{
-		$.layer({
-		    type: 2,
-		    title: title,
-		    skin: 'layui-layer-rim', //加上边框
-		    area: [width, height], //宽高
-		    shade: [0.5, '#000000'], // 遮罩层
-		    shadeClose: true,
-		    iframe: {
-                src : url,
-            },
+
+	$(function(){
+		// iframe 弹出层
+		function layerIframe (title='信息', url='', width='50%', height='50%')
+		{
+			$.layer({
+			    type: 2,
+			    title: title,
+			    // 加上边框
+			    skin: 'layui-layer-rim',
+			    // offset: 't',
+			    // 宽高
+			    area: [width, height],
+			    // 遮罩层
+			    shade: [0.5, '#000000'],
+			    shadeClose: true,
+			    iframe: {
+	                src : url,
+	            },
+			});
+		}
+		// 询问框
+		$('.confirm').click(function(){
+			// layer.confirm(); 快捷调用
+			var action = $(this).attr("action");
+			$.layer({
+			    shade: [0],
+			    area: ['auto','auto'],
+			    shade: [0.5, '#000000'],
+			    dialog: {
+			        msg: '您确定删除吗？',
+			        btns: 2,
+			        type: 4,
+			        btn: ['确定','取消'],
+			        yes: function(){
+			            layer.msg('确定', 1, 1);
+			        	$.post(action);
+			        }, no: function(){
+			            // layer.msg('取消', 1, 2);
+			        }
+			    }
+			});
 		});
-	}
+	});
+
 </script>
 </html>
 <?php $this->endPage() ?>

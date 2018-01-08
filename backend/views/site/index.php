@@ -60,13 +60,25 @@ $this->title = '主页';
                             <li>
                                 <a class="J_menuItem" href="<?= Url::to(['setting/email']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">邮箱设置</span></a>
                             </li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="index.php?r=gii" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">Gii</span></a>
+                                <a class="J_menuItem" href="<?= Url::to(['user/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">前台用户</span></a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="index.php?r=debug" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">Debug</span></a>
+                                <a class="J_menuItem" href="<?= Url::to(['adminuser/site']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">后台用户</span></a>
                             </li>
                         </ul>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" href="index.php?r=gii" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">Gii</span></a>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" href="index.php?r=debug" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">Debug</span></a>
                     </li>
                     <li>
                         <a href="index.html#"><i class="fa fa-sitemap"></i> <span class="nav-label">菜单 </span><span class="fa arrow"></span></a>

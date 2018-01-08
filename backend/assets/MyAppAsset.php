@@ -17,6 +17,7 @@ class MyAppAsset extends AssetBundle
         'static/css/bootstrap.min.css',
         'static/font-awesome/css/font-awesome.css?v=4.3.0',
         'static/css/style.min862f.css?v=4.1.0',
+        'static/js/plugins/layer/laydate/need/laydate.css',
         'static/css/plugins/toastr/toastr.min.css',
         'static/js/plugins/layer/skin/layer.css',
     ];
@@ -28,6 +29,7 @@ class MyAppAsset extends AssetBundle
         "static/js/plugins/metisMenu/jquery.metisMenu.js",
         "static/js/plugins/slimscroll/jquery.slimscroll.min.js",
         "static/js/plugins/layer/layer.min.js",
+        'static/js/plugins/layer/laydate/laydate.js',
         "static/js/hplus.js?v=4.1.0",
         "static/js/contabs.min.js",
         "static/js/plugins/pace/pace.min.js",
