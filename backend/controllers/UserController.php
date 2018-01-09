@@ -111,7 +111,10 @@ class UserController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $ids = explode(',', $id);
+        foreach ($ids as $vo) {
+            $this->findModel($vo)->delete();
+        }
 
         return $this->redirect(['index']);
     }

@@ -34,16 +34,24 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
                                 <p>
                                     <button type="btn" class="btn btn-success">批量操作</button>
-                                    <?= Html::a("删除", "javascript:void(0);", ["class" => "btn btn-danger mybtn"]) ?>
+                                    <?= Html::a("删除", "javascript:void(0);", [
+                                        "class" => "btn btn-danger mybtn",
+                                        'action' => Url::to(['user/delete']),
+                                    ]) ?>
                                     <button type="btn" class="btn btn-success">批量操作</button>
                                 </p>
+
                                 <?php
                                     $js = <<<js
                                     $(document).on('click', '.mybtn', function () {
                                         //可以把选中的id通过ajax提交到后端，然后借助yii的deleteAll()语句进行删除或操作
                                         var keys = $("#grid").yiiGridView("getSelectedRows");
-                                        console.log(keys);
-                                        alert(keys);
+                                        var ids = keys.join(",");
+                                        var action = $(this).attr("action")+"&id="+ids;
+                                        console.log(action);
+                                        $.post(action, function(data){
+                                            // console.log(data);
+                                        });
                                     });
 js;
                                     $this->registerJs($js);
@@ -51,10 +59,10 @@ js;
                                 <?= GridView::widget([
                                     'dataProvider' => $dataProvider,
                                     'filterModel' => $searchModel,
-                                    // "options" => ["class" => "grid-view","style"=>"overflow:auto", "id" => "grid"],
+                                    "options" => ["class" => "grid-view","style"=>"overflow:auto", "id" => "grid"],
                                     'columns' => [
                                         [
-                                            // 'class' => 'yii\grid\SerialColumn',
+                                            'class' => 'yii\grid\SerialColumn',
                                             'class' => 'yii\grid\CheckboxColumn',
                                         ],
 

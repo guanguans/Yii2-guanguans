@@ -19,14 +19,18 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
     用户ID：
-    <input class="form-control" type="text" name="UserSearch[id]" style="width: 200px;" value="" placeholder="请输入用户ID">
+    <input class="form-control" type="text" id="usersearch-id" name="UserSearch[id]" style="width: 200px;" value="" >
     用户名：
-    <input class="form-control" type="text" name="UserSearch[username]" style="width: 200px;" value="" placeholder="用户名">
-    邮箱
-    <input class="form-control" type="text" name="UserSearch[id]" style="width: 200px;" value="" placeholder="邮箱">
-    状态
-    <input class="form-control" type="text" name="UserSearch[username]" style="width: 200px;" value="" placeholder="状态">
+    <input class="form-control" type="text" id="usersearch-username" name="UserSearch[username]" style="width: 200px;" value="">
+    邮箱：
+    <input class="form-control" type="text" id="usersearch-email" name="UserSearch[email]" style="width: 200px;" value="" >
+    状态：
+    <select class="form-control" id="usersearch-status" name="UserSearch[status]">
+        <option value="">默认</option>
+        <option value="10">正常</option>
+        <option value="0">禁用</option>
+    </select>
     <input type="submit" class="btn btn-primary" value="搜索">
-    <input type="reset" class="btn btn-danger" value="重置">
+    <input type="reset" class="btn btn-danger" value="清空">
     <?php ActiveForm::end(); ?>
 </div>
