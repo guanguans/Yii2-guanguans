@@ -70,9 +70,37 @@ $this->title = '主页';
                                 <a class="J_menuItem" href="<?= Url::to(['user/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">前台用户</span></a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="<?= Url::to(['adminuser/site']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">后台用户</span></a>
+                                <a class="J_menuItem" href="<?= Url::to(['adminuser/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">后台用户</span></a>
                             </li>
                         </ul>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">内容管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['category/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">分类管理</span></a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['article/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">文章管理</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" href="<?= Url::to(['friend-link/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">友情连接</span></a>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">缓存管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['user/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">清除前台</span></a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['user/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">清除后台</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" href="index.php?r=gii" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">日志管理</span></a>
                     </li>
                     <li>
                         <a class="J_menuItem" href="index.php?r=gii" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">Gii</span></a>
@@ -80,37 +108,7 @@ $this->title = '主页';
                     <li>
                         <a class="J_menuItem" href="index.php?r=debug" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">Debug</span></a>
                     </li>
-                    <li>
-                        <a href="index.html#"><i class="fa fa-sitemap"></i> <span class="nav-label">菜单 </span><span class="fa arrow"></span></a>
-
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="index.html#">三级菜单 <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="index.html#">三级菜单 01</a>
-                                    </li>
-                                    <li>
-                                        <a href="index.html#">三级菜单 01</a>
-                                    </li>
-                                    <li>
-                                        <a href="index.html#">三级菜单 01</a>
-                                    </li>
-
-                                </ul>
-                            </li>
-                            <li><a href="index.html#">二级菜单</a>
-                            </li>
-                            <li>
-                                <a href="index.html#">二级菜单</a>
-                            </li>
-                            <li>
-                                <a href="index.html#">二级菜单</a>
-                            </li>
-                        </ul>
-                    </li>
                 </ul>
-
             </div>
         </nav>
 
