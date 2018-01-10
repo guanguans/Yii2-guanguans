@@ -33,7 +33,7 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             [['parent_id', 'sort', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'alias', 'created_at'], 'required'],
+            [['name'], 'required'],
             [['name', 'alias', 'remark'], 'string', 'max' => 255],
         ];
     }
@@ -47,9 +47,9 @@ class Category extends \yii\db\ActiveRecord
             'id' => 'ID',
             'parent_id' => '父级 ID',
             'name' => '名称',
-            'alias' => 'Alias',
+            'alias' => '别名',
             'sort' => '排序',
-            'remark' => '标记',
+            'remark' => '描述',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
         ];

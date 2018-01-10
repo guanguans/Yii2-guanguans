@@ -18,6 +18,7 @@ class MyAppAsset extends AssetBundle
         'static/font-awesome/css/font-awesome.css?v=4.3.0',
         'static/css/style.min862f.css?v=4.1.0',
         'static/js/plugins/layer/laydate/need/laydate.css',
+        'static/css/plugins/jsTree/style.min.css',
         'static/css/plugins/toastr/toastr.min.css',
         'static/js/plugins/layer/skin/layer.css',
     ];
@@ -33,6 +34,7 @@ class MyAppAsset extends AssetBundle
         "static/js/hplus.js?v=4.1.0",
         "static/js/contabs.min.js",
         "static/js/plugins/pace/pace.min.js",
+        "static/js/plugins/jsTree/jstree.min.js",
         "static/js/plugins/toastr/toastr.min.js",
         "static/js/admin.js",
     ];

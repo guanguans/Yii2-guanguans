@@ -17,36 +17,37 @@ use yii\grid\GridView;
                 <div class="ibox-content" style="border-top: 0px;">
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane active">
-                            <div class="category-index">
-                                <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-                                <?= GridView::widget([
-                                    'dataProvider' => $dataProvider,
-                                    'filterModel' => $searchModel,
-                                    'columns' => [
-                                        ['class' => 'yii\grid\SerialColumn'],
-
-                                        'id',
-                                        'parent_id',
-                                        'name',
-                                        'alias',
-                                        'sort',
-                                        //'remark',
-                                        //'created_at',
-                                        //'updated_at',
-
-                                        [
-                                            'class' => 'yii\grid\ActionColumn',
-                                            'template' => '{add} {view} {update} {delete} ',
-                                            'buttons' => [
-                                                'add'=>function ($url, $model, $key) {
-                                                    return Html::a('添加子类', ['category/create', 'id' => $model->id], ['class' => "text-info"]);
-                                                },
-                                            ],
-                                        ],
-                                    ],
-                                ]); ?>
-                            </div>
+                            <form method="post" class="js-ajax-form" action="{:url('AdminCategory/listOrder')}">
+                                <div class="table-actions">
+                                    <button type="submit" class="btn btn-primary btn-sm js-ajax-submit">排序</button>
+                                </div>
+                                <table class="table table-hover table-bordered table-list">
+                                    <thead>
+                                        <tr>
+                                            <th width="50">排序</th>
+                                            <th width="50">ID</th>
+                                            <th>分类名称</th>
+                                            <th>描述</th>
+                                            <th width="180">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?=$categoryTableTree?>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th width="50">排序</th>
+                                            <th width="50">ID</th>
+                                            <th>分类名称</th>
+                                            <th>描述</th>
+                                            <th width="180">操作</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                <div class="table-actions">
+                                    <button type="submit" class="btn btn-primary btn-sm js-ajax-submit">排序</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -54,5 +55,7 @@ use yii\grid\GridView;
         </div>
     </div>
 </div>
+
+
 
 

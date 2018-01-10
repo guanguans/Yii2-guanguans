@@ -1,5 +1,7 @@
 <?php
-
+use backend\models\Category;
+use backend\helper\Tree;
+use yii\helpers\Url;
 /**
  * 获取当前登录的前台用户的信息，未登录时，返回false
  * @return array|boolean
@@ -67,6 +69,86 @@ function send_email($object, $title, $content){
 	}
 
 	return true;
+}
+
+/**
+ * @param int|array $currentIds
+ * @param string $tpl
+ * @return string
+ */
+function categoryTableTree($currentIds = 0, $tpl = '')
+{
+    $categories = Category::find()
+                ->orderBy('sort ASC')
+                ->asArray()
+                ->all();
+    $tree       = new Tree();
+    $tree->icon = ['&nbsp;&nbsp;│', '&nbsp;&nbsp;├─', '&nbsp;&nbsp;└─'];
+    $tree->nbsp = '&nbsp;&nbsp;';
+
+    if (!is_array($currentIds)) {
+        $currentIds = [$currentIds];
+    }
+
+    $newCategories = [];
+    foreach ($categories as $item) {
+        $item['checked'] = in_array($item['id'], $currentIds) ? "checked" : "";
+        $item['url']     = Url::to(['category/index', 'id' => $item['id']]);
+
+        $item['str_action'] = '<a href="' . Url::to(['category/create', 'id' => $item['id']]) . '">添加子分类</a> | <a href="' . Url::to(['category/view', 'id' => $item['id']]) . '">查看</a> | <a href="' . Url::to(['category/update', 'id' => $item['id']]) . '">编辑</a>  | <a data-pjax="0" data-confirm="您确定要删除此项吗？" data-method="post" href="' . Url::to(['category/delete', 'id' => $item['id']]) . '">删除</a> ';
+        array_push($newCategories, $item);
+    }
+
+    $tree->init($newCategories);
+
+    if (empty($tpl)) {
+        $tpl = "<tr>
+                    <td><input name='list_orders[\$id]' type='text' size='3' value='\$sort' class='input-order'></td>
+                    <td>\$id</td>
+                    <td>\$spacer <a href='\$url' target='_blank'>\$name</a></td>
+                    <td>\$remark</td>
+                    <td width='230px'>\$str_action</td>
+                </tr>";
+    }
+    $treeStr = $tree->getTree(0, $tpl);
+
+    return $treeStr;
+}
+
+/**
+ * 生成分类 select树形结构
+ * @param int $selectId 需要选中的分类 id
+ * @param int $currentCid 需要隐藏的分类 id
+ * @return string
+ */
+function categoryTree($selectId = 0, $currentCid = 0)
+{
+	$where = [];
+    if (!empty($currentCid)) {
+        $where['id'] = ['neq', $currentCid];
+    }
+    $categories = Category::find()
+    			->where($where)
+                ->orderBy('sort ASC')
+                ->asArray()
+                ->all();
+
+    $tree       = new Tree();
+    $tree->icon = ['&nbsp;&nbsp;│', '&nbsp;&nbsp;├─', '&nbsp;&nbsp;└─'];
+    $tree->nbsp = '&nbsp;&nbsp;';
+
+    $newCategories = [];
+    foreach ($categories as $item) {
+        $item['selected'] = $selectId == $item['id'] ? "selected" : "";
+
+        array_push($newCategories, $item);
+    }
+
+    $tree->init($newCategories);
+    $str     = '<option value=\"{$id}\" {$selected}>{$spacer}{$name}</option>';
+    $treeStr = $tree->getTree(0, $str);
+
+    return $treeStr;
 }
 
 /**

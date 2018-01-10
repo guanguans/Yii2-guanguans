@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-01-06 17:58:52
+Date: 2018-01-10 18:08:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -261,7 +261,7 @@ CREATE TABLE `feehi_category` (
   `created_at` int(11) unsigned NOT NULL,
   `updated_at` int(11) unsigned DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of feehi_category
@@ -269,6 +269,12 @@ CREATE TABLE `feehi_category` (
 INSERT INTO `feehi_category` VALUES ('1', '0', 'php', 'php', '0', '', '1468293958', '0');
 INSERT INTO `feehi_category` VALUES ('2', '0', 'java', 'java', '0', '', '1468293965', '0');
 INSERT INTO `feehi_category` VALUES ('3', '0', 'javascript', 'javascript', '0', '', '1468293974', '0');
+INSERT INTO `feehi_category` VALUES ('4', '1', 'laravel', 'laravel', '0', '', '1515550648', '1515550673');
+INSERT INTO `feehi_category` VALUES ('5', '2', 'spring', 'spring', '0', '', '1515550722', '1515550722');
+INSERT INTO `feehi_category` VALUES ('6', '1', 'thinkphp', 'thinkphp', '0', '', '1515550782', '1515550782');
+INSERT INTO `feehi_category` VALUES ('7', '4', 'laravel-admin', 'laravel-admin', '0', '', '1515550806', '1515550806');
+INSERT INTO `feehi_category` VALUES ('8', '0', 'linux', '', '0', '', '0', '0');
+INSERT INTO `feehi_category` VALUES ('9', '4', 'laravel-china', '', '0', '', '0', '0');
 
 -- ----------------------------
 -- Table structure for feehi_comment
@@ -535,8 +541,9 @@ CREATE TABLE `feehi_user` (
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `password_reset_token` (`password_reset_token`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of feehi_user
 -- ----------------------------
+INSERT INTO `feehi_user` VALUES ('18', '琯琯1', 'nZIacWv7FF125zr57aEidVl5xcrdd1VM', '$2y$13$OtN4DVn7dVWeVgxbjnReMezHpmizmHVYP.xqdeeq/SpYf2oMFau72', null, '', '', '10', '1515379189', '1515379189');

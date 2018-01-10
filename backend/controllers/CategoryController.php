@@ -8,6 +8,8 @@ use backend\models\CategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\helper\Tree;
+use yii\helpers\Url;
 
 /**
  * CategoryController implements the CRUD actions for Category model.
@@ -35,12 +37,8 @@ class CategoryController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new CategorySearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'categoryTableTree' => categoryTableTree(),
         ]);
     }
 
@@ -70,9 +68,10 @@ class CategoryController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        if (!empty(Yii::$app->request->get('id'))) {
+            $model->parent_id =  Yii::$app->request->get('id');
+        }
+        return $this->render('create', compact('model'));
     }
 
     /**

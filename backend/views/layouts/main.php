@@ -26,10 +26,10 @@ MyAppAsset::register($this);
     <input type="hidden" value="<?= Yii::$app->session->getFlash('hintInfo')?>" id="hintInfo">
 <?php $this->endBody() ?>
 </body>
-
 <script>
 
 	$(function(){
+
 		// iframe 弹出层
 		function layerIframe (title='信息', url='', width='50%', height='50%')
 		{
