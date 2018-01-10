@@ -15,14 +15,9 @@ class SettingController extends \yii\web\Controller
         $model->scenario = SettingWebForm::SCENARIO_WEBSITE;
         if (yii::$app->request->isPost) {
             if ($model->load(yii::$app->request->post()) && $model->validate() && $model->setWebConfig(yii::$app->request->post())) {
-                yii::$app->session->setFlash('hintInfo', '成功');
+                hintInfo();
             } else {
-                $errors = $model->getErrors();
-                $err = '';
-                foreach ($errors as $v) {
-                    $err .= $v[0] . '<br>';
-                }
-                yii::$app->getSession()->setFlash('hintInfo', $err);
+                hintInfo($model);
             }
         }
         // 设置模型属性值
@@ -39,14 +34,9 @@ class SettingController extends \yii\web\Controller
         $model->scenario = SettingWebForm::SCENARIO_WEBSEO;
         if (yii::$app->request->isPost) {
             if ($model->load(yii::$app->request->post()) && $model->validate() && $model->setWebConfig(yii::$app->request->post())) {
-                yii::$app->session->setFlash('hintInfo', '成功');
+                hintInfo();
             } else {
-                $errors = $model->getErrors();
-                $err = '';
-                foreach ($errors as $v) {
-                    $err .= $v[0] . '<br>';
-                }
-                yii::$app->getSession()->setFlash('hintInfo', $err);
+                hintInfo($model);
             }
         }
         // 设置模型属性值
@@ -62,14 +52,9 @@ class SettingController extends \yii\web\Controller
         $model = new SettingEmailForm();
         if (yii::$app->request->isPost) {
             if ($model->load(yii::$app->request->post()) && $model->validate() && $model->setEmailConfig(yii::$app->request->post())) {
-                yii::$app->session->setFlash('hintInfo', '成功');
+                hintInfo();
             } else {
-                $errors = $model->getErrors();
-                $err = '';
-                foreach ($errors as $v) {
-                    $err .= $v[0] . '<br>';
-                }
-                yii::$app->getSession()->setFlash('hintInfo', $err);
+                hintInfo($model);
             }
         }
         // 设置模型属性值

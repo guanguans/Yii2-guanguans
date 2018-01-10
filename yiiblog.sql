@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : phpstudy
+Source Server         : 本地
 Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : yiiblog
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-01-10 18:08:41
+Date: 2018-01-10 22:32:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -261,7 +261,7 @@ CREATE TABLE `feehi_category` (
   `created_at` int(11) unsigned NOT NULL,
   `updated_at` int(11) unsigned DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of feehi_category
@@ -275,6 +275,8 @@ INSERT INTO `feehi_category` VALUES ('6', '1', 'thinkphp', 'thinkphp', '0', '', 
 INSERT INTO `feehi_category` VALUES ('7', '4', 'laravel-admin', 'laravel-admin', '0', '', '1515550806', '1515550806');
 INSERT INTO `feehi_category` VALUES ('8', '0', 'linux', '', '0', '', '0', '0');
 INSERT INTO `feehi_category` VALUES ('9', '4', 'laravel-china', '', '0', '', '0', '0');
+INSERT INTO `feehi_category` VALUES ('10', '6', 'tophink', '', '0', '', '0', '0');
+INSERT INTO `feehi_category` VALUES ('11', '6', 'shop-think', '', '0', '', '0', '0');
 
 -- ----------------------------
 -- Table structure for feehi_comment
@@ -497,12 +499,12 @@ CREATE TABLE `feehi_options` (
 -- ----------------------------
 INSERT INTO `feehi_options` VALUES ('1', '0', 'seo_keywords', '琯琯琯琯琯琯琯琯琯琯', '1', '0', '', '0');
 INSERT INTO `feehi_options` VALUES ('2', '0', 'seo_description', '琯琯琯琯琯琯琯琯dffdvf琯琯琯dfgvfdfdv琯琯琯琯琯琯琯琯琯琯琯琯琯琯琯琯琯琯琯琯琯琯琯', '1', '0', '', '0');
-INSERT INTO `feehi_options` VALUES ('3', '0', 'website_title', 'Feehi CMS3333333fsdf', '1', '0', '', '0');
+INSERT INTO `feehi_options` VALUES ('3', '0', 'website_title', 'Feehi CMSdfdf', '1', '0', '', '0');
 INSERT INTO `feehi_options` VALUES ('4', '0', 'website_description', 'Based on most popular php framework yii2', '1', '0', '', '0');
 INSERT INTO `feehi_options` VALUES ('5', '0', 'website_email', 'admin@feehi.com', '1', '0', '', '0');
 INSERT INTO `feehi_options` VALUES ('6', '0', 'website_language', 'zh-CN', '1', '0', '', '0');
 INSERT INTO `feehi_options` VALUES ('7', '0', 'website_icp', '粤ICP备15018643号', '1', '0', '', '0');
-INSERT INTO `feehi_options` VALUES ('8', '0', 'website_statics_script', 'fdvfdv', '1', '0', '', '0');
+INSERT INTO `feehi_options` VALUES ('8', '0', 'website_statics_script', 'fdvfdvsdsds', '1', '0', '', '0');
 INSERT INTO `feehi_options` VALUES ('9', '0', 'website_status', '1', '1', '0', '', '0');
 INSERT INTO `feehi_options` VALUES ('10', '0', 'website_comment', '1', '1', '0', '', '0');
 INSERT INTO `feehi_options` VALUES ('11', '0', 'website_comment_need_verify', '0', '1', '0', '', '0');

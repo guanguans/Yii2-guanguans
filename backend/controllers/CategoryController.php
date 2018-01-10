@@ -65,7 +65,10 @@ class CategoryController extends Controller
         $model = new Category();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            hintInfo();
             return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            hintInfo($model);
         }
 
         if (!empty(Yii::$app->request->get('id'))) {
@@ -103,6 +106,15 @@ class CategoryController extends Controller
      */
     public function actionDelete($id)
     {
+        // $parent_id = Category::find()->select('parent_id')->where(['id'=>$id])->one()['parent_id'];
+        // $res = Category::find()->select('parent_id')->where(['id'=>$parent_id])->one();
+
+        // if ($res) {
+        //     hintInfo();
+        // } else {
+        //     $this->findModel($id)->delete();
+        // }
+        // 
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
