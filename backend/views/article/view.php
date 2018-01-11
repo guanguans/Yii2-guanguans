@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\DetailView;
+
 ?>
 <div class="wrapper wrapper-content animated fadeIn" >
     <div class="row">
@@ -17,11 +18,8 @@ use yii\widgets\DetailView;
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane active">
                             <div class="article-view">
-
-                                <h1><?= Html::encode($this->title) ?></h1>
-
                                 <p>
-                                    <?= Html::a('编辑', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                                    <?= Html::a('更新', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
                                     <?= Html::a('删除', ['delete', 'id' => $model->id], [
                                         'class' => 'btn btn-danger',
                                         'data' => [
@@ -35,33 +33,28 @@ use yii\widgets\DetailView;
                                     'model' => $model,
                                     'attributes' => [
                                         'id',
-                                        'cid',
-                                        'type',
-                                        'title',
-                                        'sub_title',
-                                        'summary',
-                                        'thumb',
-                                        'seo_title',
-                                        'seo_keywords',
-                                        'seo_description',
-                                        'status',
-                                        'sort',
-                                        'author_id',
-                                        'author_name',
-                                        'scan_count',
+                                        'parent_id',
+                                        'post_type',
+                                        'post_format',
+                                        'user_id',
+                                        'post_status',
+                                        'comment_status',
+                                        'is_top',
+                                        'recommended',
+                                        'post_hits',
+                                        'post_like',
                                         'comment_count',
-                                        'can_comment',
-                                        'visibility',
-                                        'tag',
-                                        'flag_headline',
-                                        'flag_recommend',
-                                        'flag_slide_show',
-                                        'flag_special_recommend',
-                                        'flag_roll',
-                                        'flag_bold',
-                                        'flag_picture',
-                                        'created_at',
-                                        'updated_at',
+                                        'create_time',
+                                        'update_time',
+                                        'published_time',
+                                        'delete_time',
+                                        'post_title',
+                                        'post_keywords',
+                                        'post_excerpt',
+                                        'post_source',
+                                        'post_content:ntext',
+                                        'post_content_filtered:ntext',
+                                        'more:ntext',
                                     ],
                                 ]) ?>
 

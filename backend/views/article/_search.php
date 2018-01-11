@@ -17,59 +17,49 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'cid') ?>
+    <?= $form->field($model, 'parent_id') ?>
 
-    <?= $form->field($model, 'type') ?>
+    <?= $form->field($model, 'post_type') ?>
 
-    <?= $form->field($model, 'title') ?>
+    <?= $form->field($model, 'post_format') ?>
 
-    <?= $form->field($model, 'sub_title') ?>
+    <?= $form->field($model, 'user_id') ?>
 
-    <?php // echo $form->field($model, 'summary') ?>
+    <?php // echo $form->field($model, 'post_status') ?>
 
-    <?php // echo $form->field($model, 'thumb') ?>
+    <?php // echo $form->field($model, 'comment_status') ?>
 
-    <?php // echo $form->field($model, 'seo_title') ?>
+    <?php // echo $form->field($model, 'is_top') ?>
 
-    <?php // echo $form->field($model, 'seo_keywords') ?>
+    <?php // echo $form->field($model, 'recommended') ?>
 
-    <?php // echo $form->field($model, 'seo_description') ?>
+    <?php // echo $form->field($model, 'post_hits') ?>
 
-    <?php // echo $form->field($model, 'status') ?>
-
-    <?php // echo $form->field($model, 'sort') ?>
-
-    <?php // echo $form->field($model, 'author_id') ?>
-
-    <?php // echo $form->field($model, 'author_name') ?>
-
-    <?php // echo $form->field($model, 'scan_count') ?>
+    <?php // echo $form->field($model, 'post_like') ?>
 
     <?php // echo $form->field($model, 'comment_count') ?>
 
-    <?php // echo $form->field($model, 'can_comment') ?>
+    <?php // echo $form->field($model, 'create_time') ?>
 
-    <?php // echo $form->field($model, 'visibility') ?>
+    <?php // echo $form->field($model, 'update_time') ?>
 
-    <?php // echo $form->field($model, 'tag') ?>
+    <?php // echo $form->field($model, 'published_time') ?>
 
-    <?php // echo $form->field($model, 'flag_headline') ?>
+    <?php // echo $form->field($model, 'delete_time') ?>
 
-    <?php // echo $form->field($model, 'flag_recommend') ?>
+    <?php // echo $form->field($model, 'post_title') ?>
 
-    <?php // echo $form->field($model, 'flag_slide_show') ?>
+    <?php // echo $form->field($model, 'post_keywords') ?>
 
-    <?php // echo $form->field($model, 'flag_special_recommend') ?>
+    <?php // echo $form->field($model, 'post_excerpt') ?>
 
-    <?php // echo $form->field($model, 'flag_roll') ?>
+    <?php // echo $form->field($model, 'post_source') ?>
 
-    <?php // echo $form->field($model, 'flag_bold') ?>
+    <?php // echo $form->field($model, 'post_content') ?>
 
-    <?php // echo $form->field($model, 'flag_picture') ?>
+    <?php // echo $form->field($model, 'post_content_filtered') ?>
 
-    <?php // echo $form->field($model, 'created_at') ?>
-
-    <?php // echo $form->field($model, 'updated_at') ?>
+    <?php // echo $form->field($model, 'more') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

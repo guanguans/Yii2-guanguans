@@ -8,35 +8,28 @@ use Yii;
  * This is the model class for table "{{%article}}".
  *
  * @property string $id
- * @property string $cid
- * @property string $type
- * @property string $title
- * @property string $sub_title
- * @property string $summary
- * @property string $thumb
- * @property string $seo_title
- * @property string $seo_keywords
- * @property string $seo_description
- * @property int $status
- * @property string $sort
- * @property string $author_id
- * @property string $author_name
- * @property string $scan_count
- * @property string $comment_count
- * @property int $can_comment
- * @property int $visibility
- * @property string $tag
- * @property int $flag_headline
- * @property int $flag_recommend
- * @property int $flag_slide_show
- * @property int $flag_special_recommend
- * @property int $flag_roll
- * @property int $flag_bold
- * @property int $flag_picture
- * @property string $created_at
- * @property string $updated_at
- *
- * @property ArticleContent[] $articleContents
+ * @property string $parent_id 父级id
+ * @property int $post_type 类型,1:文章;2:页面
+ * @property int $post_format 内容格式;1:html;2:md
+ * @property string $user_id 发表者用户id
+ * @property int $post_status 状态;1:已发布;0:未发布;
+ * @property int $comment_status 评论状态;1:允许;0:不允许
+ * @property int $is_top 是否置顶;1:置顶;0:不置顶
+ * @property int $recommended 是否推荐;1:推荐;0:不推荐
+ * @property string $post_hits 查看数
+ * @property string $post_like 点赞数
+ * @property string $comment_count 评论数
+ * @property string $create_time 创建时间
+ * @property string $update_time 更新时间
+ * @property string $published_time 发布时间
+ * @property string $delete_time 删除时间
+ * @property string $post_title post标题
+ * @property string $post_keywords seo keywords
+ * @property string $post_excerpt post摘要
+ * @property string $post_source 转载文章的来源
+ * @property string $post_content 文章内容
+ * @property string $post_content_filtered 处理过的文章内容
+ * @property string $more 扩展属性,如缩略图;格式为json
  */
 class Article extends \yii\db\ActiveRecord
 {
@@ -54,9 +47,11 @@ class Article extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cid', 'type', 'status', 'sort', 'author_id', 'scan_count', 'comment_count', 'can_comment', 'visibility', 'flag_headline', 'flag_recommend', 'flag_slide_show', 'flag_special_recommend', 'flag_roll', 'flag_bold', 'flag_picture', 'created_at', 'updated_at'], 'integer'],
-            [['title', 'created_at'], 'required'],
-            [['title', 'sub_title', 'summary', 'thumb', 'seo_title', 'seo_keywords', 'seo_description', 'author_name', 'tag'], 'string', 'max' => 255],
+            [['parent_id', 'post_type', 'post_format', 'user_id', 'post_status', 'comment_status', 'is_top', 'recommended', 'post_hits', 'post_like', 'comment_count', 'create_time', 'update_time', 'published_time', 'delete_time'], 'integer'],
+            [['post_content', 'post_content_filtered', 'more'], 'string'],
+            [['post_title'], 'required'],
+            [['post_keywords', 'post_source'], 'string', 'max' => 150],
+            [['post_excerpt'], 'string', 'max' => 500],
         ];
     }
 
@@ -67,41 +62,28 @@ class Article extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'cid' => 'Cid',
-            'type' => 'Type',
-            'title' => 'Title',
-            'sub_title' => 'Sub Title',
-            'summary' => 'Summary',
-            'thumb' => 'Thumb',
-            'seo_title' => 'Seo Title',
-            'seo_keywords' => 'Seo Keywords',
-            'seo_description' => 'Seo Description',
-            'status' => 'Status',
-            'sort' => 'Sort',
-            'author_id' => 'Author ID',
-            'author_name' => 'Author Name',
-            'scan_count' => 'Scan Count',
-            'comment_count' => 'Comment Count',
-            'can_comment' => 'Can Comment',
-            'visibility' => 'Visibility',
-            'tag' => 'Tag',
-            'flag_headline' => 'Flag Headline',
-            'flag_recommend' => 'Flag Recommend',
-            'flag_slide_show' => 'Flag Slide Show',
-            'flag_special_recommend' => 'Flag Special Recommend',
-            'flag_roll' => 'Flag Roll',
-            'flag_bold' => 'Flag Bold',
-            'flag_picture' => 'Flag Picture',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'parent_id' => '分类',
+            'post_type' => '类型,1:文章;2:页面',
+            'post_format' => '内容格式;1:html;2:md',
+            'user_id' => '发表者用户id',
+            'post_status' => '状态;1:已发布;0:未发布;',
+            'comment_status' => '评论状态;1:允许;0:不允许',
+            'is_top' => '是否置顶;1:置顶;0:不置顶',
+            'recommended' => '是否推荐;1:推荐;0:不推荐',
+            'post_hits' => '查看数',
+            'post_like' => '点赞数',
+            'comment_count' => '评论数',
+            'create_time' => '创建时间',
+            'update_time' => '更新时间',
+            'published_time' => '发布时间',
+            'delete_time' => '删除时间',
+            'post_title' => '标题',
+            'post_keywords' => '关键词',
+            'post_excerpt' => '摘要',
+            'post_source' => '文章来源',
+            'post_content' => '内容',
+            'post_content_filtered' => '处理过的文章内容',
+            'more' => '扩展属性,如缩略图;格式为json',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getArticleContents()
-    {
-        return $this->hasMany(ArticleContent::className(), ['aid' => 'id']);
     }
 }

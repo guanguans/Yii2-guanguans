@@ -18,8 +18,8 @@ class ArticleSearch extends Article
     public function rules()
     {
         return [
-            [['id', 'cid', 'type', 'status', 'sort', 'author_id', 'scan_count', 'comment_count', 'can_comment', 'visibility', 'flag_headline', 'flag_recommend', 'flag_slide_show', 'flag_special_recommend', 'flag_roll', 'flag_bold', 'flag_picture', 'created_at', 'updated_at'], 'integer'],
-            [['title', 'sub_title', 'summary', 'thumb', 'seo_title', 'seo_keywords', 'seo_description', 'author_name', 'tag'], 'safe'],
+            [['id', 'parent_id', 'post_type', 'post_format', 'user_id', 'post_status', 'comment_status', 'is_top', 'recommended', 'post_hits', 'post_like', 'comment_count', 'create_time', 'update_time', 'published_time', 'delete_time'], 'integer'],
+            [['post_title', 'post_keywords', 'post_excerpt', 'post_source', 'post_content', 'post_content_filtered', 'more'], 'safe'],
         ];
     }
 
@@ -47,9 +47,6 @@ class ArticleSearch extends Article
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'pagination' => [
-                'pageSize' => 10,
-            ],
         ]);
 
         $this->load($params);
@@ -63,35 +60,30 @@ class ArticleSearch extends Article
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'cid' => $this->cid,
-            'type' => $this->type,
-            'status' => $this->status,
-            'sort' => $this->sort,
-            'author_id' => $this->author_id,
-            'scan_count' => $this->scan_count,
+            'parent_id' => $this->parent_id,
+            'post_type' => $this->post_type,
+            'post_format' => $this->post_format,
+            'user_id' => $this->user_id,
+            'post_status' => $this->post_status,
+            'comment_status' => $this->comment_status,
+            'is_top' => $this->is_top,
+            'recommended' => $this->recommended,
+            'post_hits' => $this->post_hits,
+            'post_like' => $this->post_like,
             'comment_count' => $this->comment_count,
-            'can_comment' => $this->can_comment,
-            'visibility' => $this->visibility,
-            'flag_headline' => $this->flag_headline,
-            'flag_recommend' => $this->flag_recommend,
-            'flag_slide_show' => $this->flag_slide_show,
-            'flag_special_recommend' => $this->flag_special_recommend,
-            'flag_roll' => $this->flag_roll,
-            'flag_bold' => $this->flag_bold,
-            'flag_picture' => $this->flag_picture,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'create_time' => $this->create_time,
+            'update_time' => $this->update_time,
+            'published_time' => $this->published_time,
+            'delete_time' => $this->delete_time,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'sub_title', $this->sub_title])
-            ->andFilterWhere(['like', 'summary', $this->summary])
-            ->andFilterWhere(['like', 'thumb', $this->thumb])
-            ->andFilterWhere(['like', 'seo_title', $this->seo_title])
-            ->andFilterWhere(['like', 'seo_keywords', $this->seo_keywords])
-            ->andFilterWhere(['like', 'seo_description', $this->seo_description])
-            ->andFilterWhere(['like', 'author_name', $this->author_name])
-            ->andFilterWhere(['like', 'tag', $this->tag]);
+        $query->andFilterWhere(['like', 'post_title', $this->post_title])
+            ->andFilterWhere(['like', 'post_keywords', $this->post_keywords])
+            ->andFilterWhere(['like', 'post_excerpt', $this->post_excerpt])
+            ->andFilterWhere(['like', 'post_source', $this->post_source])
+            ->andFilterWhere(['like', 'post_content', $this->post_content])
+            ->andFilterWhere(['like', 'post_content_filtered', $this->post_content_filtered])
+            ->andFilterWhere(['like', 'more', $this->more]);
 
         return $dataProvider;
     }

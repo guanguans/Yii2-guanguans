@@ -10,7 +10,7 @@ use yii\grid\GridView;
             <div class="ibox float-e-margins">
                 <div class="ibox-title" style="padding: 0px;border-top: 0px;">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="">文章管理</a></li>
+                        <li class="active"><a data-toggle="tab" href="">文章管理</a></li>
                         <li><a href="<?=Url::to(['article/create'])?>">创建文章</a></li>
                     </ul>
                 </div>
@@ -18,9 +18,7 @@ use yii\grid\GridView;
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane active">
                             <div class="article-index">
-
                                 <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
                                 <?= GridView::widget([
                                     'dataProvider' => $dataProvider,
                                     'filterModel' => $searchModel,
@@ -28,33 +26,28 @@ use yii\grid\GridView;
                                         ['class' => 'yii\grid\SerialColumn'],
 
                                         'id',
-                                        'cid',
-                                        'type',
-                                        'title',
-                                        'sub_title',
-                                        //'summary',
-                                        //'thumb',
-                                        //'seo_title',
-                                        //'seo_keywords',
-                                        //'seo_description',
-                                        //'status',
-                                        //'sort',
-                                        //'author_id',
-                                        //'author_name',
-                                        //'scan_count',
+                                        'parent_id',
+                                        'post_type',
+                                        'post_format',
+                                        'user_id',
+                                        //'post_status',
+                                        //'comment_status',
+                                        //'is_top',
+                                        //'recommended',
+                                        //'post_hits',
+                                        //'post_like',
                                         //'comment_count',
-                                        //'can_comment',
-                                        //'visibility',
-                                        //'tag',
-                                        //'flag_headline',
-                                        //'flag_recommend',
-                                        //'flag_slide_show',
-                                        //'flag_special_recommend',
-                                        //'flag_roll',
-                                        //'flag_bold',
-                                        //'flag_picture',
-                                        //'created_at',
-                                        //'updated_at',
+                                        //'create_time',
+                                        //'update_time',
+                                        //'published_time',
+                                        //'delete_time',
+                                        //'post_title',
+                                        //'post_keywords',
+                                        //'post_excerpt',
+                                        //'post_source',
+                                        //'post_content:ntext',
+                                        //'post_content_filtered:ntext',
+                                        //'more:ntext',
 
                                         ['class' => 'yii\grid\ActionColumn'],
                                     ],
@@ -67,5 +60,6 @@ use yii\grid\GridView;
         </div>
     </div>
 </div>
+
 
 
