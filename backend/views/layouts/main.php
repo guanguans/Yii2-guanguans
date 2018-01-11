@@ -22,8 +22,8 @@ MyAppAsset::register($this);
 </head>
 <body >
 <?php $this->beginBody() ?>
+    <input type="hidden" value='<?= Yii::$app->session->getFlash('info')?>' id="info">
     <?= $content ?>
-    <input type="hidden" value="<?= Yii::$app->session->getFlash('hintInfo')?>" id="hintInfo">
 <?php $this->endBody() ?>
 </body>
 <script>

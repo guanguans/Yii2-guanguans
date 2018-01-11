@@ -64,16 +64,19 @@ class CategoryController extends Controller
     {
         $model = new Category();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            hintInfo();
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            hintInfo($model);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->save()) {
+                hintInfo(['code'=>1,'data'=>'添加成功']);
+                return $this->redirect(['view', 'id' => $model->id]);
+            }else {
+                hintInfo(['code'=>0,'data'=>'添加失败'], $model);
+            }
         }
 
-        if (!empty(Yii::$app->request->get('id'))) {
-            $model->parent_id =  Yii::$app->request->get('id');
+        if (!empty(Yii::$app->request->get('parent_id'))) {
+            $model->parent_id =  Yii::$app->request->get('parent_id');
         }
+
         return $this->render('create', compact('model'));
     }
 
@@ -106,16 +109,14 @@ class CategoryController extends Controller
      */
     public function actionDelete($id)
     {
-        // $parent_id = Category::find()->select('parent_id')->where(['id'=>$id])->one()['parent_id'];
-        // $res = Category::find()->select('parent_id')->where(['id'=>$parent_id])->one();
+        $res = Category::find()->select('parent_id')->where(['parent_id'=>$id])->one();
 
-        // if ($res) {
-        //     hintInfo();
-        // } else {
-        //     $this->findModel($id)->delete();
-        // }
-        // 
-        $this->findModel($id)->delete();
+        if ($res) {
+            hintInfo(['code'=>0,'data'=>'操作失败']);
+        } else {
+            hintInfo(['code'=>1,'data'=>'操作成功']);
+            $this->findModel($id)->delete();
+        }
 
         return $this->redirect(['index']);
     }

@@ -76,17 +76,19 @@ function send_email($object, $title, $content){
  * @param object|''
  * @return string
  */
-function hintInfo($model=''){
-	if (empty($model)) {
-		yii::$app->session->setFlash('hintInfo', '成功');
-	} else {
+function hintInfo($info, $model=''){
+	if ($model) {
 		$errors = $model->getErrors();
 	    $err = '';
 	    foreach ($errors as $v) {
 	        $err .= $v[0] . '<br>';
 	    }
-	    yii::$app->getSession()->setFlash('hintInfo', $err);
-	}	
+	    $info = [
+			'code' => 0,
+			'data' => $err,
+		];
+	}
+	yii::$app->session->setFlash('info', json_encode($info));
 }
 
 /**
@@ -113,7 +115,7 @@ function categoryTableTree($currentIds = 0, $tpl = '')
         $item['checked'] = in_array($item['id'], $currentIds) ? "checked" : "";
         $item['url']     = Url::to(['category/index', 'id' => $item['id']]);
 
-        $item['str_action'] = '<a href="' . Url::to(['category/create', 'id' => $item['id']]) . '">添加子分类</a> | <a href="' . Url::to(['category/view', 'id' => $item['id']]) . '">查看</a> | <a href="' . Url::to(['category/update', 'id' => $item['id']]) . '">编辑</a>  | <a class="text-danger" data-pjax="0"  data-confirm="您确定要删除此项吗？" data-method="post" href="' . Url::to(['category/delete', 'id' => $item['id']]) . '">删除</a> ';
+        $item['str_action'] = '<a href="' . Url::to(['category/create', 'parent_id' => $item['id']]) . '">添加子分类</a> | <a href="' . Url::to(['category/view', 'id' => $item['id']]) . '">查看</a> | <a href="' . Url::to(['category/update', 'id' => $item['id']]) . '">编辑</a>  | <a class="text-danger" data-pjax="0"  data-confirm="您确定要删除此项吗？" data-method="post" href="' . Url::to(['category/delete', 'id' => $item['id']]) . '">删除</a> ';
         array_push($newCategories, $item);
     }
 

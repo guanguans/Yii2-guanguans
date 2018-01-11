@@ -17,8 +17,12 @@ use yii\grid\GridView;
                 <div class="ibox-content" style="border-top: 0px;">
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane active">
-                            <div id="w0" class="grid-view">
-                                <form method="post" class="js-ajax-form" action="">
+                            <div class="article-index">
+                            </div>
+                            <?php $form = ActiveForm::begin([
+                                    'action' => ['category/sort'],
+                                ]); ?>
+                                <div id="w0" class="grid-view">
                                     <div class="table-actions">
                                         <button type="submit" class="btn btn-primary btn-sm js-ajax-submit">排序</button>
                                     </div>
@@ -48,8 +52,8 @@ use yii\grid\GridView;
                                     <div class="table-actions">
                                         <button type="submit" class="btn btn-primary btn-sm js-ajax-submit">排序</button>
                                     </div>
-                                </form>
-                            </div>>
+                                </div>
+                            <?php ActiveForm::end(); ?>
                         </div>
                     </div>
                 </div>

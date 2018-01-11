@@ -1,6 +1,8 @@
 $(function () {
     // toastr 通知
-    var hintInfo = $("#hintInfo").val();
+    var info = $("#info").val();
+    var infoObj = eval("("+info+")");
+    console.log(infoObj);
     toastr.options = {
         "closeButton": true,
         "debug": false,
@@ -16,12 +18,11 @@ $(function () {
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     };
-    if (hintInfo) {
-        if (hintInfo == '成功') {
-            toastr.success('成功', '成功');
+    if (infoObj) {
+        if (infoObj['code'] == 1) {
+            toastr.success(infoObj['data'], '操作成功');
         } else {
-            toastr.error(hintInfo, '失败');
+            toastr.error(infoObj['data'], '操作失败');
         }
     }
-
 })
