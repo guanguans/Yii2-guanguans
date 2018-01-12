@@ -16,7 +16,7 @@ use dosamigos\fileupload\FileUploadUI;
     .help-block{margin: 5px 0px 0px 0px; padding: 0px;}
     .fileupload-progress{height: 0px;width: 0px; margin: 0px; padding: 0px;}
     .input-group{text-align: center;width: 95%;}
-    .field-article-post_content img{width: 300px;}
+    .field-article-post_content img{width: 100%;}
     .delImage{float: left;}
 </style>
 <div class="article-form">
@@ -33,9 +33,9 @@ use dosamigos\fileupload\FileUploadUI;
             <table class="table table-bordered">
                 <tbody>
                     <tr>
-                        <th width="150"><?= $model->getAttributeLabel('parent_id')?></th>
+                        <th width="80">分类</th>
                         <td>
-                            <select name="Article[parent_id][]" multiple class="col-md-6" style="height: 150px;" required="">
+                            <select name="Article[category_id][]" multiple class="col-md-6" style="height: 150px;" required="">
                                 <?= categoryTree() ?>
                             </select>
                             <div class="col-md-12">windows：按住 Ctrl 按钮来选择多个选项,Mac：按住 command 按钮来选择多个选项</div>
@@ -117,13 +117,13 @@ use dosamigos\fileupload\FileUploadUI;
                             // ...
                             'clientEvents' => [
                                 'fileuploaddone' => 'function(e, data) {
-                                                        // console.log(e);
-                                                        console.log(data);
-                                                    }',
+                                    // console.log(e);
+                                    console.log(data);
+                                }',
                                 'fileuploadfail' => 'function(e, data) {
-                                                        // console.log(e);
-                                                        console.log(data);
-                                                    }',
+                                    // console.log(e);
+                                    console.log(data);
+                                }',
                             ],
                         ]); ?>
                         </td>
@@ -151,7 +151,7 @@ use dosamigos\fileupload\FileUploadUI;
                     </tr>
                     <tr>
                         <td>
-                            <input class="form-control" type="text" name="Article[published_time]" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" value="">
+                            <input class="form-control" type="text" name="Article[published_time]" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" value="<?=date('Y-m-d H:i:s')?>">
                         </td>
                     </tr>
                     <tr class="bg-primary">

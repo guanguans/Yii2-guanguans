@@ -24,14 +24,6 @@ class Upload extends Model
         ];
     }
 
-    /*private function allowExtension ()
-    {
-        $extensions = Yii::$app->params['webuploader']['baseConfig']['accept']['extensions'];
-        $this->_appendRules = [
-            [['file'], 'file', 'extensions' => $extensions],
-        ];
-    }*/
-
     public function rules()
     {
         $baseRules = [];

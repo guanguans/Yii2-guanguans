@@ -67,34 +67,45 @@ class ArticleController extends Controller
     public function actionCreate()
     {
         $model = new Article();
+
         if ($model->load(Yii::$app->request->post())) {
             $postData = Yii::$app->request->post('Article');
+            
+            $category_ids      = $postData['category_id'];
+            $more['thumbnail'] = $postData['thumbnail'];
+            $more['photos']    = $postData['photos'];
+            $more['files']     = $postData['files'];
+            $more              = json_encode($more);
 
-            $parent_id = $postData['parent_id'];
+            $model->post_title     = $postData['post_title'];
+            $model->post_keywords  = json_encode(explode(',', $postData['post_keywords']));
+            $model->post_source    = $postData['post_source'];
+            $model->post_excerpt   = $postData['post_excerpt'];
+            $model->post_content   = htmlspecialchars_decode($postData['post_content']);
+            $model->published_time = strtotime($postData['published_time']);
+            $model->post_status    = empty($postData['post_status'])? 0: 1;
+            $model->is_top         = empty($postData['is_top'])? 0: 1;
+            $model->recommended    = empty($postData['recommended'])? 0: 1;
+            $model->more           = $more;
 
-            $post_title = $postData['post_title'];
-            $post_keywords = json_encode(implode(',', $postData['post_keywords']));
-            $post_source = $postData['post_source'];
-            $post_excerpt = $postData['post_excerpt'];
+            $res = $model->insert();
+            $data = [];
+            if ($res) {
+                foreach ($category_ids as $k => $val) {
+                    $data[$k][] = $res;
+                    $data[$k][] = $val;
+                }
+                // 批量插入
+                $res = Yii::$app->db->createCommand()->batchInsert('feehi_category_article', ['post_id','category_id'], $data)->execute();
 
-            $post_content = $postData['post_content'];
+                if ($res) {
 
-            $photos = $postData['photos'];
-            $files = $postData['files'];
-            $thumbnail = $postData['thumbnail'];
-
-            $more['thumbnail'] = $thumbnail;
-            $more['photos'] = $photos;
-            $more['files'] = $files;
-
-            $post_status = $postData['post_status']? 1: 0;
-            $is_top = $postData['is_top']? 1: 0;
-            $recommended = $postData['recommended']? 1: 0;
-
-            p($postData);
-            die;
-            $model->save();
-            return $this->redirect(['view', 'id' => $model->id]);
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+            }
+            /*p($res);
+            pp($category_id);
+            die;*/
         }
 
         return $this->render('create', [

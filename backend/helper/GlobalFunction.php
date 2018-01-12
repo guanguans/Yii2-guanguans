@@ -122,7 +122,7 @@ function categoryTableTree($currentIds = 0, $tpl = '')
     $tree->init($newCategories);
 
     if (empty($tpl)) {
-        $tpl = "<tr data-key='11' >
+        $tpl = "<tr>
                     <td><input name='list_orders[\$id]' type='text' size='3' value='\$sort' class='input-order'></td>
                     <td>\$id</td>
                     <td>\$spacer <a href='\$url' target='_blank'>\$name</a></td>
