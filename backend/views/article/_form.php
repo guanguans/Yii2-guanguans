@@ -3,6 +3,9 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
+use kartik\file\FileInput;
+use dosamigos\fileupload\FileUpload;
+use dosamigos\fileupload\FileUploadUI;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Article */
@@ -11,6 +14,10 @@ use yii\widgets\ActiveForm;
 <style>
     .form-group{margin: 0px; padding: 0px;}
     .help-block{margin: 5px 0px 0px 0px; padding: 0px;}
+    .fileupload-progress{height: 0px;width: 0px; margin: 0px; padding: 0px;}
+    .input-group{text-align: center;width: 95%;}
+    .field-article-post_content img{width: 300px;}
+    .delImage{float: left;}
 </style>
 <div class="article-form">
     <?php $form = ActiveForm::begin([
@@ -28,7 +35,7 @@ use yii\widgets\ActiveForm;
                     <tr>
                         <th width="150"><?= $model->getAttributeLabel('parent_id')?></th>
                         <td>
-                            <select name="parent_id" multiple class="col-md-6" style="height: 150px;" required="">
+                            <select name="Article[parent_id][]" multiple class="col-md-6" style="height: 150px;" required="">
                                 <?= categoryTree() ?>
                             </select>
                             <div class="col-md-12">windows：按住 Ctrl 按钮来选择多个选项,Mac：按住 command 按钮来选择多个选项</div>
@@ -78,27 +85,47 @@ use yii\widgets\ActiveForm;
                     <tr>
                         <th>相册</th>
                         <td>
-                            <?php
-                            // 单图
-                            // echo $form->field($model, 'post_content')->widget('manks\FileInput', []);
-
-                            // 多图
-                            echo $form->field($model, 'post_content')->widget('manks\FileInput', [
-                                'clientOptions' => [
-                                    'pick' => [
-                                        'multiple' => true,
-                                    ],
-                                    'accept' => [
-                                        'extensions' => 'gif,jpg,jpeg,bmp,png',
-                                    ],
+                        <?php
+                        // 多图
+                        echo $form->field($model, 'photos')->widget('manks\FileInput', [
+                            'clientOptions' => [
+                                'pick' => [
+                                    'multiple' => true,
                                 ],
-                            ]); ?>
+                                'accept' => [
+                                    'extensions' => 'gif,jpg,jpeg,bmp,png',
+                                ],
+                            ],
+                        ]); ?>
                         </td>
                     </tr>
                     <tr>
                         <th>附件</th>
                         <td>
-
+                        <?= FileUploadUI::widget([
+                            'model' => $model,
+                            'attribute' => 'files',
+                            'url' => ['article/upload-file'],
+                            'gallery' => false,
+                            'fieldOptions' => [
+                                // 'accept' => 'image/*'
+                                'accept' => '*'
+                            ],
+                            'clientOptions' => [
+                                'maxFileSize' => 2000000
+                            ],
+                            // ...
+                            'clientEvents' => [
+                                'fileuploaddone' => 'function(e, data) {
+                                                        // console.log(e);
+                                                        console.log(data);
+                                                    }',
+                                'fileuploadfail' => 'function(e, data) {
+                                                        // console.log(e);
+                                                        console.log(data);
+                                                    }',
+                            ],
+                        ]); ?>
                         </td>
                     </tr>
                 </tbody>
@@ -113,13 +140,10 @@ use yii\widgets\ActiveForm;
                     </tr>
                     <tr>
                         <td>
-                            <div style="text-align: center;">
-                                <input type="hidden" name="post[more][thumbnail]" id="thumbnail" value="">
-                                <a href="javascript:uploadOneImage('图片上传','#thumbnail');">
-                                    <img src="/themes/admin_simpleboot3/public/assets/images/default-thumbnail.png" id="thumbnail-preview" width="135" style="cursor: pointer;" title="">
-                                </a>
-                                <input type="button" class="btn btn-sm btn-cancel-thumbnail" value="取消图片">
-                            </div>
+                        <?php
+                            // 单图
+                            echo $form->field($model, 'thumbnail')->widget('manks\FileInput', []);
+                        ?>
                         </td>
                     </tr>
                     <tr class="bg-primary">
