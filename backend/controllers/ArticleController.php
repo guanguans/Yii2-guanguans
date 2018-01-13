@@ -5,9 +5,11 @@ namespace backend\controllers;
 use Yii;
 use backend\models\Article;
 use backend\models\ArticleSearch;
+use backend\models\CategoryArticle;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
+use yii\helpers\ArrayHelper;
 use yii\filters\VerbFilter;
 use backend\components\Upload;
 
@@ -67,45 +69,15 @@ class ArticleController extends Controller
     public function actionCreate()
     {
         $model = new Article();
-
         if ($model->load(Yii::$app->request->post())) {
-            $postData = Yii::$app->request->post('Article');
-            
-            $category_ids      = $postData['category_id'];
-            $more['thumbnail'] = $postData['thumbnail'];
-            $more['photos']    = $postData['photos'];
-            $more['files']     = $postData['files'];
-            $more              = json_encode($more);
-
-            $model->post_title     = $postData['post_title'];
-            $model->post_keywords  = json_encode(explode(',', $postData['post_keywords']));
-            $model->post_source    = $postData['post_source'];
-            $model->post_excerpt   = $postData['post_excerpt'];
-            $model->post_content   = htmlspecialchars_decode($postData['post_content']);
-            $model->published_time = strtotime($postData['published_time']);
-            $model->post_status    = empty($postData['post_status'])? 0: 1;
-            $model->is_top         = empty($postData['is_top'])? 0: 1;
-            $model->recommended    = empty($postData['recommended'])? 0: 1;
-            $model->more           = $more;
-
-            $res = $model->insert();
-            $data = [];
-            if ($res) {
-                foreach ($category_ids as $k => $val) {
-                    $data[$k][] = $res;
-                    $data[$k][] = $val;
-                }
-                // 批量插入
-                $res = Yii::$app->db->createCommand()->batchInsert('feehi_category_article', ['post_id','category_id'], $data)->execute();
-
-                if ($res) {
-
-                    return $this->redirect(['view', 'id' => $model->id]);
-                }
+            $res = $model->saveArticle(Yii::$app->request->post('Article'));
+            if ($res === true) {
+                hintInfo(['code'=>1,'data'=>'添加成功']);
+                return $this->redirect(['index']);
+            } else {
+                hintInfo(['code'=>0,'data'=>'添加失败'], $model);
+                return $this->redirect(['create']);
             }
-            /*p($res);
-            pp($category_id);
-            die;*/
         }
 
         return $this->render('create', [
@@ -124,9 +96,24 @@ class ArticleController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $res = $model->saveArticle(Yii::$app->request->post('Article'));
+            if ($res === true) {
+                hintInfo(['code'=>1,'data'=>'更新成功']);
+
+                return $this->redirect(['view', 'id' => $id]);
+            } else {
+                hintInfo(['code'=>0,'data'=>'更新失败'], $model);
+
+                return $this->redirect(['update', 'id'=>$id]);
+            }
         }
+        // 关联模型
+        $categorys = ArrayHelper::toArray($model->categorys);
+        $model->category = ArrayHelper::getColumn($categorys, 'category_id');
+        $model->post_keywords = implode(',', json_decode($model->post_keywords, 1));
+        $model->more = json_decode($model->more, 1);
+        $model->thumbnail = $model->more['thumbnail'];
 
         return $this->render('update', [
             'model' => $model,

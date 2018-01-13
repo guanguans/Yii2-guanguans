@@ -16,7 +16,7 @@ use dosamigos\fileupload\FileUploadUI;
     .help-block{margin: 5px 0px 0px 0px; padding: 0px;}
     .fileupload-progress{height: 0px;width: 0px; margin: 0px; padding: 0px;}
     .input-group{text-align: center;width: 95%;}
-    .field-article-post_content img{width: 100%;}
+    .field-article-thumbnail img{width: 95%;}
     .delImage{float: left;}
 </style>
 <div class="article-form">
@@ -35,8 +35,8 @@ use dosamigos\fileupload\FileUploadUI;
                     <tr>
                         <th width="80">分类</th>
                         <td>
-                            <select name="Article[category_id][]" multiple class="col-md-6" style="height: 150px;" required="">
-                                <?= categoryTree() ?>
+                            <select name="Article[category_id][]" id="article-category_id" multiple class="col-md-6" required="" style="height: 150px;" >
+                                <?= categoryTree($model->category) ?>
                             </select>
                             <div class="col-md-12">windows：按住 Ctrl 按钮来选择多个选项,Mac：按住 command 按钮来选择多个选项</div>
                         </td>
@@ -97,6 +97,16 @@ use dosamigos\fileupload\FileUploadUI;
                                 ],
                             ],
                         ]); ?>
+                        <?php if ($model->more['photos']): ?>
+                            <div class="input-group multi-img-details">
+                                <?php foreach ($model->more['photos'] as $v): ?>
+                                <div class="multi-item">
+                                    <img src="<?=$v?>" class="img-responsive img-thumbnail cus-img" title="" style="outline: red dashed 1px;">
+                                    <input type="hidden" name="Article[photos][]" value="<?=$v?>"><em class="close delMultiImage" title="删除这张图片">×</em>
+                                </div>
+                                <?php endforeach ?>
+                            </div>
+                        <?php endif ?>
                         </td>
                     </tr>
                     <tr>
@@ -151,20 +161,20 @@ use dosamigos\fileupload\FileUploadUI;
                     </tr>
                     <tr>
                         <td>
-                            <input class="form-control" type="text" name="Article[published_time]" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" value="<?=date('Y-m-d H:i:s')?>">
+                            <input class="form-control" type="text" name="Article[published_time]" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" value="<?= $model->published_time? date('Y-m-d H:i:s',$model->published_time): date('Y-m-d H:i:s'); ?>">
                         </td>
                     </tr>
                     <tr class="bg-primary">
                         <th>状态</th>
                     </tr>
                     <tr>
-                        <td><label><input type="checkbox" name="Article[post_status]" class="form-control" value="1" checked="">发布</label></td>
+                        <td><label><input type="checkbox" name="Article[post_status]" class="form-control" value="1" <?php echo $model->post_status? 'checked': ''; ?>  />发布</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="checkbox" name="Article[is_top]" class="form-control" value="1">置顶</label></td>
+                        <td><label><input type="checkbox" name="Article[is_top]" class="form-control" value="1" <?php echo $model->is_top? 'checked': ''; ?><?php echo $model->post_status? 'checked': ''; ?> >置顶</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="checkbox" name="Article[recommended]" class="form-control" value="1">推荐</label></td>
+                        <td><label><input type="checkbox" name="Article[recommended]" class="form-control" value="1" <?php echo $model->recommended? 'checked': ''; ?> >推荐</label></td>
                     </tr>
                 </tbody>
             </table>

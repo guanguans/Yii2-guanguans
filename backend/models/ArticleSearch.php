@@ -19,7 +19,7 @@ class ArticleSearch extends Article
     {
         return [
             [['id', 'parent_id', 'post_type', 'post_format', 'user_id', 'post_status', 'comment_status', 'is_top', 'recommended', 'post_hits', 'post_like', 'comment_count', 'create_time', 'update_time', 'published_time', 'delete_time'], 'integer'],
-            [['post_title', 'post_keywords', 'post_excerpt', 'post_source', 'post_content', 'post_content_filtered', 'more'], 'safe'],
+            [['post_title', 'post_keywords', 'post_excerpt', 'post_source', 'post_content', 'post_content_filtered', 'more', 'category'], 'safe'],
         ];
     }
 

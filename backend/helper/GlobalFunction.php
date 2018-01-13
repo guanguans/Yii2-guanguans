@@ -141,7 +141,7 @@ function categoryTableTree($currentIds = 0, $tpl = '')
  * @param int $currentCid 需要隐藏的分类 id
  * @return string
  */
-function categoryTree($selectId = 0, $currentCid = 0)
+function categoryTree($selectIds = [], $currentCid = 0)
 {
 	$where = [];
     if (!empty($currentCid)) {
@@ -159,7 +159,8 @@ function categoryTree($selectId = 0, $currentCid = 0)
 
     $newCategories = [];
     foreach ($categories as $item) {
-        $item['selected'] = $selectId == $item['id'] ? "selected" : "";
+        // $item['selected'] = $selectId == $item['id'] ? "selected" : "";
+        $item['selected'] = in_array($item['id'], $selectIds) ? "selected" : "";
 
         array_push($newCategories, $item);
     }
