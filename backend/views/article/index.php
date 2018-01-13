@@ -7,6 +7,7 @@ use yii\grid\GridView;
 use backend\models\CategoryArticle;
 use backend\models\Category;
 use backend\models\AdminUser;
+use yii\grid\ActionColumn;
 ?>
 <div class="wrapper wrapper-content animated fadeIn" >
     <div class="row">
@@ -32,11 +33,18 @@ use backend\models\AdminUser;
                                             'class' => 'yii\grid\CheckboxColumn'
                                         ],
 
-                                        'id',
+                                        [
+                                            'attribute' => 'id',
+                                            'options' => [
+                                                'width' => '100px'
+                                            ]
+                                        ],
                                         [
                                             'attribute' => 'post_title',
+                                            'format'=>'raw',
                                             'value' => function ($model) {
-                                                return  mb_substr($model->post_title,0,8,"UTF-8").'...';
+                                                $post_title = mb_substr($model->post_title, 0, 20, "UTF-8").'...';
+                                                return "<a href=".Url::to(['article/view', 'id'=>$model->id]).">$post_title</a>"; 
                                             },
                                         ],
                                         /*[
@@ -63,34 +71,73 @@ use backend\models\AdminUser;
 
                                                 return $user_name;
                                             },
+                                            'options' => [
+                                                'width' => '100px'
+                                            ]
                                         ],
-                                        'post_hits',
-                                        'comment_count',
-                                        'post_like',
-                                        /*[
-                                            'attribute' => 'post_keywords',
+                                        [
+                                            'attribute' => 'post_hits',
+                                            'options' => [
+                                                'width' => '60px'
+                                            ]
+                                        ],
+                                        [
+                                            'header' => '关键字/来源<br>摘要/缩略图',
+                                            'format'=>'raw',
                                             'value' => function ($model) {
-                                                return trim(implode(',', json_decode($model->post_keywords, 1)), ',');
+                                                $post_keywords = $model->post_keywords? '<i class="fa fa-check fa-fw text-info"></i> ': ' <i class="fa fa-close fa-fw text-danger"></i> ';
+                                                $post_source   = $model->post_source? ' <i class="fa fa-check fa-fw text-info"></i> ': ' <i class="fa fa-close fa-fw text-danger"></i> ';
+                                                $post_excerpt  = $model->post_excerpt? ' <i class="fa fa-check fa-fw text-info"></i> ': ' <i class="fa fa-close fa-fw text-danger"></i> ';
+                                                $thumbnail     = json_decode($model->more)->thumbnail? '<i class="fa fa-photo fa-fw text-info"></i> ': ' <i class="fa fa-close fa-fw text-danger"></i> ';
+                                                return $post_keywords.$post_source.$post_excerpt.$thumbnail; 
                                             },
-                                        ],*/
+                                            'options' => [
+                                                'width' => '100px'
+                                            ]
+                                        ],
+                                        [
+                                            'attribute' => 'published_time',
+                                            'value' => function ($model) {
+                                                return date('Y-m-d H:i:s', $model->published_time); 
+                                            },
+                                            'options' => [
+                                                'width' => '150px'
+                                            ]
+                                        ],
+                                        [
+                                            'header' => '状态',
+                                            'format'=>'raw',
+                                            'value' => function ($model) {
+                                                $post_status = $model->post_status ? ' <i title="已发布" class="fa fa-check fa-fw text-info"></i> ': ' <i title="未发布" class="fa fa-close fa-fw text-danger"></i> ';
+                                                $is_top      = $model->is_top ? ' <i title="已置顶" class="fa fa-arrow-down text-info"></i> ': ' <i title="未置顶" class="fa fa-arrow-up text-danger"></i> ';
+                                                $recommended = $model->recommended ? ' <i title="已推荐" class="fa fa-thumbs-up text-info"></i> ': ' <i title="未推荐" class="fa fa-thumbs-down text-danger"></i> ';
+                                                return $post_status.$is_top.$recommended; 
+                                            },
+                                            'options' => [
+                                                'width' => '70px'
+                                            ]
+                                        ],
+                                        /*'comment_count',
+                                        'post_keywords',
+                                        'post_like',
                                         'post_excerpt',
                                         'post_source',
                                         'more:ntext',
                                         'post_status',
                                         'is_top',
                                         'recommended',
-
-                                        //'create_time',
-                                        //'update_time',
-                                        //'published_time',
-                                        //'delete_time',
-                                        //'comment_status',
-                                        // 'post_type',
-                                        // 'post_format',
-                                        //'post_content:ntext',
-                                        //'post_content_filtered:ntext',
+                                        'create_time',
+                                        'update_time',
+                                        'published_time',
+                                        'delete_time',
+                                        'comment_status',
+                                        'post_type',
+                                        'post_format',
+                                        'post_content:ntext',
+                                        'post_content_filtered:ntext',*/
                                         [
                                             'class' => 'yii\grid\ActionColumn',
+                                            'header' => '操作',
                                             'options' => [
                                                 'width' => '70px'
                                             ]

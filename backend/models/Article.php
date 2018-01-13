@@ -116,6 +116,7 @@ class Article extends \yii\db\ActiveRecord
         $more['files']     = $postData['files'];
         $more              = json_encode($more);
 
+        $this->user_id        = 1;
         $this->post_title     = $postData['post_title'];
         $this->post_keywords  = json_encode(explode(',', $postData['post_keywords']));
         $this->post_source    = $postData['post_source'];

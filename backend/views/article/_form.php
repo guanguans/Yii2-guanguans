@@ -112,30 +112,32 @@ use dosamigos\fileupload\FileUploadUI;
                     <tr>
                         <th>附件</th>
                         <td>
-                        <?= FileUploadUI::widget([
-                            'model' => $model,
-                            'attribute' => 'files',
-                            'url' => ['article/upload-file'],
-                            'gallery' => false,
-                            'fieldOptions' => [
-                                // 'accept' => 'image/*'
-                                'accept' => '*'
-                            ],
-                            'clientOptions' => [
-                                'maxFileSize' => 2000000
-                            ],
-                            // ...
-                            'clientEvents' => [
-                                'fileuploaddone' => 'function(e, data) {
-                                    // console.log(e);
-                                    console.log(data);
-                                }',
-                                'fileuploadfail' => 'function(e, data) {
-                                    // console.log(e);
-                                    console.log(data);
-                                }',
-                            ],
-                        ]); ?>
+                        <?php 
+                            /*FileUploadUI::widget([
+                                'model' => $model,
+                                'attribute' => 'files',
+                                'url' => ['article/upload-file'],
+                                'gallery' => false,
+                                'fieldOptions' => [
+                                    // 'accept' => 'image/*'
+                                    'accept' => '*'
+                                ],
+                                'clientOptions' => [
+                                    'maxFileSize' => 2000000
+                                ],
+                                // ...
+                                'clientEvents' => [
+                                    'fileuploaddone' => 'function(e, data) {
+                                        // console.log(e);
+                                        console.log(data);
+                                    }',
+                                    'fileuploadfail' => 'function(e, data) {
+                                        // console.log(e);
+                                        console.log(data);
+                                    }',
+                                ],
+                            ]); */
+                        ?>
                         </td>
                     </tr>
                 </tbody>

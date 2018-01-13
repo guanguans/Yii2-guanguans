@@ -1,0 +1,392 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"re",
+				"recommended"
+			],
+			[
+				"po",
+				"post_status"
+			],
+			[
+				"json",
+				"json_decode"
+			],
+			[
+				"user",
+				"user_id"
+			],
+			[
+				"strto",
+				"strtotime〔function〕"
+			],
+			[
+				"com",
+				"compact〔function〕"
+			],
+			[
+				"expl",
+				"explode\t(GlobalFunction.php)"
+			],
+			[
+				"ex",
+				"except\t(php.ini)"
+			],
+			[
+				"imp",
+				"import\t(GlobalFunction.php)"
+			],
+			[
+				"op",
+				"options"
+			],
+			[
+				"su",
+				"success"
+			],
+			[
+				"se",
+				"session\t(SettingController.php)"
+			],
+			[
+				"name",
+				"names"
+			],
+			[
+				"Sett",
+				"SettingWebsiteForm"
+			],
+			[
+				"btn-",
+				"btn-primary\t(index.php)"
+			],
+			[
+				"col",
+				"col-md-6"
+			],
+			[
+				"border",
+				"border-top"
+			],
+			[
+				"margin-",
+				"margin-top"
+			],
+			[
+				"jso",
+				"json_encode"
+			],
+			[
+				"btn",
+				"btn-primary"
+			],
+			[
+				"for",
+				"foreach\tforeach …"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"head",
+				"header〔function〕"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			]
+		],
+		"width": 540.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/helper/GlobalFunction.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/views/article/_form.php",
+		"/E/phpStudy/PHPTutorial/php/php-5.5.38/php.ini",
+		"/E/phpStudy/PHPTutorial/php/php-5.6.27-nts/php.ini",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/controllers/FriendLinkController.php",
+		"/E/phpStudy/PHPTutorial/WWW/yiicms/backend/actions/CreateAction.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/vendor/yiisoft/yii2/db/ActiveRecord.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/controllers/ArticleController.php",
+		"/E/phpStudy/PHPTutorial/WWW/yiicms/vendor/yiisoft/yii2/db/ActiveRecord.php",
+		"/E/phpStudy/PHPTutorial/WWW/thinkcmf/app/portal/model/PortalPostModel.php",
+		"/E/phpStudy/PHPTutorial/WWW/thinkcmf/app/portal/model/PortalCategoryModel.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/components/Upload.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/controllers/SettingController.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/web/index.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/assets/AppAsset.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/composer.json",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/views/category/index.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/controllers/CategoryController.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/web/assets/7e069bae/yii.js",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/views/article/index.php",
+		"/E/phpStudy/PHPTutorial/WWW/yiijd/modules/views/category/cates.php",
+		"/E/phpStudy/PHPTutorial/WWW/yiijd/modules/controllers/CategoryController.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/codeception.yml",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/controllers/SiteController.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/init.bat",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/requirements.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/feehi.sql",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/yii.bat",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/views/layouts/main.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/web/static/js/admin.js",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/assets/MyAppAsset.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/views/site/index.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/assets/LoginAsset.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/models/SettingWebsiteForm.php",
+		"/E/phpStudy/PHPTutorial/WWW/价值750的后台响应式汉化模板/toastr_notifications.html",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/views/setting/web.php",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/Alignment/Base File.sublime-settings",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/Alignment/Default (Windows).sublime-keymap",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/User/JSON (Sublime).sublime-settings",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/User/Base File.sublime-settings",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/vendor/yiisoft/yii2/widgets/ActiveForm.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/views/setting/website.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/models/Options.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/vendor/yiisoft/yii2-bootstrap/ActiveField.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/vendor/yiisoft/yii2/helpers/BaseHtml.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/vendor/yiisoft/yii2-bootstrap/ActiveForm.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/vendor/yiisoft/yii2/widgets/ActiveField.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/views/site/main.php",
+		"/E/phpStudy/PHPTutorial/WWW/yiicms/backend/views/setting/website.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/backend/views/category/index.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/common/config/main.php",
+		"/E/phpStudy/PHPTutorial/WWW/yiicms/backend/controllers/SettingController.php",
+		"/E/phpStudy/PHPTutorial/WWW/yiicms/backend/views/site/index.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/environments/dev/backend/config/main-local.php",
+		"/E/phpStudy/PHPTutorial/WWW/yiicms/backend/web/index.php",
+		"/E/phpStudy/PHPTutorial/WWW/yiicms/backend/web/static/css/style.min862f.css",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/views/site/login.php",
+		"/E/phpStudy/PHPTutorial/WWW/yiicms/backend/views/site/login.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/views/site/index - 副本.php",
+		"/E/phpStudy/PHPTutorial/WWW/价值750的后台响应式汉化模板/empty_page.html",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/vendor/yiisoft/yii2/behaviors/TimestampBehavior.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/config/main.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/backend/models/AdminUser.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/common/models/User.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/feehiyii.sql",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/.gitignore",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-yzmblog/common/config/main-local.php",
+		"/E/phpStudy/PHPTutorial/WWW/laravel-bjyadmin/config/app.php",
+		"/E/phpStudy/PHPTutorial/WWW/laravel-bjyadmin/config/github.php",
+		"/C/Users/Administrator/Downloads/simpread-PHP declare(ticks=N); 的作用 - CSDN博客.md",
+		"/E/phpStudy/PHPTutorial/WWW/thinkphp-bjyadmin/Application/Home/Controller/IndexController.class.php",
+		"/E/phpStudy/PHPTutorial/WWW/thinkphp-bjyadmin/Application/Admin/Controller/IndexController.class.php",
+		"/E/phpStudy/PHPTutorial/WWW/thinkphp-bjyadmin/Application/Common/Conf/db.php",
+		"/E/phpStudy/PHPTutorial/WWW/tp5auth/thinkphp/library/think/db/Connection.php",
+		"/E/phpStudy/PHPTutorial/WWW/ser.php",
+		"/E/phpStudy/PHPTutorial/WWW/tp5auth/thinkphp/library/think/db/connector/Sqlsrv.php",
+		"/E/phpStudy/PHPTutorial/WWW/tp5auth/apps/database.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/backend/controllers/TestController.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/backend/themes/spring/test/index.php",
+		"/E/phpStudy/PHPTutorial/WWW/tp5auth/apps/home/controller/Index.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/backend/config/main.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/backend/themes/christmas/test/index.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/backend/views/site/index.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/backend/components/ThemeControl.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/backend/themes/spring/christmas/index.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/backend/config/main-local.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/backend/components/gii-custom/crud/default/views/index.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/api/models/LoginForm.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/api/config/main.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/api/web/index.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/api/config/url-rules.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/common/models/User.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/api/modules/v1/controllers/UserController.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/frontend/controllers/UserController.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/backend/web/index-test.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/backend/views/category/create.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/backend/models/Category.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/composer.json",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/backend/controllers/BlogController.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii2-Blog/backend/controllers/CategoryController.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii-adminlte/backend/config/main.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii-adminlte/frontend/config/.gitignore",
+		"/E/phpStudy/PHPTutorial/WWW/yii-adminlte/frontend/models/BlogSearch.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii-adminlte/frontend/controllers/BlogController.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii-adminlte/frontend/models/BlogForm.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii-adminlte/backend/views/layouts/main.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii-adminlte/backend/views/site/login.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii-adminlte/backend/controllers/SiteController.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii-adminlte/common/config/main-local.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii-adminlte/frontend/config/main-local.php",
+		"/E/phpStudy/PHPTutorial/WWW/yii-adminlte/console/migrations/m171219_125134_create_blog_table.php",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/E/phpStudy/PHPTutorial/WWW/yii-adminlte/console/config/main.php",
+		"/C/Users/Administrator/Desktop/README.md",
+		"/E/phpStudy/PHPTutorial/WWW/yiiauth/backend/controllers/LoginController.php",
+		"/E/phpStudy/PHPTutorial/WWW/yiiauth/backend/config/main.php",
+		"/E/phpStudy/PHPTutorial/WWW/yiiauth/backend/controllers/IndexController.php",
+		"/C/Users/Administrator/Downloads/SQL语句优化的30条建议.md",
+		"/E/phpStudy/PHPTutorial/WWW/yiiauth/backend/config/bootstrap.php",
+		"/E/phpStudy/PHPTutorial/WWW/yiiauth/frontend/config/bootstrap.php",
+		"/E/phpStudy/PHPTutorial/WWW/yiiauth/common/config/bootstrap.php",
+		"/E/phpStudy/PHPTutorial/WWW/yiicms/common/config/bootstrap.php",
+		"/E/phpStudy/PHPTutorial/WWW/yiiauth/backend/views/layouts/main.php",
+		"/E/phpStudy/PHPTutorial/WWW/yiiauth/backend/views/index/index.php",
+		"/E/phpStudy/PHPTutorial/WWW/yiicms/backend/controllers/SiteController.php",
+		"/E/phpStudy/PHPTutorial/WWW/yiicms/backend/views/page/_form.php"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 104.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "px.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"yii.js",
+				"yii2-yzmblog\\backend\\web\\assets\\7e069bae\\yii.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 253.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
