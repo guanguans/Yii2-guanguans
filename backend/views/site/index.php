@@ -89,13 +89,24 @@ $this->title = '主页';
                         <a class="J_menuItem" href="<?= Url::to(['friend-link/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">友情连接</span></a>
                     </li>
                     <li>
+                        <a class="J_menuItem" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">菜单管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['category/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">前台菜单</span></a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['article/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">后台菜单</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <a class="J_menuItem" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">缓存管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="<?= Url::to(['user/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">清除前台</span></a>
+                                <a class="J_menuItem" href="<?= Url::to(['clear/frontend']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">清除前台</span></a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="<?= Url::to(['user/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">清除后台</span></a>
+                                <a class="J_menuItem" href="<?= Url::to(['clear/backend']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">清除后台</span></a>
                             </li>
                         </ul>
                     </li>

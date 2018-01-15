@@ -112,7 +112,7 @@ use dosamigos\fileupload\FileUploadUI;
                     <tr>
                         <th>附件</th>
                         <td>
-                        <?php 
+                        <?php
                             /*FileUploadUI::widget([
                                 'model' => $model,
                                 'attribute' => 'files',

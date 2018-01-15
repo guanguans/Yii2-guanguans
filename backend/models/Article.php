@@ -113,7 +113,8 @@ class Article extends \yii\db\ActiveRecord
         $category_ids      = $postData['category_id'];
         $more['thumbnail'] = $postData['thumbnail'];
         $more['photos']    = $postData['photos'];
-        $more['files']     = $postData['files'];
+        // $more['files']     = $postData['files'];
+        $more['files']     = '';
         $more              = json_encode($more);
 
         $this->user_id        = 1;
