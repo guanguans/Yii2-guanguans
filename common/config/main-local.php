@@ -8,6 +8,9 @@ return [
             'password' => 'root',
             'charset' => 'utf8',
             'tablePrefix' => 'feehi_',
+            /*'enableSchemaCache' => true,
+            'schemaCacheDuration' => 24 * 3600,
+            'schemaCache' => 'cache',*/
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',

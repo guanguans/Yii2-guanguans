@@ -29,8 +29,13 @@ use yii\grid\ActionColumn;
                                     'filterModel' => $searchModel,
                                     'columns' => [
                                         [
+                                            // 序号列
                                             'class' => 'yii\grid\SerialColumn',
-                                            'class' => 'yii\grid\CheckboxColumn'
+                                            // 复选框列
+                                            'class' => 'yii\grid\CheckboxColumn',
+                                            'options' => [
+                                                'width' => '30px'
+                                            ]
                                         ],
 
                                         [
@@ -40,11 +45,13 @@ use yii\grid\ActionColumn;
                                             ]
                                         ],
                                         [
+                                            // 数据列：由于是默认类型，可以省略
+                                            'class' => 'yii\grid\DataColumn',
                                             'attribute' => 'post_title',
                                             'format'=>'raw',
                                             'value' => function ($model) {
                                                 $post_title = mb_substr($model->post_title, 0, 20, "UTF-8").'...';
-                                                return "<a href=".Url::to(['article/view', 'id'=>$model->id]).">$post_title</a>"; 
+                                                return "<a href=".Url::to(['article/view', 'id'=>$model->id]).">$post_title</a>";
                                             },
                                         ],
                                         /*[
@@ -89,7 +96,7 @@ use yii\grid\ActionColumn;
                                                 $post_source   = $model->post_source? ' <i class="fa fa-check fa-fw text-info"></i> ': ' <i class="fa fa-close fa-fw text-danger"></i> ';
                                                 $post_excerpt  = $model->post_excerpt? ' <i class="fa fa-check fa-fw text-info"></i> ': ' <i class="fa fa-close fa-fw text-danger"></i> ';
                                                 $thumbnail     = json_decode($model->more)->thumbnail? '<i class="fa fa-photo fa-fw text-info"></i> ': ' <i class="fa fa-close fa-fw text-danger"></i> ';
-                                                return $post_keywords.$post_source.$post_excerpt.$thumbnail; 
+                                                return $post_keywords.$post_source.$post_excerpt.$thumbnail;
                                             },
                                             'options' => [
                                                 'width' => '100px'
@@ -98,7 +105,7 @@ use yii\grid\ActionColumn;
                                         [
                                             'attribute' => 'published_time',
                                             'value' => function ($model) {
-                                                return date('Y-m-d H:i:s', $model->published_time); 
+                                                return date('Y-m-d H:i:s', $model->published_time);
                                             },
                                             'options' => [
                                                 'width' => '150px'
@@ -111,7 +118,7 @@ use yii\grid\ActionColumn;
                                                 $post_status = $model->post_status ? ' <i title="已发布" class="fa fa-check fa-fw text-info"></i> ': ' <i title="未发布" class="fa fa-close fa-fw text-danger"></i> ';
                                                 $is_top      = $model->is_top ? ' <i title="已置顶" class="fa fa-arrow-down text-info"></i> ': ' <i title="未置顶" class="fa fa-arrow-up text-danger"></i> ';
                                                 $recommended = $model->recommended ? ' <i title="已推荐" class="fa fa-thumbs-up text-info"></i> ': ' <i title="未推荐" class="fa fa-thumbs-down text-danger"></i> ';
-                                                return $post_status.$is_top.$recommended; 
+                                                return $post_status.$is_top.$recommended;
                                             },
                                             'options' => [
                                                 'width' => '70px'
@@ -136,6 +143,7 @@ use yii\grid\ActionColumn;
                                         'post_content:ntext',
                                         'post_content_filtered:ntext',*/
                                         [
+                                            // 操作列
                                             'class' => 'yii\grid\ActionColumn',
                                             'header' => '操作',
                                             'options' => [

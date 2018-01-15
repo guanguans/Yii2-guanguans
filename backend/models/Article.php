@@ -50,6 +50,11 @@ class Article extends \yii\db\ActiveRecord
         return '{{%article}}';
     }
 
+    public static function primaryKey()
+    {
+        return ['id'];
+    }
+
     /**
      * @inheritdoc
      */

@@ -33,5 +33,12 @@ use yii\grid\GridView;
         </div>
     </div>
 </div>
+<?php $this->beginBlock('myjs'); ?>
+    console.log('registerJs1 on page end');
+<?php $this->endBlock(); ?>
+<?php $this->registerJs($this->blocks['myjs'], yii\web\view::POS_END); ?>
+<script>
+    console.log('registerJs1 on current');
+</script>
 
 
