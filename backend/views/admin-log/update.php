@@ -10,14 +10,14 @@ use yii\grid\GridView;
             <div class="ibox float-e-margins">
                 <div class="ibox-title" style="padding: 0px;border-top: 0px;">
                     <ul class="nav nav-tabs">
-                        <li><a href="<?=Url::to(['friend-link/index'])?>">友情链接</a></li>
-                        <li class="active"><a href="<?=Url::to(['friend-link/create'])?>">创建链接</a></li>
+                        <li><a href="<?=Url::to(['admin-log/index'])?>">日志管理</a></li>
+                        <li class="active"><a href="<?=Url::to(['admin-log/update'])?>">日志更新</a></li>
                     </ul>
                 </div>
                 <div class="ibox-content" style="border-top: 0px;">
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane active">
-                            <div class="friend-link-create">
+                            <div class="admin-log-create">
 
                                 <h1><?= Html::encode($this->title) ?></h1>
 
@@ -33,3 +33,4 @@ use yii\grid\GridView;
         </div>
     </div>
 </div>
+

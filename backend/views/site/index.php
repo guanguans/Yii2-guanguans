@@ -111,7 +111,7 @@ $this->title = '主页';
                         </ul>
                     </li>
                     <li>
-                        <a class="J_menuItem" href="index.php?r=gii" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">日志管理</span></a>
+                        <a class="J_menuItem" href="<?= Url::to(['admin-log/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">日志管理</span></a>
                     </li>
                     <li>
                         <a class="J_menuItem" href="index.php?r=gii" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">Gii</span></a>

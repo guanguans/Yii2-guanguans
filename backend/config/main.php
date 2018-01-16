@@ -72,5 +72,6 @@ return [
             ]
         ]
     ],
+    'on beforeRequest' => [backend\components\Admin::className(), 'adminLog'],
     'params' => $params,
 ];
