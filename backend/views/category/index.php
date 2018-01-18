@@ -17,8 +17,7 @@ use yii\grid\GridView;
                 <div class="ibox-content" style="border-top: 0px;">
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane active">
-                            <div class="article-index">
-                            </div>
+                            <div class="article-index"></div>
                             <?php $form = ActiveForm::begin([
                                     'action' => ['category/sort'],
                                 ]); ?>

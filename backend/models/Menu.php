@@ -4,7 +4,7 @@ namespace backend\models;
 
 use Yii;
 use backend\helper\Tree;
-use backend\models\Category;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "{{%menu}}".
@@ -111,6 +111,52 @@ class Menu extends \yii\db\ActiveRecord
         $tree->init($newCategories);
         $str     = '<option value=\"{$id}\" {$selected}>{$spacer}{$name}</option>';
         $treeStr = $tree->getTree(0, $str);
+
+        return $treeStr;
+    }
+
+    /**
+     * @param int|array $currentIds
+     * @param string $tpl
+     * @return string
+     */
+    public static function  menuTableTree($type = 0, $currentIds = 0, $tpl = '')
+    {
+        $categories = Menu::find()
+                    ->where(['type'=>$type])
+                    ->orderBy('sort ASC')
+                    ->asArray()
+                    ->all();
+        $tree       = new Tree();
+        $tree->icon = ['&nbsp;&nbsp;│', '&nbsp;&nbsp;├─', '&nbsp;&nbsp;└─'];
+        $tree->nbsp = '&nbsp;&nbsp;';
+
+        if (!is_array($currentIds)) {
+            $currentIds = [$currentIds];
+        }
+
+        $newCategories = [];
+        foreach ($categories as $item) {
+            $item['checked'] = in_array($item['id'], $currentIds) ? "checked" : "";
+            $item['is_display'] = $item['is_display'] == 1 ? '<i class="fa fa-check fa-fw text-info"></i>' : '<i class="fa fa-close fa-fw text-danger"></i>';
+
+            $item['str_action'] = '<a href="' . Url::to(['menu/create', 'parent_id' => $item['id']]) . '">添加子菜单</a> | <a href="' . Url::to(['menu/view', 'id' => $item['id']]) . '">查看</a> | <a href="' . Url::to(['menu/update', 'id' => $item['id']]) . '">编辑</a>  | <a class="text-danger" data-pjax="0"  data-confirm="您确定要删除此项吗？" data-method="post" href="' . Url::to(['menu/delete', 'id' => $item['id']]) . '">删除</a> ';
+            array_push($newCategories, $item);
+        }
+
+        $tree->init($newCategories);
+
+        if (empty($tpl)) {
+            $tpl = "<tr>
+                        <td><input name='list_orders[\$id]' type='text' size='3' value='\$sort' class='input-order'></td>
+                        <td>\$id</td>
+                        <td>\$spacer\$name</td>
+                        <td>\$url</td>
+                        <td>\$is_display</td>
+                        <td width='230px'>\$str_action</td>
+                    </tr>";
+        }
+        $treeStr = $tree->getTree(0, $tpl);
 
         return $treeStr;
     }

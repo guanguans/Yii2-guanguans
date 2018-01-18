@@ -37,10 +37,13 @@ class MenuController extends Controller
     {
         $searchModel = new MenuSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $type = empty(Yii::$app->request->get('type'))? 0: 1;
+        $menuTableTree = Menu::menuTableTree($type);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'searchModel'   => $searchModel,
+            'dataProvider'  => $dataProvider,
+            'menuTableTree' => $menuTableTree,
         ]);
     }
 
@@ -75,6 +78,10 @@ class MenuController extends Controller
                 return $this->redirect(['create']);
             }
         }
+        if (!empty(Yii::$app->request->get('parent_id'))) {
+            $model->parent_id =  Yii::$app->request->get('parent_id');
+        }
+
         return $this->render('create', [
             'model' => $model,
         ]);

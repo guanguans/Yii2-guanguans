@@ -19,8 +19,9 @@ use yii\grid\GridView;
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane active">
                             <div class="menu-index">
-                                <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-                                <?= GridView::widget([
+                                <?php
+                                // echo $this->render('_search', ['model' => $searchModel]);
+                                /*echo GridView::widget([
                                     'dataProvider' => $dataProvider,
                                     'filterModel' => $searchModel,
                                     'columns' => [
@@ -86,7 +87,45 @@ use yii\grid\GridView;
                                             'class' => 'yii\grid\ActionColumn'
                                         ],
                                     ],
-                                ]); ?>
+                                ]);*/
+                                ?>
+                                <?php $form = ActiveForm::begin([
+                                        'action' => ['category/sort'],
+                                    ]); ?>
+                                    <div id="w0" class="grid-view">
+                                        <div class="table-actions">
+                                            <button type="submit" class="btn btn-primary btn-sm js-ajax-submit">排序</button>
+                                        </div>
+                                        <table class="table table-hover table-bordered table-list">
+                                            <thead>
+                                                <tr>
+                                                    <th width="50">排序</th>
+                                                    <th width="50">ID</th>
+                                                    <th>分类名称</th>
+                                                    <th>操作路由</th>
+                                                    <th>状态</th>
+                                                    <th width="180">操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?= $menuTableTree ?>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th width="50">排序</th>
+                                                    <th width="50">ID</th>
+                                                    <th>分类名称</th>
+                                                    <th>操作路由</th>
+                                                    <th>状态</th>
+                                                    <th width="180">操作</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                        <div class="table-actions">
+                                            <button type="submit" class="btn btn-primary btn-sm js-ajax-submit">排序</button>
+                                        </div>
+                                    </div>
+                                <?php ActiveForm::end(); ?>
                             </div>
                         </div>
                     </div>
