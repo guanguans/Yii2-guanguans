@@ -55,16 +55,16 @@ class AdminUser extends ActiveRecord implements IdentityInterface
     public function attributeLabels()
     {
         return [
-            'id' => 'Id',
-            'username' => '用户名',
-            'auth_key' => '授权token',
-            'password_hash' => '密码',
+            'id'                   => 'Id',
+            'username'             => '用户名',
+            'auth_key'             => '授权token',
+            'password_hash'        => '密码',
             'password_reset_token' => '重置密码taken',
-            'email' => 'Email',
-            'avatar' => 'Avatar',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'email'                => '邮箱',
+            'avatar'               => '头像',
+            'status'               => '状态',
+            'created_at'           => '注册时间',
+            'updated_at'           => '更新时间',
         ];
     }
 
