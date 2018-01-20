@@ -10,7 +10,8 @@ use yii\grid\GridView;
             <div class="ibox float-e-margins">
                 <div class="ibox-title" style="padding: 0px;border-top: 0px;">
                     <ul class="nav nav-tabs">
-                        <li><a href="<?=Url::to(['menu/index'])?>">菜单管理</a></li>
+                        <li><a href="<?= Url::to(['menu/index', 'type'=>0]) ?>">后台菜单</a></li>
+                        <li><a href="<?= Url::to(['menu/index', 'type'=>1]) ?>">前台导航</a></li>
                         <li class="active"><a href="<?= Url::to(['menu/create']) ?>">创建菜单</a></li>
                     </ul>
                 </div>
