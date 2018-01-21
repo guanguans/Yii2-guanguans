@@ -132,8 +132,6 @@ $this->title = '主页';
                     <ul class="nav navbar-top-links navbar-right">
                         <li><a href="#" title="刷新"><i class="fa fa-home"></i>前台</a></li>
                         <li title="前台" class="hidden-xs"><a href=""><i class="fa fa-refresh"></i>刷新</a></li>
-                        <li><a href="#" title="清除前台缓冲"><i class="fa fa-trash-o"></i>清除前台缓冲</a></li>
-                        <li><a href="#" title="清除后台缓冲"><i class="fa fa-trash-o"></i>清除后台缓冲</a></li>
                         <li><a href="<?= Url::to(['site/logout']) ?>" title="退出"><i class="fa fa-sign-out"></i>退出</a></li>
                     </ul>
                 </nav>
