@@ -2,6 +2,7 @@
 use backend\assets\LoginAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\web\View;
 use yii\widgets\ActiveForm;
 
 // $this 代表视图对象
@@ -45,12 +46,13 @@ $this->title = '登录';
             <div class="form-group">
                 <?= yii\captcha\Captcha::widget([
                     'name'=>'captchaimg',
-                    'captchaAction'=>'captcha',
+                    'captchaAction'=>'site/captcha',
                     'imageOptions'=>[
                         'id'=>'captchaimg',
                         'title'=>'换一个',
                         'alt'=>'换一个',
-                        'style'=>'cursor:pointer;'
+                        'style'=>'cursor:pointer;',
+                        'onclick' => 'this.src=this.src+"&c="+Math.random();'
                      ],
                      'template'=>'{image}'
                  ]);?>
@@ -67,6 +69,6 @@ $this->title = '登录';
     </div>
     <?php $this->endBody() ?>
 </body>
-
+<?php $this->registerJs($this->blocks['captchaJS'], View::POS_END); ?>
 </html>
 <?php $this->endPage() ?>

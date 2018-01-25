@@ -23,7 +23,7 @@ class SiteController extends Controller
             'access' => [
                 'class' => AccessControl::className(),
                 //这里一定要加
-                'only' => ['login','logout'],
+                'only' => ['login'],
                 'rules' => [
                     [
                         'actions' => ['login', 'error'],
@@ -39,7 +39,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    // 'logout' => ['post'],
+                    'logout' => ['get'],
                 ],
             ],
         ];
@@ -55,8 +55,8 @@ class SiteController extends Controller
                 'class' => 'yii\web\ErrorAction',
             ],
             'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                //'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,//本行可能引起更换验证码失效，必须刷新浏览器
+                'class' => 'backend\components\CaptchaAction',
+                // 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,//本行可能引起更换验证码失效，必须刷新浏览器
                 'backColor' => 0x66b3ff,//背景颜色
                 'maxLength' => 4,//最大显示个数
                 'minLength' => 4,//最少显示个数
@@ -75,7 +75,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        // return $this->render('index');
+        if (Yii::$app->user->isGuest) {
+            return $this->redirect(['site/login']);
+        }
+
         return $this->renderPartial('index');
     }
 

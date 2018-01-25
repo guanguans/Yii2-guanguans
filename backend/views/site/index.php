@@ -36,13 +36,14 @@ $this->title = '主页';
                              </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                                 <span class="text-muted text-xs block">超级管理员 <b class="caret"></b></span> </span>
-                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">admin123</strong></span>
+                                <span class="clear"> <span class="block m-t-xs">
+                                    <strong class="font-bold">
+                                        <?= Yii::$app->user->identity ? Yii::$app->user->identity->username : ''; ?>
+                                    </strong>
+                                </span>
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a href="contacts.html">联系我们</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li><a href="login.html">安全退出</a>
+                                <li><a href="<?= Url::to(['site/logout']) ?>">安全退出</a>
                                 </li>
                             </ul>
                         </div>

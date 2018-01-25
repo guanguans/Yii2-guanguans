@@ -35,7 +35,7 @@ class LoginForm extends Model
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
             // 验证码
-            ['verifyCode', 'captcha', 'message' => '验证码错误'],
+            ['verifyCode', 'captcha', 'captchaAction' => 'site/captcha', 'message' => '验证码错误'],
         ];
     }
 
