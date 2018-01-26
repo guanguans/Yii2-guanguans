@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本地
+Source Server         : phpstudy
 Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : yiiblog
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-01-12 22:57:58
+Date: 2018-01-26 18:12:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,11 +29,18 @@ CREATE TABLE `feehi_admin_log` (
   PRIMARY KEY (`id`),
   KEY `fk_user_id` (`user_id`),
   CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `feehi_admin_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of feehi_admin_log
 -- ----------------------------
+INSERT INTO `feehi_admin_log` VALUES ('35', '1', 'article/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} backend\\models\\Article [ {{%article}} ]  {{%CREATED%}} {{%ID%}} 65 {{%RECORD%}}: <br>ID(id) => 65,<br>parent_id(parent_id) => ,<br>类型,1:文章;2:页面(post_type) => ,<br>内容格式;1:html;2:md(post_format) => ,<br>作者(user_id) => 1,<br>状态;1:已发布;0:未发布;(post_status) => 0,<br>评论状态;1:允许;0:不允许(comment_status) => ,<br>是否置顶;1:置顶;0:不置顶(is_top) => 0,<br>是否推荐;1:推荐;0:不推荐(recommended) => 0,<br>点击量(post_hits) => ,<br>点赞量(post_like) => ,<br>评论量(comment_count) => ,<br>创建时间(create_time) => ,<br>更新时间(update_time) => ,<br>发布时间(published_time) => 1516086845,<br>删除时间(delete_time) => ,<br>标题(post_title) => 1111111111111111111111,<br>关键词(post_keywords) => [\"111\"],<br>摘要(post_excerpt) => ,<br>文章来源(post_source) => ,<br>内容(post_content) => ,<br>处理过的文章内容(post_content_filtered) => ,<br>扩展属性,如缩略图;格式为json(more) => {\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}', '1516086856', '1516086856');
+INSERT INTO `feehi_admin_log` VALUES ('36', '1', 'article/delete', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} backend\\models\\Article [ {{%article}} ]  {{%DELETED%}} {{%ID%}} 65 {{%RECORD%}}: <br>ID(id) => 65,<br>parent_id(parent_id) => 0,<br>类型,1:文章;2:页面(post_type) => 1,<br>内容格式;1:html;2:md(post_format) => 1,<br>作者(user_id) => 1,<br>状态;1:已发布;0:未发布;(post_status) => 0,<br>评论状态;1:允许;0:不允许(comment_status) => 1,<br>是否置顶;1:置顶;0:不置顶(is_top) => 0,<br>是否推荐;1:推荐;0:不推荐(recommended) => 0,<br>点击量(post_hits) => 0,<br>点赞量(post_like) => 0,<br>评论量(comment_count) => 0,<br>创建时间(create_time) => 0,<br>更新时间(update_time) => 0,<br>发布时间(published_time) => 1516086845,<br>删除时间(delete_time) => 0,<br>标题(post_title) => 1111111111111111111111,<br>关键词(post_keywords) => [\"111\"],<br>摘要(post_excerpt) => ,<br>文章来源(post_source) => ,<br>内容(post_content) => ,<br>处理过的文章内容(post_content_filtered) => ,<br>扩展属性,如缩略图;格式为json(more) => {\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}', '1516086869', '1516086869');
+INSERT INTO `feehi_admin_log` VALUES ('37', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} backend\\models\\Menu [ {{%menu}} ]  {{%CREATED%}} {{%ID%}} 106 {{%RECORD%}}: <br>ID(id) => 106,<br>类型(type) => ,<br>上级(parent_id) => 0,<br>名称(name) => sdfdfs,<br>操作路由(url) => sdfsdf,<br>图标(icon) => ,<br>排序(sort) => ,<br>Target(target) => ,<br>Is Absolute Url(is_absolute_url) => ,<br>状态(is_display) => 1,<br>方法(method) => ,<br>创建时间(created_at) => ,<br>更新时间(updated_at) => ', '1516096618', '1516096618');
+INSERT INTO `feehi_admin_log` VALUES ('38', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} backend\\models\\Menu [ {{%menu}} ]  {{%CREATED%}} {{%ID%}} 107 {{%RECORD%}}: <br>ID(id) => 107,<br>类型(type) => 0,<br>上级(parent_id) => 95,<br>名称(name) => sadsadsa,<br>操作路由(url) => sadsad,<br>图标(icon) => asdsad,<br>排序(sort) => ,<br>Target(target) => ,<br>Is Absolute Url(is_absolute_url) => ,<br>状态(is_display) => 1,<br>方法(method) => ,<br>创建时间(created_at) => ,<br>更新时间(updated_at) => ', '1516096736', '1516096736');
+INSERT INTO `feehi_admin_log` VALUES ('39', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} backend\\models\\Menu [ {{%menu}} ]  {{%CREATED%}} {{%ID%}} 108 {{%RECORD%}}: <br>ID(id) => 108,<br>类型(type) => 0,<br>上级(parent_id) => 1,<br>名称(name) => 设置子类,<br>操作路由(url) => sadsad,<br>图标(icon) => asdsad,<br>排序(sort) => ,<br>Target(target) => ,<br>Is Absolute Url(is_absolute_url) => ,<br>状态(is_display) => 1,<br>方法(method) => ,<br>创建时间(created_at) => ,<br>更新时间(updated_at) => ', '1516258389', '1516258389');
+INSERT INTO `feehi_admin_log` VALUES ('40', '1', 'menu/delete', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} backend\\models\\Menu [ {{%menu}} ]  {{%DELETED%}} {{%ID%}} 107 {{%RECORD%}}: <br>ID(id) => 107,<br>类型(type) => 0,<br>上级(parent_id) => 95,<br>名称(name) => sadsadsa,<br>操作路由(url) => sadsad,<br>图标(icon) => asdsad,<br>排序(sort) => 0,<br>Target(target) => _blank,<br>Is Absolute Url(is_absolute_url) => 0,<br>状态(is_display) => 1,<br>方法(method) => 1,<br>创建时间(created_at) => 0,<br>更新时间(updated_at) => ', '1516258518', '1516258518');
+INSERT INTO `feehi_admin_log` VALUES ('41', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 1 {{%RECORD%}}: <br>ID(id) => 1,<br>名称(name) => 友情链接,<br>父级(parent) => ,<br>路由(route) => /friend-link/index,<br>排序(order) => ,<br>数据(data) => ', '1516958423', '1516958423');
 
 -- ----------------------------
 -- Table structure for feehi_admin_roles
@@ -154,48 +161,13 @@ CREATE TABLE `feehi_article` (
   KEY `post_parent` (`parent_id`),
   KEY `post_author` (`user_id`),
   KEY `post_date` (`create_time`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT COMMENT='portal应用 文章表';
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT COMMENT='portal应用 文章表';
 
 -- ----------------------------
 -- Records of feehi_article
 -- ----------------------------
-INSERT INTO `feehi_article` VALUES ('1', '0', '1', '1', '1', '1', '1', '0', '0', '0', '0', '0', '1515396717', '1515396717', '1515396691', '0', 'php', 'php', 'php', 'php', '&lt;p&gt;phpphpphp&lt;/p&gt;', null, '{\"thumbnail\":\"\",\"template\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('2', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515765930', '0', 'php是最好的语言', '[\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a001\",\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a002\"]', 'php是最好的语言', 'php是最好的语言', '<p><span style=\\\"border: 1px solid rgb(0, 0, 0); text-decoration: line-through;\\\"><em><strong>php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"webuploader\\/image\\/20180112\\/b518e2f478c0a8d483f9aa8a818cac571043302f.png\",\"photos\":[\"webuploader\\/image\\/20180112\\/29c0daa1fc5345847671d4b8837ef506689937ef.jpg\"],\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('3', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515765930', '0', 'php是最好的语言', '[\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a001\",\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a002\"]', 'php是最好的语言', 'php是最好的语言', '<p><span style=\\\"border: 1px solid rgb(0, 0, 0); text-decoration: line-through;\\\"><em><strong>php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"webuploader\\/image\\/20180112\\/b518e2f478c0a8d483f9aa8a818cac571043302f.png\",\"photos\":[\"webuploader\\/image\\/20180112\\/29c0daa1fc5345847671d4b8837ef506689937ef.jpg\"],\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('4', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515765930', '0', 'php是最好的语言', '[\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a001\",\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a002\"]', 'php是最好的语言', 'php是最好的语言', '<p><span style=\"border: 1px solid rgb(0, 0, 0); text-decoration: line-through;\"><em><strong>php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"webuploader\\/image\\/20180112\\/b518e2f478c0a8d483f9aa8a818cac571043302f.png\",\"photos\":[\"webuploader\\/image\\/20180112\\/29c0daa1fc5345847671d4b8837ef506689937ef.jpg\"],\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('5', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515765930', '0', 'php是最好的语言', '[\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a001\",\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a002\"]', 'php是最好的语言', 'php是最好的语言', '<p><span style=\"border: 1px solid rgb(0, 0, 0); text-decoration: line-through;\"><em><strong>php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"webuploader\\/image\\/20180112\\/b518e2f478c0a8d483f9aa8a818cac571043302f.png\",\"photos\":[\"webuploader\\/image\\/20180112\\/29c0daa1fc5345847671d4b8837ef506689937ef.jpg\"],\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('6', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515765930', '0', 'php是最好的语言', '[\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a001\",\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a002\"]', 'php是最好的语言', 'php是最好的语言', '<p><span style=\"border: 1px solid rgb(0, 0, 0); text-decoration: line-through;\"><em><strong>php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"webuploader\\/image\\/20180112\\/b518e2f478c0a8d483f9aa8a818cac571043302f.png\",\"photos\":[\"webuploader\\/image\\/20180112\\/29c0daa1fc5345847671d4b8837ef506689937ef.jpg\"],\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('7', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515765930', '0', 'php是最好的语言', '[\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a001\",\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a002\"]', 'php是最好的语言', 'php是最好的语言', '<p><span style=\"border: 1px solid rgb(0, 0, 0); text-decoration: line-through;\"><em><strong>php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"webuploader\\/image\\/20180112\\/b518e2f478c0a8d483f9aa8a818cac571043302f.png\",\"photos\":[\"webuploader\\/image\\/20180112\\/29c0daa1fc5345847671d4b8837ef506689937ef.jpg\"],\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('8', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515765930', '0', 'php是最好的语言', '[\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a001\",\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a002\"]', 'php是最好的语言', 'php是最好的语言', '<p><span style=\"border: 1px solid rgb(0, 0, 0); text-decoration: line-through;\"><em><strong>php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"webuploader\\/image\\/20180112\\/b518e2f478c0a8d483f9aa8a818cac571043302f.png\",\"photos\":[\"webuploader\\/image\\/20180112\\/29c0daa1fc5345847671d4b8837ef506689937ef.jpg\"],\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('9', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515765930', '0', 'php是最好的语言', '[\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a001\",\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a002\"]', 'php是最好的语言', 'php是最好的语言', '<p><span style=\"border: 1px solid rgb(0, 0, 0); text-decoration: line-through;\"><em><strong>php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"webuploader\\/image\\/20180112\\/b518e2f478c0a8d483f9aa8a818cac571043302f.png\",\"photos\":[\"webuploader\\/image\\/20180112\\/29c0daa1fc5345847671d4b8837ef506689937ef.jpg\"],\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('10', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767717', '0', 'php是最好的语言', '[\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a00\",\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a00\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"webuploader\\/image\\/20180112\\/e1a58852a14e3a9968e89097ccb1fc37f2deba01.png\",\"photos\":[\"webuploader\\/image\\/20180112\\/29c0daa1fc5345847671d4b8837ef506689937ef.jpg\"],\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('11', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767838', '0', 'php是最好的语言', '[\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a00\",\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a00\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"webuploader\\/image\\/20180112\\/e1a58852a14e3a9968e89097ccb1fc37f2deba01.png\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('12', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767857', '0', 'php是最好的语言', '[\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a00\",\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a00\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"webuploader\\/image\\/20180112\\/e1a58852a14e3a9968e89097ccb1fc37f2deba01.png\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('13', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('14', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('15', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('16', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('17', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('18', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('19', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('20', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('21', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('22', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('23', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('24', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('25', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('26', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('27', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('28', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('29', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('30', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('31', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('32', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('33', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('34', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('35', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('36', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
-INSERT INTO `feehi_article` VALUES ('37', '0', '1', '1', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '1515767861', '0', 'php是最好的语言', '[\"[\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"\",\"\\\"php\\\\u662f\\\\u6700\\\\u597d\\\\u7684\\\\u8bed\\\\u8a00\\\"]\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言', '<p><span style=\"text-decoration: underline; border: 1px solid rgb(0, 0, 0);\"><em><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></em></span></p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
+INSERT INTO `feehi_article` VALUES ('62', '0', '1', '1', '1', '1', '1', '0', '1', '0', '0', '0', '0', '0', '1515825206', '0', 'php是最好的语言retretretre', '[\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a00\",\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a00\"]', 'php是最好的语言php是最好的语言', 'php是最好的语言', '<p><sub><span style=\"border: 1px solid rgb(0, 0, 0); text-decoration: line-through;\"><strong>php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言</strong></span></sub></p>', null, '{\"thumbnail\":\"webuploader\\/image\\/20180113\\/c1dfd96eea8cc2b62785275bca38ac261256e278.png\",\"photos\":[\"webuploader\\/image\\/20180113\\/c277af20f985603442a3e942f389fd0069def32e.jpg\",\"webuploader\\/image\\/20180113\\/c277af20f985603442a3e942f389fd0069def32e.jpg\"],\"files\":\"\"}');
+INSERT INTO `feehi_article` VALUES ('63', '0', '1', '1', '1', '0', '1', '1', '1', '0', '0', '0', '0', '0', '1515832535', '0', 'php是最好的语言', '[\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a00php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a00php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a00\"]', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言', 'php是最好的语言php是最好的语言php是最好的语言php是最好的语言', '<p>php是最好的语言php是最好的语言php是最好的语言php是最好的语言</p>', null, '{\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}');
 
 -- ----------------------------
 -- Table structure for feehi_article_content
@@ -324,6 +296,270 @@ INSERT INTO `feehi_article备份` VALUES ('24', '0', '2', '联系方式', 'conta
 INSERT INTO `feehi_article备份` VALUES ('25', '0', '0', 'dfdf', 'dfd', 'fsafsdfsdf', '', '', '', '', '0', '0', '1', 'admin', '0', '0', '1', '1', '', '0', '0', '0', '0', '0', '0', '0', '1468898361', '1476717356');
 
 -- ----------------------------
+-- Table structure for feehi_auth_admin_user
+-- ----------------------------
+DROP TABLE IF EXISTS `feehi_auth_admin_user`;
+CREATE TABLE `feehi_auth_admin_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(32) NOT NULL,
+  `auth_key` varchar(32) NOT NULL,
+  `password_hash` varchar(256) NOT NULL,
+  `password_reset_token` varchar(256) DEFAULT NULL,
+  `email` varchar(256) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '10',
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of feehi_auth_admin_user
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for feehi_auth_assignment
+-- ----------------------------
+DROP TABLE IF EXISTS `feehi_auth_assignment`;
+CREATE TABLE `feehi_auth_assignment` (
+  `item_name` varchar(64) NOT NULL,
+  `user_id` varchar(64) NOT NULL,
+  `created_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`item_name`,`user_id`),
+  KEY `auth_assignment_user_id_idx` (`user_id`),
+  CONSTRAINT `feehi_auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `feehi_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of feehi_auth_assignment
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for feehi_auth_item
+-- ----------------------------
+DROP TABLE IF EXISTS `feehi_auth_item`;
+CREATE TABLE `feehi_auth_item` (
+  `name` varchar(64) NOT NULL,
+  `type` smallint(6) NOT NULL,
+  `description` text,
+  `rule_name` varchar(64) DEFAULT NULL,
+  `data` blob,
+  `created_at` int(11) DEFAULT NULL,
+  `updated_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`name`),
+  KEY `rule_name` (`rule_name`),
+  KEY `type` (`type`),
+  CONSTRAINT `feehi_auth_item_ibfk_1` FOREIGN KEY (`rule_name`) REFERENCES `feehi_auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of feehi_auth_item
+-- ----------------------------
+INSERT INTO `feehi_auth_item` VALUES ('/*', '2', null, null, null, '1516958352', '1516958352');
+INSERT INTO `feehi_auth_item` VALUES ('/admin-log/*', '2', null, null, null, '1516958346', '1516958346');
+INSERT INTO `feehi_auth_item` VALUES ('/admin-log/create', '2', null, null, null, '1516958346', '1516958346');
+INSERT INTO `feehi_auth_item` VALUES ('/admin-log/delete', '2', null, null, null, '1516958346', '1516958346');
+INSERT INTO `feehi_auth_item` VALUES ('/admin-log/index', '2', null, null, null, '1516958346', '1516958346');
+INSERT INTO `feehi_auth_item` VALUES ('/admin-log/update', '2', null, null, null, '1516958346', '1516958346');
+INSERT INTO `feehi_auth_item` VALUES ('/admin-log/view', '2', null, null, null, '1516958346', '1516958346');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/*', '2', null, null, null, '1516958343', '1516958343');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/assignment/*', '2', null, null, null, '1516958338', '1516958338');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/assignment/assign', '2', null, null, null, '1516958338', '1516958338');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/assignment/index', '2', null, null, null, '1516958337', '1516958337');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/assignment/revoke', '2', null, null, null, '1516958338', '1516958338');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/assignment/view', '2', null, null, null, '1516958338', '1516958338');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/default/*', '2', null, null, null, '1516958338', '1516958338');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/default/index', '2', null, null, null, '1516958338', '1516958338');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/menu/*', '2', null, null, null, '1516958339', '1516958339');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/menu/create', '2', null, null, null, '1516958338', '1516958338');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/menu/delete', '2', null, null, null, '1516958339', '1516958339');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/menu/index', '2', null, null, null, '1516958338', '1516958338');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/menu/update', '2', null, null, null, '1516958339', '1516958339');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/menu/view', '2', null, null, null, '1516958338', '1516958338');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/permission/*', '2', null, null, null, '1516958339', '1516958339');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/permission/assign', '2', null, null, null, '1516958339', '1516958339');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/permission/create', '2', null, null, null, '1516958339', '1516958339');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/permission/delete', '2', null, null, null, '1516958339', '1516958339');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/permission/index', '2', null, null, null, '1516958339', '1516958339');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/permission/remove', '2', null, null, null, '1516958339', '1516958339');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/permission/update', '2', null, null, null, '1516958339', '1516958339');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/permission/view', '2', null, null, null, '1516958339', '1516958339');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/role/*', '2', null, null, null, '1516958340', '1516958340');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/role/assign', '2', null, null, null, '1516958340', '1516958340');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/role/create', '2', null, null, null, '1516958340', '1516958340');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/role/delete', '2', null, null, null, '1516958340', '1516958340');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/role/index', '2', null, null, null, '1516958340', '1516958340');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/role/remove', '2', null, null, null, '1516958340', '1516958340');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/role/update', '2', null, null, null, '1516958340', '1516958340');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/role/view', '2', null, null, null, '1516958340', '1516958340');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/route/*', '2', null, null, null, '1516958341', '1516958341');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/route/assign', '2', null, null, null, '1516958341', '1516958341');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/route/create', '2', null, null, null, '1516958340', '1516958340');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/route/index', '2', null, null, null, '1516958340', '1516958340');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/route/refresh', '2', null, null, null, '1516958341', '1516958341');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/route/remove', '2', null, null, null, '1516958341', '1516958341');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/rule/*', '2', null, null, null, '1516958342', '1516958342');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/rule/create', '2', null, null, null, '1516958341', '1516958341');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/rule/delete', '2', null, null, null, '1516958342', '1516958342');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/rule/index', '2', null, null, null, '1516958341', '1516958341');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/rule/update', '2', null, null, null, '1516958342', '1516958342');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/rule/view', '2', null, null, null, '1516958341', '1516958341');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/user/*', '2', null, null, null, '1516958343', '1516958343');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/user/activate', '2', null, null, null, '1516958343', '1516958343');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/user/change-password', '2', null, null, null, '1516958343', '1516958343');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/user/delete', '2', null, null, null, '1516958342', '1516958342');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/user/index', '2', null, null, null, '1516958342', '1516958342');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/user/login', '2', null, null, null, '1516958342', '1516958342');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/user/logout', '2', null, null, null, '1516958342', '1516958342');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/user/request-password-reset', '2', null, null, null, '1516958342', '1516958342');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/user/reset-password', '2', null, null, null, '1516958342', '1516958342');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/user/signup', '2', null, null, null, '1516958342', '1516958342');
+INSERT INTO `feehi_auth_item` VALUES ('/admin/user/view', '2', null, null, null, '1516958342', '1516958342');
+INSERT INTO `feehi_auth_item` VALUES ('/article/*', '2', null, null, null, '1516958347', '1516958347');
+INSERT INTO `feehi_auth_item` VALUES ('/article/create', '2', null, null, null, '1516958346', '1516958346');
+INSERT INTO `feehi_auth_item` VALUES ('/article/delete', '2', null, null, null, '1516958347', '1516958347');
+INSERT INTO `feehi_auth_item` VALUES ('/article/delete-file', '2', null, null, null, '1516958347', '1516958347');
+INSERT INTO `feehi_auth_item` VALUES ('/article/index', '2', null, null, null, '1516958346', '1516958346');
+INSERT INTO `feehi_auth_item` VALUES ('/article/update', '2', null, null, null, '1516958346', '1516958346');
+INSERT INTO `feehi_auth_item` VALUES ('/article/upload-file', '2', null, null, null, '1516958347', '1516958347');
+INSERT INTO `feehi_auth_item` VALUES ('/article/upload-image', '2', null, null, null, '1516958347', '1516958347');
+INSERT INTO `feehi_auth_item` VALUES ('/article/view', '2', null, null, null, '1516958346', '1516958346');
+INSERT INTO `feehi_auth_item` VALUES ('/category/*', '2', null, null, null, '1516958349', '1516958349');
+INSERT INTO `feehi_auth_item` VALUES ('/category/create', '2', null, null, null, '1516958347', '1516958347');
+INSERT INTO `feehi_auth_item` VALUES ('/category/delete', '2', null, null, null, '1516958347', '1516958347');
+INSERT INTO `feehi_auth_item` VALUES ('/category/index', '2', null, null, null, '1516958347', '1516958347');
+INSERT INTO `feehi_auth_item` VALUES ('/category/update', '2', null, null, null, '1516958347', '1516958347');
+INSERT INTO `feehi_auth_item` VALUES ('/category/view', '2', null, null, null, '1516958347', '1516958347');
+INSERT INTO `feehi_auth_item` VALUES ('/clear/*', '2', null, null, null, '1516958349', '1516958349');
+INSERT INTO `feehi_auth_item` VALUES ('/clear/backend', '2', null, null, null, '1516958349', '1516958349');
+INSERT INTO `feehi_auth_item` VALUES ('/clear/frontend', '2', null, null, null, '1516958349', '1516958349');
+INSERT INTO `feehi_auth_item` VALUES ('/debug/*', '2', null, null, null, '1516958344', '1516958344');
+INSERT INTO `feehi_auth_item` VALUES ('/debug/default/*', '2', null, null, null, '1516958344', '1516958344');
+INSERT INTO `feehi_auth_item` VALUES ('/debug/default/db-explain', '2', null, null, null, '1516958343', '1516958343');
+INSERT INTO `feehi_auth_item` VALUES ('/debug/default/download-mail', '2', null, null, null, '1516958343', '1516958343');
+INSERT INTO `feehi_auth_item` VALUES ('/debug/default/index', '2', null, null, null, '1516958343', '1516958343');
+INSERT INTO `feehi_auth_item` VALUES ('/debug/default/toolbar', '2', null, null, null, '1516958343', '1516958343');
+INSERT INTO `feehi_auth_item` VALUES ('/debug/default/view', '2', null, null, null, '1516958343', '1516958343');
+INSERT INTO `feehi_auth_item` VALUES ('/debug/user/*', '2', null, null, null, '1516958344', '1516958344');
+INSERT INTO `feehi_auth_item` VALUES ('/debug/user/reset-identity', '2', null, null, null, '1516958344', '1516958344');
+INSERT INTO `feehi_auth_item` VALUES ('/debug/user/set-identity', '2', null, null, null, '1516958344', '1516958344');
+INSERT INTO `feehi_auth_item` VALUES ('/friend-link/*', '2', null, null, null, '1516958349', '1516958349');
+INSERT INTO `feehi_auth_item` VALUES ('/friend-link/create', '2', null, null, null, '1516958349', '1516958349');
+INSERT INTO `feehi_auth_item` VALUES ('/friend-link/delete', '2', null, null, null, '1516958349', '1516958349');
+INSERT INTO `feehi_auth_item` VALUES ('/friend-link/index', '2', null, null, null, '1516958349', '1516958349');
+INSERT INTO `feehi_auth_item` VALUES ('/friend-link/update', '2', null, null, null, '1516958349', '1516958349');
+INSERT INTO `feehi_auth_item` VALUES ('/friend-link/view', '2', null, null, null, '1516958349', '1516958349');
+INSERT INTO `feehi_auth_item` VALUES ('/gii/*', '2', null, null, null, '1516958345', '1516958345');
+INSERT INTO `feehi_auth_item` VALUES ('/gii/default/*', '2', null, null, null, '1516958344', '1516958344');
+INSERT INTO `feehi_auth_item` VALUES ('/gii/default/action', '2', null, null, null, '1516958344', '1516958344');
+INSERT INTO `feehi_auth_item` VALUES ('/gii/default/diff', '2', null, null, null, '1516958344', '1516958344');
+INSERT INTO `feehi_auth_item` VALUES ('/gii/default/index', '2', null, null, null, '1516958344', '1516958344');
+INSERT INTO `feehi_auth_item` VALUES ('/gii/default/preview', '2', null, null, null, '1516958344', '1516958344');
+INSERT INTO `feehi_auth_item` VALUES ('/gii/default/view', '2', null, null, null, '1516958344', '1516958344');
+INSERT INTO `feehi_auth_item` VALUES ('/layer/*', '2', null, null, null, '1516958350', '1516958350');
+INSERT INTO `feehi_auth_item` VALUES ('/layer/iframe', '2', null, null, null, '1516958350', '1516958350');
+INSERT INTO `feehi_auth_item` VALUES ('/menu/*', '2', null, null, null, '1516958350', '1516958350');
+INSERT INTO `feehi_auth_item` VALUES ('/menu/create', '2', null, null, null, '1516958350', '1516958350');
+INSERT INTO `feehi_auth_item` VALUES ('/menu/delete', '2', null, null, null, '1516958350', '1516958350');
+INSERT INTO `feehi_auth_item` VALUES ('/menu/index', '2', null, null, null, '1516958350', '1516958350');
+INSERT INTO `feehi_auth_item` VALUES ('/menu/update', '2', null, null, null, '1516958350', '1516958350');
+INSERT INTO `feehi_auth_item` VALUES ('/menu/view', '2', null, null, null, '1516958350', '1516958350');
+INSERT INTO `feehi_auth_item` VALUES ('/setting/*', '2', null, null, null, '1516958351', '1516958351');
+INSERT INTO `feehi_auth_item` VALUES ('/setting/email', '2', null, null, null, '1516958351', '1516958351');
+INSERT INTO `feehi_auth_item` VALUES ('/setting/webseo', '2', null, null, null, '1516958350', '1516958350');
+INSERT INTO `feehi_auth_item` VALUES ('/setting/website', '2', null, null, null, '1516958350', '1516958350');
+INSERT INTO `feehi_auth_item` VALUES ('/site/*', '2', null, null, null, '1516958351', '1516958351');
+INSERT INTO `feehi_auth_item` VALUES ('/site/captcha', '2', null, null, null, '1516958351', '1516958351');
+INSERT INTO `feehi_auth_item` VALUES ('/site/error', '2', null, null, null, '1516958351', '1516958351');
+INSERT INTO `feehi_auth_item` VALUES ('/site/index', '2', null, null, null, '1516958351', '1516958351');
+INSERT INTO `feehi_auth_item` VALUES ('/site/login', '2', null, null, null, '1516958351', '1516958351');
+INSERT INTO `feehi_auth_item` VALUES ('/site/logout', '2', null, null, null, '1516958351', '1516958351');
+INSERT INTO `feehi_auth_item` VALUES ('/site/main', '2', null, null, null, '1516958351', '1516958351');
+INSERT INTO `feehi_auth_item` VALUES ('/ueditor/*', '2', null, null, null, '1516958346', '1516958346');
+INSERT INTO `feehi_auth_item` VALUES ('/ueditor/catch-image', '2', null, null, null, '1516958345', '1516958345');
+INSERT INTO `feehi_auth_item` VALUES ('/ueditor/config', '2', null, null, null, '1516958345', '1516958345');
+INSERT INTO `feehi_auth_item` VALUES ('/ueditor/index', '2', null, null, null, '1516958345', '1516958345');
+INSERT INTO `feehi_auth_item` VALUES ('/ueditor/list-file', '2', null, null, null, '1516958345', '1516958345');
+INSERT INTO `feehi_auth_item` VALUES ('/ueditor/list-image', '2', null, null, null, '1516958345', '1516958345');
+INSERT INTO `feehi_auth_item` VALUES ('/ueditor/upload-file', '2', null, null, null, '1516958345', '1516958345');
+INSERT INTO `feehi_auth_item` VALUES ('/ueditor/upload-image', '2', null, null, null, '1516958345', '1516958345');
+INSERT INTO `feehi_auth_item` VALUES ('/ueditor/upload-scrawl', '2', null, null, null, '1516958345', '1516958345');
+INSERT INTO `feehi_auth_item` VALUES ('/ueditor/upload-video', '2', null, null, null, '1516958345', '1516958345');
+INSERT INTO `feehi_auth_item` VALUES ('/user/*', '2', null, null, null, '1516958352', '1516958352');
+INSERT INTO `feehi_auth_item` VALUES ('/user/create', '2', null, null, null, '1516958352', '1516958352');
+INSERT INTO `feehi_auth_item` VALUES ('/user/delete', '2', null, null, null, '1516958352', '1516958352');
+INSERT INTO `feehi_auth_item` VALUES ('/user/index', '2', null, null, null, '1516958351', '1516958351');
+INSERT INTO `feehi_auth_item` VALUES ('/user/update', '2', null, null, null, '1516958352', '1516958352');
+INSERT INTO `feehi_auth_item` VALUES ('/user/view', '2', null, null, null, '1516958352', '1516958352');
+INSERT INTO `feehi_auth_item` VALUES ('普通权限', '2', null, null, null, '1516958629', '1516958629');
+INSERT INTO `feehi_auth_item` VALUES ('普通管理员', '1', null, null, null, '1516958565', '1516958565');
+
+-- ----------------------------
+-- Table structure for feehi_auth_item_child
+-- ----------------------------
+DROP TABLE IF EXISTS `feehi_auth_item_child`;
+CREATE TABLE `feehi_auth_item_child` (
+  `parent` varchar(64) NOT NULL,
+  `child` varchar(64) NOT NULL,
+  PRIMARY KEY (`parent`,`child`),
+  KEY `child` (`child`),
+  CONSTRAINT `feehi_auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `feehi_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `feehi_auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `feehi_auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of feehi_auth_item_child
+-- ----------------------------
+INSERT INTO `feehi_auth_item_child` VALUES ('普通权限', '/category/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('普通权限', '/category/create');
+INSERT INTO `feehi_auth_item_child` VALUES ('普通权限', '/category/delete');
+INSERT INTO `feehi_auth_item_child` VALUES ('普通权限', '/category/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('普通权限', '/category/update');
+INSERT INTO `feehi_auth_item_child` VALUES ('普通权限', '/category/view');
+INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '/friend-link/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '/friend-link/create');
+INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '/friend-link/delete');
+INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '/friend-link/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '/friend-link/update');
+INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '/friend-link/view');
+
+-- ----------------------------
+-- Table structure for feehi_auth_menu
+-- ----------------------------
+DROP TABLE IF EXISTS `feehi_auth_menu`;
+CREATE TABLE `feehi_auth_menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) DEFAULT NULL,
+  `parent` int(11) DEFAULT NULL,
+  `route` varchar(256) DEFAULT NULL,
+  `order` int(11) DEFAULT NULL,
+  `data` blob,
+  PRIMARY KEY (`id`),
+  KEY `parent` (`parent`),
+  CONSTRAINT `feehi_auth_menu_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `feehi_auth_menu` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of feehi_auth_menu
+-- ----------------------------
+INSERT INTO `feehi_auth_menu` VALUES ('1', '友情链接', null, '/friend-link/index', null, null);
+
+-- ----------------------------
+-- Table structure for feehi_auth_rule
+-- ----------------------------
+DROP TABLE IF EXISTS `feehi_auth_rule`;
+CREATE TABLE `feehi_auth_rule` (
+  `name` varchar(64) NOT NULL,
+  `data` blob,
+  `created_at` int(11) DEFAULT NULL,
+  `updated_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of feehi_auth_rule
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for feehi_category
 -- ----------------------------
 DROP TABLE IF EXISTS `feehi_category`;
@@ -368,13 +604,27 @@ CREATE TABLE `feehi_category_article` (
   `status` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '状态,1:发布;0:不发布',
   PRIMARY KEY (`id`),
   KEY `term_taxonomy_id` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='portal应用 分类文章对应表';
+) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8 COMMENT='portal应用 分类文章对应表';
 
 -- ----------------------------
 -- Records of feehi_category_article
 -- ----------------------------
-INSERT INTO `feehi_category_article` VALUES ('1', '1', '7', '10000', '1');
-INSERT INTO `feehi_category_article` VALUES ('2', '1', '6', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('65', '64', '1', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('66', '64', '7', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('67', '64', '9', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('68', '64', '6', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('69', '64', '10', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('70', '64', '11', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('71', '64', '13', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('72', '64', '2', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('73', '64', '5', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('74', '64', '3', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('75', '63', '7', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('76', '63', '10', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('107', '62', '1', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('108', '62', '7', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('109', '62', '6', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('110', '65', '7', '10000', '1');
 
 -- ----------------------------
 -- Table structure for feehi_comment
@@ -454,7 +704,7 @@ CREATE TABLE `feehi_menu` (
   KEY `index_name` (`name`),
   KEY `index_url` (`url`),
   KEY `index_method` (`method`)
-) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of feehi_menu
@@ -559,6 +809,8 @@ INSERT INTO `feehi_menu` VALUES ('102', '0', '5', '后台菜单:更改状态', '
 INSERT INTO `feehi_menu` VALUES ('103', '0', '8', '文章:更改状态', 'article/status', '', '9', '_blank', '0', '0', '1', '1502972981', '1502973527');
 INSERT INTO `feehi_menu` VALUES ('104', '0', '8', '单页:更改状态', 'page/status', '', '28', '_blank', '0', '0', '1', '1502973066', '1502973584');
 INSERT INTO `feehi_menu` VALUES ('105', '0', '0', '友情链接:更改状态', 'friend-link/status', '', '5.6', '_blank', '0', '0', '1', '1502973196', '1502973661');
+INSERT INTO `feehi_menu` VALUES ('106', null, '0', 'sdfdfs', 'sdfsdf', '', '0', '_blank', '0', '1', '1', '0', '0');
+INSERT INTO `feehi_menu` VALUES ('108', '0', '1', '设置子类', 'sadsad', 'asdsad', null, '_blank', '0', '1', '1', '0', '0');
 
 -- ----------------------------
 -- Table structure for feehi_migration

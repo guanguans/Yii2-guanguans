@@ -11,7 +11,13 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        'admin' => [
+            'class' => 'mdm\admin\Module',
+            // yii2-admin的导航菜单
+            // 'layout' => 'left-menu',
+        ]
+    ],
     //默认语言
     'language' => 'zh-CN',
     //默认时区
@@ -41,14 +47,29 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
         ],
-        */
+       "urlManager" => [
+           "enablePrettyUrl" => true,
+           "enableStrictParsing" => false,
+           "showScriptName" => false,
+           "suffix" => "",
+           "rules" => [
+               "<controller:\w+>/<id:\d+>"=>"<controller>/view",
+               "<controller:\w+>/<action:\w+>"=>"<controller>/<action>"
+           ],
+       ],
+    ],
+    'as access' => [
+        'class' => 'mdm\admin\components\AccessControl',
+        'allowActions' => [
+            'site/*',//允许访问的节点，可自行添加
+            'admin/*',//允许所有人访问admin节点及其子节点
+            '*',
+            '/gii/*',
+            '/debug/*',
+        ]
     ],
     'controllerMap' => [
         'ueditor' => [

@@ -23,14 +23,14 @@ class SiteController extends Controller
             'access' => [
                 'class' => AccessControl::className(),
                 //这里一定要加
-                'only' => ['login'],
+                'only' => ['login', 'index', 'main', 'logout'],
                 'rules' => [
                     [
                         'actions' => ['login', 'error'],
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'main'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -75,10 +75,6 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        if (Yii::$app->user->isGuest) {
-            return $this->redirect(['site/login']);
-        }
-
         return $this->renderPartial('index');
     }
 
