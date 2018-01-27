@@ -3,28 +3,23 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\GridView;
-use backend\models\AdminUser;
-
+use yii\widgets\Pjax;
+use backend\models\User;
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\UserSearch */
+/* @var $searchModel backend\models\AdminUserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Users';
+$this->title = Yii::t('app', 'Admin Users');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<style>
-    #w0{text-align: center;}
-    #w0 table th{text-align: center;}
-    #w0 .summary{text-align: left;}
-</style>
 <div class="wrapper wrapper-content animated fadeIn" >
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title" style="padding: 0px;border-top: 0px;">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="tabs_panels.html#tab-1">前台用户</a></li>
-                        <li><a href="<?= Url::to(['user/create']) ?>">创建用户</a></li>
+                        <li class="active"><a data-toggle="tab" href="tabs_panels.html#tab-1">后台用户</a></li>
+                        <li><a href="<?=Url::to(['admin-user/create'])?>">创建用户</a></li>
                     </ul>
                 </div>
                 <div class="ibox-content" style="border-top: 0px;">
@@ -36,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <button type="btn" class="btn btn-success">批量操作</button>
                                     <?= Html::a("删除", "javascript:void(0);", [
                                         "class" => "btn btn-danger mybtn",
-                                        'action' => Url::to(['user/delete']),
+                                        'action' => Url::to(['admin-user/delete']),
                                     ]) ?>
                                     <button type="btn" class="btn btn-success">批量操作</button>
                                 </p>
@@ -71,6 +66,7 @@ js;
                                            'headerOptions'=> ['width'=> '200'],
                                         ],
                                         'username',
+                                        'avatar',
                                         'email:email',
                                         [
                                             'attribute' => 'status',
@@ -85,44 +81,29 @@ js;
                                             'filter' => User::getStatuses(),
                                         ],
                                         [
-                                            'attribute' => 'updated_at',
-                                            'format' => ['date', 'php:Y-m-d H:i:s'],
-                                            'filter' => Html::activeInput('text', $searchModel, 'update_start_at', [
-                                                    'class' => 'form-control layer-date',
-                                                    'placeholder' => '',
-                                                    'onclick' => "laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"
-                                                ]) . Html::activeInput('text', $searchModel, 'update_end_at', [
-                                                    'class' => 'form-control layer-date',
-                                                    'placeholder' => '',
-                                                    'onclick' => "laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"
-                                                ]),
-                                        ],
-                                        [
                                             'class' => 'yii\grid\ActionColumn',
-                                            'template' => '{view} {update} {delete}',
+                                            'header' => '操作',
+                                            'template' => '{assignment} {view} {update} {delete}',
                                             'buttons' => [
-                                                'view'=>function ($url, $model, $key) {
-                                                    return Html::a('查看', ['user/view', 'id' => $model->id], ['class' => ""]);
-                                                },
-                                                'update'=>function ($url, $model, $key) {
-                                                    return Html::a('编辑', ['user/update', 'id' => $model->id], ['class' => ""]);
+                                                'assignment'=>function ($url, $model, $key) {
+                                                    return Html::a('分配权限', ['admin/assignment/view', 'id' => $model->id], ['class' => ""]);
                                                 },
                                                 'delete'=>function ($url, $model, $key) {
                                                     return Html::tag('span', '删除', [
                                                         'class' => "text-danger confirm",
-                                                        'action' => Url::to(['user/delete','id'=>$model->id]),
+                                                        'action' => Url::to(['admibn-user/delete','id'=>$model->id]),
                                                         'style' => ['cursor' => 'pointer'],
                                                     ]);
                                                 }
                                             ],
                                         ],
-                                        ],
+                                    ],
                                 ]); ?>
                                 <p>
                                     <button type="btn" class="btn btn-success">批量操作</button>
                                     <?= Html::a("删除", "javascript:void(0);", [
                                         "class" => "btn btn-danger mybtn",
-                                        'action' => Url::to(['user/delete']),
+                                        'action' => Url::to(['admin-user/delete']),
                                     ]) ?>
                                     <button type="btn" class="btn btn-success">批量操作</button>
                                 </p>

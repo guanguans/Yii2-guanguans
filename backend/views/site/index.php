@@ -79,9 +79,6 @@ $this->title = '主页';
                         <a class="J_menuItem" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">权限管理</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level collapse" aria-expanded="false" style="height: 0px;">
                             <li>
-                                <a class="J_menuItem" href="<?= Url::to(['admin/user']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">用户列表</span></a>
-                            </li>
-                            <li>
                                 <a class="J_menuItem" href="<?= Url::to(['admin/assignment']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">分配权限</span></a>
                             </li>
                             <li>
@@ -94,11 +91,14 @@ $this->title = '主页';
                                 <a class="J_menuItem" href="<?= Url::to(['admin/route']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">路由列表</span></a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="<?= Url::to(['admin/rule']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">规则列表</span></a>
-                            </li>
-                            <li>
                                 <a class="J_menuItem" href="<?= Url::to(['admin/menu']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">菜单列表</span></a>
                             </li>
+                            <!-- <li>
+                                <a class="J_menuItem" href="<?= Url::to(['admin/rule']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">规则列表</span></a>
+                            </li> -->
+                            <!-- <li>
+                                <a class="J_menuItem" href="<?= Url::to(['admin/user']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">用户列表</span></a>
+                            </li> -->
                         </ul>
                     </li>
                     <li>
