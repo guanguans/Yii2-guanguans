@@ -100,6 +100,7 @@ function hintInfo($info, $model=''){
 function dataTree($currentIds = 0, $tpl = '')
 {
     $categories = Menu::find()
+    			->where(['status'=>1])
                 ->orderBy('order ASC')
                 ->asArray()
                 ->all();

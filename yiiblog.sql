@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-01-27 17:39:50
+Date: 2018-01-27 17:57:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -727,6 +727,7 @@ CREATE TABLE `feehi_auth_menu` (
   `route` varchar(256) DEFAULT NULL,
   `order` int(11) DEFAULT NULL,
   `data` varchar(256) CHARACTER SET utf8mb4 DEFAULT '',
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `parent` (`parent`),
   CONSTRAINT `feehi_auth_menu_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `feehi_auth_menu` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
@@ -735,29 +736,29 @@ CREATE TABLE `feehi_auth_menu` (
 -- ----------------------------
 -- Records of feehi_auth_menu
 -- ----------------------------
-INSERT INTO `feehi_auth_menu` VALUES ('1', '设置管理', null, null, '1', 'fa fa-cogs');
-INSERT INTO `feehi_auth_menu` VALUES ('2', '网站管理', '1', '/setting/website', null, 'fa fa-angle-double-right');
-INSERT INTO `feehi_auth_menu` VALUES ('3', '邮箱设置', '1', '/setting/email', null, 'fa fa-angle-double-right');
-INSERT INTO `feehi_auth_menu` VALUES ('4', '用户管理', null, null, '2', 'fa fa-users');
-INSERT INTO `feehi_auth_menu` VALUES ('5', '前台用户', '4', '/user/index', null, 'fa fa-angle-double-right');
-INSERT INTO `feehi_auth_menu` VALUES ('6', '后台用户', '4', '/admin-user/index', null, 'fa fa-angle-double-right');
-INSERT INTO `feehi_auth_menu` VALUES ('7', '权限管理', null, null, '3', 'fa fa-check');
-INSERT INTO `feehi_auth_menu` VALUES ('8', '分配权限', '7', '/admin/assignment/index', null, 'fa fa-angle-double-right');
-INSERT INTO `feehi_auth_menu` VALUES ('9', '角色列表', '7', '/admin/role/index', null, 'fa fa-angle-double-right');
-INSERT INTO `feehi_auth_menu` VALUES ('10', '权限列表', '7', '/admin/permission/index', null, 'fa fa-angle-double-right');
-INSERT INTO `feehi_auth_menu` VALUES ('11', '路由列表', '7', '/admin/route/index', null, 'fa fa-angle-double-right');
-INSERT INTO `feehi_auth_menu` VALUES ('12', '菜单列表', '7', '/admin/menu/index', null, 'fa fa-angle-double-right');
-INSERT INTO `feehi_auth_menu` VALUES ('13', '内容管理', null, null, '4', 'fa fa-file-text');
-INSERT INTO `feehi_auth_menu` VALUES ('14', '分类管理', '13', '/category/index', null, 'fa fa-angle-double-right');
-INSERT INTO `feehi_auth_menu` VALUES ('15', '文章管理', '13', '/article/index', null, 'fa fa-angle-double-right');
-INSERT INTO `feehi_auth_menu` VALUES ('16', '友情链接', null, '/friend-link/index', '5', 'fa fa fa-link');
-INSERT INTO `feehi_auth_menu` VALUES ('17', '菜单管理', null, null, '6', 'fa fa-bars');
-INSERT INTO `feehi_auth_menu` VALUES ('18', '前台导航', '17', '/menu/index', null, 'fa fa-angle-double-right');
-INSERT INTO `feehi_auth_menu` VALUES ('19', '后台菜单', '17', '/menu/index', null, 'fa fa-angle-double-right');
-INSERT INTO `feehi_auth_menu` VALUES ('20', '缓存管理', null, null, '7', 'fa fa-file');
-INSERT INTO `feehi_auth_menu` VALUES ('21', '清除前台', '20', '/clear/frontend', null, 'fa fa-angle-double-right');
-INSERT INTO `feehi_auth_menu` VALUES ('22', '清除后台', '20', '/clear/backend', null, 'fa fa-angle-double-right');
-INSERT INTO `feehi_auth_menu` VALUES ('23', '日志管理', null, '/admin-log/index', '8', 'fa fa-history');
+INSERT INTO `feehi_auth_menu` VALUES ('1', '设置管理', null, null, '1', 'fa fa-cogs', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('2', '网站管理', '1', '/setting/website', null, 'fa fa-angle-double-right', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('3', '邮箱设置', '1', '/setting/email', null, 'fa fa-angle-double-right', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('4', '用户管理', null, null, '2', 'fa fa-users', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('5', '前台用户', '4', '/user/index', null, 'fa fa-angle-double-right', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('6', '后台用户', '4', '/admin-user/index', null, 'fa fa-angle-double-right', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('7', '权限管理', null, null, '3', 'fa fa-check', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('8', '分配权限', '7', '/admin/assignment/index', null, 'fa fa-angle-double-right', '0');
+INSERT INTO `feehi_auth_menu` VALUES ('9', '角色列表', '7', '/admin/role/index', null, 'fa fa-angle-double-right', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('10', '权限列表', '7', '/admin/permission/index', null, 'fa fa-angle-double-right', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('11', '路由列表', '7', '/admin/route/index', null, 'fa fa-angle-double-right', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('12', '菜单列表', '7', '/admin/menu/index', null, 'fa fa-angle-double-right', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('13', '内容管理', null, null, '4', 'fa fa-file-text', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('14', '分类管理', '13', '/category/index', null, 'fa fa-angle-double-right', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('15', '文章管理', '13', '/article/index', null, 'fa fa-angle-double-right', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('16', '友情链接', null, '/friend-link/index', '7', 'fa fa fa-link', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('17', '菜单管理', null, null, '6', 'fa fa-bars', '0');
+INSERT INTO `feehi_auth_menu` VALUES ('18', '前台导航', '17', '/menu/index', null, 'fa fa-angle-double-right', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('19', '后台菜单', '17', '/menu/index', null, 'fa fa-angle-double-right', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('20', '缓存管理', null, null, '5', 'fa fa-file', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('21', '清除前台', '20', '/clear/frontend', null, 'fa fa-angle-double-right', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('22', '清除后台', '20', '/clear/backend', null, 'fa fa-angle-double-right', '1');
+INSERT INTO `feehi_auth_menu` VALUES ('23', '日志管理', null, '/admin-log/index', '8', 'fa fa-history', '1');
 
 -- ----------------------------
 -- Table structure for feehi_auth_rule
