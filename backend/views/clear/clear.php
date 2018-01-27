@@ -22,7 +22,8 @@ use yii\grid\GridView;
 </div>
 <script>
     setTimeout(function () {
-        location.href = '/index.php?r=site%2Fmain';
+        var url = "<?= Url::to(['site/main']) ?>";
+        location.href = url;
     }, 2500);
 </script>
 
