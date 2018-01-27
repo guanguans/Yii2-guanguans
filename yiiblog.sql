@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-01-26 18:12:32
+Date: 2018-01-27 17:39:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,7 +29,7 @@ CREATE TABLE `feehi_admin_log` (
   PRIMARY KEY (`id`),
   KEY `fk_user_id` (`user_id`),
   CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `feehi_admin_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of feehi_admin_log
@@ -41,6 +41,35 @@ INSERT INTO `feehi_admin_log` VALUES ('38', '1', 'menu/create', '{{%ADMIN_USER%}
 INSERT INTO `feehi_admin_log` VALUES ('39', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} backend\\models\\Menu [ {{%menu}} ]  {{%CREATED%}} {{%ID%}} 108 {{%RECORD%}}: <br>ID(id) => 108,<br>类型(type) => 0,<br>上级(parent_id) => 1,<br>名称(name) => 设置子类,<br>操作路由(url) => sadsad,<br>图标(icon) => asdsad,<br>排序(sort) => ,<br>Target(target) => ,<br>Is Absolute Url(is_absolute_url) => ,<br>状态(is_display) => 1,<br>方法(method) => ,<br>创建时间(created_at) => ,<br>更新时间(updated_at) => ', '1516258389', '1516258389');
 INSERT INTO `feehi_admin_log` VALUES ('40', '1', 'menu/delete', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} backend\\models\\Menu [ {{%menu}} ]  {{%DELETED%}} {{%ID%}} 107 {{%RECORD%}}: <br>ID(id) => 107,<br>类型(type) => 0,<br>上级(parent_id) => 95,<br>名称(name) => sadsadsa,<br>操作路由(url) => sadsad,<br>图标(icon) => asdsad,<br>排序(sort) => 0,<br>Target(target) => _blank,<br>Is Absolute Url(is_absolute_url) => 0,<br>状态(is_display) => 1,<br>方法(method) => 1,<br>创建时间(created_at) => 0,<br>更新时间(updated_at) => ', '1516258518', '1516258518');
 INSERT INTO `feehi_admin_log` VALUES ('41', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 1 {{%RECORD%}}: <br>ID(id) => 1,<br>名称(name) => 友情链接,<br>父级(parent) => ,<br>路由(route) => /friend-link/index,<br>排序(order) => ,<br>数据(data) => ', '1516958423', '1516958423');
+INSERT INTO `feehi_admin_log` VALUES ('42', '1', 'menu/update', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%UPDATED%}} {{%ID%}} 1 {{%RECORD%}}: <br>名称(name) : 友情链接=>设置管理,<br>路由(route) : /friend-link/index=>', '1517036972', '1517036972');
+INSERT INTO `feehi_admin_log` VALUES ('43', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 2 {{%RECORD%}}: <br>ID(id) => 2,<br>名称(name) => 网站管理,<br>父级(parent) => 1,<br>路由(route) => /setting/website,<br>排序(order) => ,<br>数据(data) => ', '1517037050', '1517037050');
+INSERT INTO `feehi_admin_log` VALUES ('44', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 3 {{%RECORD%}}: <br>ID(id) => 3,<br>名称(name) => 邮箱设置,<br>父级(parent) => 1,<br>路由(route) => /setting/email,<br>排序(order) => ,<br>数据(data) => ', '1517037095', '1517037095');
+INSERT INTO `feehi_admin_log` VALUES ('45', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 4 {{%RECORD%}}: <br>ID(id) => 4,<br>名称(name) => 用户管理,<br>父级(parent) => ,<br>路由(route) => ,<br>排序(order) => ,<br>数据(data) => ', '1517037127', '1517037127');
+INSERT INTO `feehi_admin_log` VALUES ('46', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 5 {{%RECORD%}}: <br>ID(id) => 5,<br>名称(name) => 前台用户,<br>父级(parent) => 4,<br>路由(route) => /user/index,<br>排序(order) => ,<br>数据(data) => ', '1517037166', '1517037166');
+INSERT INTO `feehi_admin_log` VALUES ('47', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 6 {{%RECORD%}}: <br>ID(id) => 6,<br>名称(name) => 后台用户,<br>父级(parent) => ,<br>路由(route) => /admin-user/index,<br>排序(order) => ,<br>数据(data) => ', '1517037194', '1517037194');
+INSERT INTO `feehi_admin_log` VALUES ('48', '1', 'menu/update', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%UPDATED%}} {{%ID%}} 1 {{%RECORD%}}: <br>排序(order) : =>1', '1517038243', '1517038243');
+INSERT INTO `feehi_admin_log` VALUES ('49', '1', 'menu/update', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%UPDATED%}} {{%ID%}} 1 {{%RECORD%}}: <br>数据(data) : =>fa fa-user', '1517038575', '1517038575');
+INSERT INTO `feehi_admin_log` VALUES ('50', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 7 {{%RECORD%}}: <br>ID(id) => 7,<br>名称(name) => 权限管理,<br>父级(parent) => ,<br>路由(route) => ,<br>排序(order) => ,<br>数据(data) => ', '1517042070', '1517042070');
+INSERT INTO `feehi_admin_log` VALUES ('51', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 8 {{%RECORD%}}: <br>ID(id) => 8,<br>名称(name) => 分配权限,<br>父级(parent) => 7,<br>路由(route) => /admin/assignment/index,<br>排序(order) => ,<br>数据(data) => ', '1517042403', '1517042403');
+INSERT INTO `feehi_admin_log` VALUES ('52', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 9 {{%RECORD%}}: <br>ID(id) => 9,<br>名称(name) => 角色列表,<br>父级(parent) => ,<br>路由(route) => /admin/role/index,<br>排序(order) => ,<br>数据(data) => ', '1517042442', '1517042442');
+INSERT INTO `feehi_admin_log` VALUES ('53', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 10 {{%RECORD%}}: <br>ID(id) => 10,<br>名称(name) => 权限列表,<br>父级(parent) => ,<br>路由(route) => /admin/permission/index,<br>排序(order) => ,<br>数据(data) => ', '1517042467', '1517042467');
+INSERT INTO `feehi_admin_log` VALUES ('54', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 11 {{%RECORD%}}: <br>ID(id) => 11,<br>名称(name) => 路由列表,<br>父级(parent) => 7,<br>路由(route) => /admin/route/index,<br>排序(order) => ,<br>数据(data) => ', '1517042860', '1517042860');
+INSERT INTO `feehi_admin_log` VALUES ('55', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 12 {{%RECORD%}}: <br>ID(id) => 12,<br>名称(name) => 菜单列表,<br>父级(parent) => ,<br>路由(route) => ,<br>排序(order) => ,<br>数据(data) => ', '1517042900', '1517042900');
+INSERT INTO `feehi_admin_log` VALUES ('56', '1', 'menu/update', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%UPDATED%}} {{%ID%}} 12 {{%RECORD%}}: <br>父级(parent) : =>7,<br>路由(route) : =>/admin/menu/index', '1517042965', '1517042965');
+INSERT INTO `feehi_admin_log` VALUES ('57', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 13 {{%RECORD%}}: <br>ID(id) => 13,<br>名称(name) => 内容管理,<br>父级(parent) => ,<br>路由(route) => ,<br>排序(order) => ,<br>数据(data) => ', '1517043039', '1517043039');
+INSERT INTO `feehi_admin_log` VALUES ('58', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 14 {{%RECORD%}}: <br>ID(id) => 14,<br>名称(name) => 分类管理,<br>父级(parent) => ,<br>路由(route) => /category/index,<br>排序(order) => ,<br>数据(data) => ', '1517043098', '1517043098');
+INSERT INTO `feehi_admin_log` VALUES ('59', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 15 {{%RECORD%}}: <br>ID(id) => 15,<br>名称(name) => 文章管理,<br>父级(parent) => 13,<br>路由(route) => ,<br>排序(order) => ,<br>数据(data) => ', '1517043127', '1517043127');
+INSERT INTO `feehi_admin_log` VALUES ('60', '1', 'menu/update', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%UPDATED%}} {{%ID%}} 15 {{%RECORD%}}: <br>路由(route) : =>/article/index', '1517043142', '1517043142');
+INSERT INTO `feehi_admin_log` VALUES ('61', '1', 'menu/update', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%UPDATED%}} {{%ID%}} 14 {{%RECORD%}}: <br>父级(parent) : =>13', '1517043218', '1517043218');
+INSERT INTO `feehi_admin_log` VALUES ('62', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 16 {{%RECORD%}}: <br>ID(id) => 16,<br>名称(name) => 友情链接,<br>父级(parent) => ,<br>路由(route) => /friend-link/index,<br>排序(order) => ,<br>数据(data) => ', '1517043308', '1517043308');
+INSERT INTO `feehi_admin_log` VALUES ('63', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 17 {{%RECORD%}}: <br>ID(id) => 17,<br>名称(name) => 菜单管理,<br>父级(parent) => ,<br>路由(route) => ,<br>排序(order) => ,<br>数据(data) => ', '1517043355', '1517043355');
+INSERT INTO `feehi_admin_log` VALUES ('64', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 18 {{%RECORD%}}: <br>ID(id) => 18,<br>名称(name) => 前台导航,<br>父级(parent) => 17,<br>路由(route) => /menu/index,<br>排序(order) => ,<br>数据(data) => ', '1517043434', '1517043434');
+INSERT INTO `feehi_admin_log` VALUES ('65', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 19 {{%RECORD%}}: <br>ID(id) => 19,<br>名称(name) => 后台菜单,<br>父级(parent) => 17,<br>路由(route) => /menu/index,<br>排序(order) => ,<br>数据(data) => ', '1517043474', '1517043474');
+INSERT INTO `feehi_admin_log` VALUES ('66', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 20 {{%RECORD%}}: <br>ID(id) => 20,<br>名称(name) => 缓存管理,<br>父级(parent) => ,<br>路由(route) => ,<br>排序(order) => ,<br>数据(data) => ', '1517043605', '1517043605');
+INSERT INTO `feehi_admin_log` VALUES ('67', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 21 {{%RECORD%}}: <br>ID(id) => 21,<br>名称(name) => 清除前台,<br>父级(parent) => 20,<br>路由(route) => /clear/frontend,<br>排序(order) => ,<br>数据(data) => ', '1517043658', '1517043658');
+INSERT INTO `feehi_admin_log` VALUES ('68', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 22 {{%RECORD%}}: <br>ID(id) => 22,<br>名称(name) => 清除后台,<br>父级(parent) => 20,<br>路由(route) => /clear/backend,<br>排序(order) => ,<br>数据(data) => ', '1517043705', '1517043705');
+INSERT INTO `feehi_admin_log` VALUES ('69', '1', 'menu/create', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%CREATED%}} {{%ID%}} 23 {{%RECORD%}}: <br>ID(id) => 23,<br>名称(name) => 日志管理,<br>父级(parent) => ,<br>路由(route) => /admin-log/index,<br>排序(order) => ,<br>数据(data) => ', '1517043778', '1517043778');
+INSERT INTO `feehi_admin_log` VALUES ('70', '1', 'menu/update', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} mdm\\admin\\models\\Menu [ {{%auth_menu}} ]  {{%UPDATED%}} {{%ID%}} 1 {{%RECORD%}}: <br>数据(data) : fa fa-user=>fa fa-cog', '1517044161', '1517044161');
 
 -- ----------------------------
 -- Table structure for feehi_admin_roles
@@ -121,12 +150,13 @@ CREATE TABLE `feehi_admin_user` (
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `password_reset_token` (`password_reset_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of feehi_admin_user
 -- ----------------------------
 INSERT INTO `feehi_admin_user` VALUES ('1', 'admin', 'zr9mY7lt23oAhj_ZYjydbLJKcbE3FJ19', '$2y$13$bqUaKgEeU.wXiLqEZIT.DelUYVgSpZeLSZrmho805PLMwukEWEJqG', null, '798314049@qq.como', '', '10', '1468288038', '1512957882');
+INSERT INTO `feehi_admin_user` VALUES ('2', 'admin123', 'zr9mY7lt23oAhj_ZYjydbLJKcbE3FJ19', '$2y$13$bqUaKgEeU.wXiLqEZIT.DelUYVgSpZeLSZrmho805PLMwukEWEJqG', null, '798314049@qq.com', '', '10', '1468288038', '1512957882');
 
 -- ----------------------------
 -- Table structure for feehi_article
@@ -332,6 +362,11 @@ CREATE TABLE `feehi_auth_assignment` (
 -- ----------------------------
 -- Records of feehi_auth_assignment
 -- ----------------------------
+INSERT INTO `feehi_auth_assignment` VALUES ('友情链接权限', '1', '1517023581');
+INSERT INTO `feehi_auth_assignment` VALUES ('友情链接权限', '2', '1517023702');
+INSERT INTO `feehi_auth_assignment` VALUES ('文章管理员', '1', '1517023581');
+INSERT INTO `feehi_auth_assignment` VALUES ('文章管理员', '2', '1517023702');
+INSERT INTO `feehi_auth_assignment` VALUES ('超级管理员', '1', '1517023860');
 
 -- ----------------------------
 -- Table structure for feehi_auth_item
@@ -361,6 +396,12 @@ INSERT INTO `feehi_auth_item` VALUES ('/admin-log/delete', '2', null, null, null
 INSERT INTO `feehi_auth_item` VALUES ('/admin-log/index', '2', null, null, null, '1516958346', '1516958346');
 INSERT INTO `feehi_auth_item` VALUES ('/admin-log/update', '2', null, null, null, '1516958346', '1516958346');
 INSERT INTO `feehi_auth_item` VALUES ('/admin-log/view', '2', null, null, null, '1516958346', '1516958346');
+INSERT INTO `feehi_auth_item` VALUES ('/admin-user/*', '2', null, null, null, '1517036788', '1517036788');
+INSERT INTO `feehi_auth_item` VALUES ('/admin-user/create', '2', null, null, null, '1517036794', '1517036794');
+INSERT INTO `feehi_auth_item` VALUES ('/admin-user/delete', '2', null, null, null, '1517036794', '1517036794');
+INSERT INTO `feehi_auth_item` VALUES ('/admin-user/index', '2', null, null, null, '1517036794', '1517036794');
+INSERT INTO `feehi_auth_item` VALUES ('/admin-user/update', '2', null, null, null, '1517036794', '1517036794');
+INSERT INTO `feehi_auth_item` VALUES ('/admin-user/view', '2', null, null, null, '1517036794', '1517036794');
 INSERT INTO `feehi_auth_item` VALUES ('/admin/*', '2', null, null, null, '1516958343', '1516958343');
 INSERT INTO `feehi_auth_item` VALUES ('/admin/assignment/*', '2', null, null, null, '1516958338', '1516958338');
 INSERT INTO `feehi_auth_item` VALUES ('/admin/assignment/assign', '2', null, null, null, '1516958338', '1516958338');
@@ -490,8 +531,11 @@ INSERT INTO `feehi_auth_item` VALUES ('/user/delete', '2', null, null, null, '15
 INSERT INTO `feehi_auth_item` VALUES ('/user/index', '2', null, null, null, '1516958351', '1516958351');
 INSERT INTO `feehi_auth_item` VALUES ('/user/update', '2', null, null, null, '1516958352', '1516958352');
 INSERT INTO `feehi_auth_item` VALUES ('/user/view', '2', null, null, null, '1516958352', '1516958352');
-INSERT INTO `feehi_auth_item` VALUES ('普通权限', '2', null, null, null, '1516958629', '1516958629');
-INSERT INTO `feehi_auth_item` VALUES ('普通管理员', '1', null, null, null, '1516958565', '1516958565');
+INSERT INTO `feehi_auth_item` VALUES ('友情链接权限', '2', null, null, null, '1516958629', '1517024032');
+INSERT INTO `feehi_auth_item` VALUES ('友情链接管理员', '1', '友情链接', null, null, '1517024115', '1517024302');
+INSERT INTO `feehi_auth_item` VALUES ('文章管理员', '1', '文章', null, null, '1516958565', '1517024331');
+INSERT INTO `feehi_auth_item` VALUES ('普通管理员', '1', '文章|友情链接|分类', null, null, '1517024186', '1517024260');
+INSERT INTO `feehi_auth_item` VALUES ('超级管理员', '1', null, null, null, '1517023757', '1517023757');
 
 -- ----------------------------
 -- Table structure for feehi_auth_item_child
@@ -509,18 +553,168 @@ CREATE TABLE `feehi_auth_item_child` (
 -- ----------------------------
 -- Records of feehi_auth_item_child
 -- ----------------------------
-INSERT INTO `feehi_auth_item_child` VALUES ('普通权限', '/category/*');
-INSERT INTO `feehi_auth_item_child` VALUES ('普通权限', '/category/create');
-INSERT INTO `feehi_auth_item_child` VALUES ('普通权限', '/category/delete');
-INSERT INTO `feehi_auth_item_child` VALUES ('普通权限', '/category/index');
-INSERT INTO `feehi_auth_item_child` VALUES ('普通权限', '/category/update');
-INSERT INTO `feehi_auth_item_child` VALUES ('普通权限', '/category/view');
-INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '/friend-link/*');
-INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '/friend-link/create');
-INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '/friend-link/delete');
-INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '/friend-link/index');
-INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '/friend-link/update');
-INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '/friend-link/view');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin-log/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin-log/create');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin-log/delete');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin-log/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin-log/update');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin-log/view');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/assignment/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/assignment/assign');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/assignment/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/assignment/revoke');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/assignment/view');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/default/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/default/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/menu/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/menu/create');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/menu/delete');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/menu/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/menu/update');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/menu/view');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/permission/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/permission/assign');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/permission/create');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/permission/delete');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/permission/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/permission/remove');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/permission/update');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/permission/view');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/role/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/role/assign');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/role/create');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/role/delete');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/role/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/role/remove');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/role/update');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/role/view');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/route/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/route/assign');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/route/create');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/route/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/route/refresh');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/route/remove');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/rule/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/rule/create');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/rule/delete');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/rule/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/rule/update');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/rule/view');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/user/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/user/activate');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/user/change-password');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/user/delete');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/user/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/user/login');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/user/logout');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/user/request-password-reset');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/user/reset-password');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/user/signup');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/admin/user/view');
+INSERT INTO `feehi_auth_item_child` VALUES ('文章管理员', '/article/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/article/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('文章管理员', '/article/create');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/article/create');
+INSERT INTO `feehi_auth_item_child` VALUES ('文章管理员', '/article/delete');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/article/delete');
+INSERT INTO `feehi_auth_item_child` VALUES ('文章管理员', '/article/delete-file');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/article/delete-file');
+INSERT INTO `feehi_auth_item_child` VALUES ('文章管理员', '/article/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/article/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('文章管理员', '/article/update');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/article/update');
+INSERT INTO `feehi_auth_item_child` VALUES ('文章管理员', '/article/upload-file');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/article/upload-file');
+INSERT INTO `feehi_auth_item_child` VALUES ('文章管理员', '/article/upload-image');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/article/upload-image');
+INSERT INTO `feehi_auth_item_child` VALUES ('文章管理员', '/article/view');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/article/view');
+INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '/category/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/category/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '/category/create');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/category/create');
+INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '/category/delete');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/category/delete');
+INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '/category/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/category/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '/category/update');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/category/update');
+INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '/category/view');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/category/view');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/clear/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/clear/backend');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/clear/frontend');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/debug/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/debug/default/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/debug/default/db-explain');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/debug/default/download-mail');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/debug/default/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/debug/default/toolbar');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/debug/default/view');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/debug/user/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/debug/user/reset-identity');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/debug/user/set-identity');
+INSERT INTO `feehi_auth_item_child` VALUES ('友情链接权限', '/friend-link/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/friend-link/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('友情链接权限', '/friend-link/create');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/friend-link/create');
+INSERT INTO `feehi_auth_item_child` VALUES ('友情链接权限', '/friend-link/delete');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/friend-link/delete');
+INSERT INTO `feehi_auth_item_child` VALUES ('友情链接权限', '/friend-link/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/friend-link/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('友情链接权限', '/friend-link/update');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/friend-link/update');
+INSERT INTO `feehi_auth_item_child` VALUES ('友情链接权限', '/friend-link/view');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/friend-link/view');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/gii/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/gii/default/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/gii/default/action');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/gii/default/diff');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/gii/default/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/gii/default/preview');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/gii/default/view');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/layer/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/layer/iframe');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/menu/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/menu/create');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/menu/delete');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/menu/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/menu/update');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/menu/view');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/setting/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/setting/email');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/setting/webseo');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/setting/website');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/site/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/site/captcha');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/site/error');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/site/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/site/login');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/site/logout');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/site/main');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/ueditor/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/ueditor/catch-image');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/ueditor/config');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/ueditor/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/ueditor/list-file');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/ueditor/list-image');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/ueditor/upload-file');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/ueditor/upload-image');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/ueditor/upload-scrawl');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/ueditor/upload-video');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/user/*');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/user/create');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/user/delete');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/user/index');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/user/update');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '/user/view');
+INSERT INTO `feehi_auth_item_child` VALUES ('友情链接管理员', '友情链接权限');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '友情链接权限');
+INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '友情链接管理员');
+INSERT INTO `feehi_auth_item_child` VALUES ('普通管理员', '文章管理员');
+INSERT INTO `feehi_auth_item_child` VALUES ('超级管理员', '文章管理员');
 
 -- ----------------------------
 -- Table structure for feehi_auth_menu
@@ -529,19 +723,41 @@ DROP TABLE IF EXISTS `feehi_auth_menu`;
 CREATE TABLE `feehi_auth_menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) DEFAULT NULL,
-  `parent` int(11) DEFAULT NULL,
+  `parent` int(11) DEFAULT '0',
   `route` varchar(256) DEFAULT NULL,
   `order` int(11) DEFAULT NULL,
-  `data` blob,
+  `data` varchar(256) CHARACTER SET utf8mb4 DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `parent` (`parent`),
   CONSTRAINT `feehi_auth_menu_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `feehi_auth_menu` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of feehi_auth_menu
 -- ----------------------------
-INSERT INTO `feehi_auth_menu` VALUES ('1', '友情链接', null, '/friend-link/index', null, null);
+INSERT INTO `feehi_auth_menu` VALUES ('1', '设置管理', null, null, '1', 'fa fa-cogs');
+INSERT INTO `feehi_auth_menu` VALUES ('2', '网站管理', '1', '/setting/website', null, 'fa fa-angle-double-right');
+INSERT INTO `feehi_auth_menu` VALUES ('3', '邮箱设置', '1', '/setting/email', null, 'fa fa-angle-double-right');
+INSERT INTO `feehi_auth_menu` VALUES ('4', '用户管理', null, null, '2', 'fa fa-users');
+INSERT INTO `feehi_auth_menu` VALUES ('5', '前台用户', '4', '/user/index', null, 'fa fa-angle-double-right');
+INSERT INTO `feehi_auth_menu` VALUES ('6', '后台用户', '4', '/admin-user/index', null, 'fa fa-angle-double-right');
+INSERT INTO `feehi_auth_menu` VALUES ('7', '权限管理', null, null, '3', 'fa fa-check');
+INSERT INTO `feehi_auth_menu` VALUES ('8', '分配权限', '7', '/admin/assignment/index', null, 'fa fa-angle-double-right');
+INSERT INTO `feehi_auth_menu` VALUES ('9', '角色列表', '7', '/admin/role/index', null, 'fa fa-angle-double-right');
+INSERT INTO `feehi_auth_menu` VALUES ('10', '权限列表', '7', '/admin/permission/index', null, 'fa fa-angle-double-right');
+INSERT INTO `feehi_auth_menu` VALUES ('11', '路由列表', '7', '/admin/route/index', null, 'fa fa-angle-double-right');
+INSERT INTO `feehi_auth_menu` VALUES ('12', '菜单列表', '7', '/admin/menu/index', null, 'fa fa-angle-double-right');
+INSERT INTO `feehi_auth_menu` VALUES ('13', '内容管理', null, null, '4', 'fa fa-file-text');
+INSERT INTO `feehi_auth_menu` VALUES ('14', '分类管理', '13', '/category/index', null, 'fa fa-angle-double-right');
+INSERT INTO `feehi_auth_menu` VALUES ('15', '文章管理', '13', '/article/index', null, 'fa fa-angle-double-right');
+INSERT INTO `feehi_auth_menu` VALUES ('16', '友情链接', null, '/friend-link/index', '5', 'fa fa fa-link');
+INSERT INTO `feehi_auth_menu` VALUES ('17', '菜单管理', null, null, '6', 'fa fa-bars');
+INSERT INTO `feehi_auth_menu` VALUES ('18', '前台导航', '17', '/menu/index', null, 'fa fa-angle-double-right');
+INSERT INTO `feehi_auth_menu` VALUES ('19', '后台菜单', '17', '/menu/index', null, 'fa fa-angle-double-right');
+INSERT INTO `feehi_auth_menu` VALUES ('20', '缓存管理', null, null, '7', 'fa fa-file');
+INSERT INTO `feehi_auth_menu` VALUES ('21', '清除前台', '20', '/clear/frontend', null, 'fa fa-angle-double-right');
+INSERT INTO `feehi_auth_menu` VALUES ('22', '清除后台', '20', '/clear/backend', null, 'fa fa-angle-double-right');
+INSERT INTO `feehi_auth_menu` VALUES ('23', '日志管理', null, '/admin-log/index', '8', 'fa fa-history');
 
 -- ----------------------------
 -- Table structure for feehi_auth_rule

@@ -1,5 +1,6 @@
 <?php
 use backend\models\Category;
+use mdm\admin\models\Menu;
 use backend\helper\Tree;
 use yii\helpers\Url;
 /**
@@ -90,6 +91,56 @@ function hintInfo($info, $model=''){
 	}
 	yii::$app->session->setFlash('info', json_encode($info));
 }
+
+/**
+ * @param int|array $currentIds
+ * @param string $tpl
+ * @return string
+ */
+function dataTree($currentIds = 0, $tpl = '')
+{
+    $categories = Menu::find()
+                ->orderBy('order ASC')
+                ->asArray()
+                ->all();
+
+    $tree       = new Tree();
+    if (!is_array($currentIds)) {
+        $currentIds = [$currentIds];
+    }
+
+    $newCategories = [];
+    foreach ($categories as $item) {
+    	$item['parent_id'] = $item['parent'];
+        array_push($newCategories, $item);
+    }
+
+    $tree->init($newCategories);
+    $treeStr = $tree->getTreeArray(0);
+
+    return $treeStr;
+}
+
+/**
+ * @param int|array $currentIds
+ * @param string $tpl
+ * @return string
+ */
+function menuTree($currentIds = 0, $tpl = '')
+{
+	$data = dataTree();
+
+	foreach ($data as $k => $vo) {
+
+
+
+	}
+
+    return $treeStr;
+}
+
+
+
 
 /**
  * @param int|array $currentIds

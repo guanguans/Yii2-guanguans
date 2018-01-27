@@ -50,8 +50,102 @@ $this->title = '主页';
                         <div class="logo-element">
                             琯琯
                         </div>
-                    </li>
 
+                    </li>
+                    <li>
+                        <a class="J_menuItem" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">设置管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['setting/website']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">网站设置</span></a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['setting/email']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">邮箱设置</span></a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['user/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">前台用户</span></a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['admin-user/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">后台用户</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a class="J_menuItem" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">权限管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level collapse" aria-expanded="false" style="height: 0px;">
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['admin/assignment']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">分配权限</span></a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['admin/role']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">角色列表</span></a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['admin/permission']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">权限列表</span></a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['admin/route']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">路由列表</span></a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['admin/menu']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">菜单列表</span></a>
+                            </li>
+                            <!-- <li>
+                                <a class="J_menuItem" href="<?= Url::to(['admin/rule']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">规则列表</span></a>
+                            </li> -->
+                            <!-- <li>
+                                <a class="J_menuItem" href="<?= Url::to(['admin/user']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">用户列表</span></a>
+                            </li> -->
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">内容管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['category/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">分类管理</span></a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['article/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">文章管理</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" href="<?= Url::to(['friend-link/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">友情连接</span></a>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">菜单管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['menu/index', 'type'=>1]) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">前台导航</span></a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['menu/index', 'type'=>0]) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">后台菜单</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">缓存管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['clear/frontend']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">清除前台</span></a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="<?= Url::to(['clear/backend']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">清除后台</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" href="<?= Url::to(['admin-log/index']) ?>" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">日志管理</span></a>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" href="gii" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">Gii</span></a>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" href="debug" data-index="4"><i class="fa fa-columns"></i> <span class="nav-label">Debug</span></a>
+                    </li>
                     <?php $menuData = dataTree(); ?>
                     <?php foreach ($menuData as $k => $v): ?>
                     <li>
