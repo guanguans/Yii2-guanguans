@@ -36,6 +36,12 @@ class Admin extends Component
                 $event->sender->updated_at = null;
             }
         });
+        // 登录控制
+        if (Yii::$app->user->isGuest) {
+            if (!in_array(Yii::$app->request->pathInfo, ['site/login', 'site/captcha'])) {
+                    return Yii::$app->getResponse()->redirect(Yii::$app->getHomeUrl());
+            }
+        }
     }
 
 }
