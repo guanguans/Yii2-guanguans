@@ -52,7 +52,27 @@ $this->title = '主页';
                         </div>
                     </li>
 
-                    <?php $menuData = dataTree(); ?>
+                    <?php
+                        use mdm\admin\components\MenuHelper;
+
+                        $callback = function($menu){
+                            $data = json_decode($menu['data'], true);
+                            $items = $menu['children'];
+                            $return = [
+                                'id' => $menu['id'],
+                                'name' => $menu['name'],
+                                'data' => $menu['data'],
+                                'route' => $menu['route'],
+                                'children' => [],
+                            ];
+
+                            (!isset($return['data']) || !$return['data']) && $return['data'] = 'fa fa-circle-o';
+                            $items && $return['children'] = $items;
+                            return $return;
+                        };
+
+                        $menuData = MenuHelper::getAssignedMenu(Yii::$app->user->id, null, $callback);
+                    ?>
                     <?php foreach ($menuData as $k => $v): ?>
                     <li>
                         <?php if ($v['children']): ?>
@@ -70,6 +90,7 @@ $this->title = '主页';
                         </ul>
                     </li>
                     <?php endforeach ?>
+
                 </ul>
             </div>
         </nav>

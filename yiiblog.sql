@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-01-27 17:57:25
+Date: 2018-01-29 17:26:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -363,9 +363,11 @@ CREATE TABLE `feehi_auth_assignment` (
 -- Records of feehi_auth_assignment
 -- ----------------------------
 INSERT INTO `feehi_auth_assignment` VALUES ('友情链接权限', '1', '1517023581');
-INSERT INTO `feehi_auth_assignment` VALUES ('友情链接权限', '2', '1517023702');
+INSERT INTO `feehi_auth_assignment` VALUES ('友情链接管理员', '1', '1517195448');
+INSERT INTO `feehi_auth_assignment` VALUES ('友情链接管理员', '2', '1517195519');
 INSERT INTO `feehi_auth_assignment` VALUES ('文章管理员', '1', '1517023581');
-INSERT INTO `feehi_auth_assignment` VALUES ('文章管理员', '2', '1517023702');
+INSERT INTO `feehi_auth_assignment` VALUES ('文章管理员', '2', '1517217873');
+INSERT INTO `feehi_auth_assignment` VALUES ('普通管理员', '1', '1517195448');
 INSERT INTO `feehi_auth_assignment` VALUES ('超级管理员', '1', '1517023860');
 
 -- ----------------------------

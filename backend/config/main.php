@@ -45,6 +45,18 @@ return [
                 ],
             ],
         ],
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages', // if advanced application, set @frontend/messages
+                    'sourceLanguage' => 'zh-CN',
+                    'fileMap' => [
+                        //'main' => 'main.php',
+                    ],
+                ],
+            ],
+        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -65,11 +77,11 @@ return [
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
-            'site/*',//允许访问的节点，可自行添加
-            'admin/*',//允许所有人访问admin节点及其子节点
-            '*',
-            '/gii/*',
-            '/debug/*',
+            'site/index',//允许访问的节点，可自行添加
+            'site/login',
+            'site/main',
+            'site/logout',
+            'site/captcha',
         ]
     ],
     'controllerMap' => [
