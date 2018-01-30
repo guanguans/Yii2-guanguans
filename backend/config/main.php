@@ -28,7 +28,7 @@ return [
         ],
         'user' => [
             'identityClass' => 'backend\models\AdminUser',
-            'enableAutoLogin' => true,
+            'enableAutoLogin' => false,
             'authTimeout' => 1800, // 登陆有效时间
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
