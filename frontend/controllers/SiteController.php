@@ -72,7 +72,21 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $query = $query = \backend\models\Article::find()
+                ->select(['id', 'post_title', 'user_id', 'post_hits', 'post_content', 'post_excerpt', 'published_time'])
+                ->where(['post_status'=>1, 'post_type'=>1])
+                ->orderBy('published_time DESC');
+        $countQuery = clone $query;
+        $pages = new \yii\data\Pagination(['totalCount' => $countQuery->count()]);
+        $pages->defaultPageSize = 10;
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        return $this->render('index', [
+             'models' => $models,
+             'pages' => $pages,
+        ]);
     }
 
     /**
@@ -139,6 +153,17 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    /**
+     * Displays about page.
+     *
+     * @return mixed
+     */
+    public function actionArticle($id)
+    {
+        $article = \backend\models\Article::findOne($id);
+        return $this->render('article', ['article'=>$article]);
     }
 
     /**

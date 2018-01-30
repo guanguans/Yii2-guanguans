@@ -3,6 +3,7 @@ use backend\models\Category;
 use mdm\admin\models\Menu;
 use backend\helper\Tree;
 use yii\helpers\Url;
+use yii\web\Response;
 /**
  * 获取当前登录的前台用户的信息，未登录时，返回false
  * @return array|boolean
@@ -122,26 +123,6 @@ function dataTree($currentIds = 0, $tpl = '')
     return $treeStr;
 }
 
-/**
- * @param int|array $currentIds
- * @param string $tpl
- * @return string
- */
-function menuTree($currentIds = 0, $tpl = '')
-{
-	$data = dataTree();
-
-	foreach ($data as $k => $vo) {
-
-
-
-	}
-
-    return $treeStr;
-}
-
-
-
 
 /**
  * @param int|array $currentIds
@@ -241,14 +222,199 @@ function p($arr=''){
     var_dump($arr);
 }
 
-/**
- * 打印数组对象并停止
- */
-function pp($arr=''){
-    echo '<pre>';
-    print_r($arr);
-    exit;
+//传递数据以易于阅读的样式格式化后输出
+function pp($data='')
+{
+    // 定义样式
+    $str='<pre style="display: block;padding: 9.5px;margin: 44px 0 0 0;font-size: 13px;line-height: 1.42857;color: #333;word-break: break-all;word-wrap: break-word;background-color: #F5F5F5;border: 1px solid #CCC;border-radius: 4px;">';
+    // 如果是boolean或者null直接显示文字；否则print
+    if (is_bool($data)) {
+        $show_data=$data ? 'true' : 'false';
+    }elseif (is_null($data)) {
+        $show_data='null';
+    }else{
+        $show_data=print_r($data,true);
+    }
+    $str.=$show_data;
+    $str.='</pre>';
+    exit($str);
 }
+
+
+// 全局函数
+if (!function_exists('pp')) {
+	//传递数据以易于阅读的样式格式化后输出
+	function pp($data='')
+	{
+	    // 定义样式
+	    $str='<pre style="display: block;padding: 9.5px;margin: 44px 0 0 0;font-size: 13px;line-height: 1.42857;color: #333;word-break: break-all;word-wrap: break-word;background-color: #F5F5F5;border: 1px solid #CCC;border-radius: 4px;">';
+	    // 如果是boolean或者null直接显示文字；否则print
+	    if (is_bool($data)) {
+	        $show_data=$data ? 'true' : 'false';
+	    }elseif (is_null($data)) {
+	        $show_data='null';
+	    }else{
+	        $show_data=print_r($data,true);
+	    }
+	    $str.=$show_data;
+	    $str.='</pre>';
+	    exit($str);
+	}
+}
+
+
+if (!function_exists('app')) {
+    /**
+     * App或App的定义组件
+     *
+     * @param null $component Yii组件名称
+     * @param bool $throwException 获取未定义组件是否报错
+     * @return null|object|\yii\console\Application|\yii\web\Application
+     * @throws \yii\base\InvalidConfigException
+     */
+    function app($component = null, $throwException = true)
+    {
+        if ($component === null) {
+            return Yii::$app;
+        }
+        return Yii::$app->get($component, $throwException);
+    }
+}
+if (!function_exists('t')) {
+    /**
+     * i18n 国际化
+     * @param $category
+     * @param $message
+     * @param array $params
+     * @param null $language
+     * @return string
+     */
+    function t($category, $message, $params = [], $language = null)
+    {
+        return Yii::t($category, $message, $params, $language);
+    }
+}
+
+if (!function_exists('user')) {
+    /**
+     * User组件或者(设置|返回)identity属性
+     *
+     * @param null|string|array $attribute idenity属性
+     * @return \yii\web\User|string|array
+     */
+    function user($attribute = null)
+    {
+        if ($attribute === null) {
+            return Yii::$app->getUser();
+        }
+        if (is_array($attribute)) {
+            return Yii::$app->getUser()->getIdentity()->setAttributes($attribute);
+        }
+        return Yii::$app->getUser()->getIdentity()->{$attribute};
+    }
+}
+if (!function_exists('request')) {
+    /**
+     * Request组件或者通过Request组件获取GET值
+     *
+     * @param string $key
+     * @param mixed $default
+     * @return \yii\web\Request|string|array
+     */
+    function request($key = null, $default = null)
+    {
+        if ($key === null) {
+            return Yii::$app->getRequest();
+        }
+        return Yii::$app->getRequest()->getQueryParam($key, $default);
+    }
+}
+if (!function_exists('response')) {
+    /**
+     * Response组件或者通过Response组织内容
+     *
+     * @param string $content 响应内容
+     * @param string $format 响应格式
+     * @param null $status
+     * @return Response
+     */
+    function response($content = '', $format = Response::FORMAT_HTML, $status = null)
+    {
+        $response = Yii::$app->getResponse();
+        if (func_num_args() !== 0) {
+            $response->format = $format;
+            if ($status !== null) {
+                $response->setStatusCode($status);
+            }
+            if ($format === Response::FORMAT_HTML) {
+                $response->content = $content;
+            } else {
+                $response->data = $content;
+            }
+        }
+        return $response;
+    }
+}
+
+if (!function_exists('params')) {
+    /**
+     * params 组件或者通过 params 组件获取GET值
+     * @param $key
+     * @return mixed|\yii\web\Session
+     */
+    function params($key)
+    {
+        return Yii::$app->params[$key];
+    }
+}
+
+if (!function_exists('session')) {
+    /**
+     * Session组件或者通过Session组件获取GET值
+     * @param null $key
+     * @return mixed|\yii\web\Session
+     */
+    function session($key = null)
+    {
+        if ($key === null) {
+            return Yii::$app->session;
+        }
+        return Yii::$app->getSession()->get($key);
+    }
+}
+
+if (!function_exists('cache')) {
+    /**
+     * Cache组件或者通过Cache组件获取GET值
+     * @param null $key
+     * @return mixed|\yii\caching\Cache
+     */
+    function cache($key = null)
+    {
+        if ($key === null) {
+            return Yii::$app->cache;
+        }
+        return Yii::$app->getCache()->get($key);
+    }
+}
+
+if (!function_exists('pr')) {
+    /**
+     * 调试专用
+     * @param $message
+     * @param bool|true $debug
+     */
+    function pr($message, $debug = true)
+    {
+        echo '<pre>';
+        print_r($message);
+        echo '</pre>';
+        if ($debug) {
+            die;
+        }
+    }
+}
+
 
 /**
  * 密码加密方法

@@ -1,53 +1,80 @@
 <?php
 
 /* @var $this yii\web\View */
-
-$this->title = 'My Yii Application';
+use yii\helpers\Url;
+use yii\helpers\StringHelper;
+$this->title = Yii::$app->name;
 ?>
-<div class="site-index">
+<div class="site-index row">
+	<div class="col-md-9">
+		<?php foreach ($models as $key => $value): ?>
+	    <div class="media">
+	      <div class="media-left media-middle">
+	        <a href="#">
+			    <img class="media-object" src="https://static.oschina.net/uploads/img/201711/15190729_qSNe.jpg" width="150" height="93" alt="...">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+	        </a>
+	      </div>
+	      <div class="media-body">
+	        <h4 class="media-heading"><?= $value->post_title ?></h4>
+	        <p>
+	        	<?= mb_substr($value->post_excerpt, 0, 100) ?>...&nbsp;&nbsp;&nbsp;
+	        	<a href="<?= Url::to(['site/article', 'id'=>$value->id]) ?>" title="" class="pull-right">阅读全文&nbsp;&nbsp;&nbsp;>></a>
+	    	</p>
+	        <p class="row">
+	        	<span class="fa fa-user col-md-2">&nbsp;<?= $value->user_id ?></span>
+	        	<span class="fa fa-list col-md-2">&nbsp;</span>
+	        	<span class="fa fa-eye col-md-2">&nbsp;<?= $value->post_hits ?></span>
+	        	<span class="fa fa-star-o col-md-2">&nbsp;</span>
+	        	<span class="fa fa-clock-o col-md-4">&nbsp;<?= date('Y-m-d H:i:s', $value->published_time) ?></span>
+	        </p>
+	      </div>
+	    </div>
+		<?php endforeach ?>
+		<div class="text-center">
+		<?php echo yii\widgets\LinkPager::widget([
+			    'pagination' => $pages,
+		]);?>
+		</div>
+	</div>
+	<?php
+		$top = backend\models\Article::find()
+			->select(['id', 'post_title', 'post_hits', 'published_time'])
+			->where(['post_status'=>1, 'post_type'=>1])
+			->orderBy('post_hits DESC')
+			->limit(5)
+            ->all();
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        $recommended = backend\models\Article::find()
+			->select(['id', 'post_title', 'post_hits', 'published_time'])
+			->where(['post_status'=>1, 'post_type'=>1, 'recommended'=>1])
+			->orderBy('post_hits DESC')
+			->limit(5)
+            ->all();
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
+        $friendLink = backend\models\FriendLink::find()
+			->where(['status'=>1])
+			->orderBy('sort ASC')
+            ->all();
+	?>
+	<div class="col-md-3">
+	    <div class="list-group">
+	      <a href="#" class="list-group-item active">排行榜</a>
+	      <?php foreach ($top as $key => $value): ?>
+	      <a href="<?= Url::to(['article/view', 'id'=>$value->id]) ?>" class="list-group-item"><?= mb_substr($value->post_title, 0, 15)?>...<span class="badge"><?= $value->post_hits ?></span></a>
+	      <?php endforeach ?>
+	    </div>
+	    <div class="list-group">
+	      <a href="#" class="list-group-item active">推荐</a>
+	      <?php foreach ($recommended as $key => $value): ?>
+	      <a href="<?= Url::to(['article/view', 'id'=>$value->id]) ?>" class="list-group-item"><?= mb_substr($value->post_title, 0, 15)?>...<span class="badge"><?= $value->post_hits ?></span></a>
+	      <?php endforeach ?>
+	    </div>
+	    <div class="list-group">
+	      <a href="#" class="list-group-item active">友情链接</a>
+	      <?php foreach ($friendLink as $key => $value): ?>
+	      <a href="<?= $value->url ?>" class="list-group-item" target="<?= $value->target ?>"><?= $value->name ?></a>
+	      <?php endforeach ?>
+	    </div>
+	</div>
 </div>

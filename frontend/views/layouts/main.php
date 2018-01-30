@@ -4,6 +4,8 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -35,11 +37,17 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-    ];
+    $menuItems = frontend\models\Menu::find()
+        ->where(['is_display'=>1, 'type'=>1])
+        ->orderBy('sort ASC')
+        ->asArray()
+        ->all();
+    foreach ($menuItems as $key => &$value) {
+        $value['label'] = $value['name'];
+    }
+    $menuItems[] = ['label' => 'About', 'url' => ['/site/about']];
+    $menuItems[] = ['label' => 'Contact', 'url' => ['/site/contact']];
+
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
