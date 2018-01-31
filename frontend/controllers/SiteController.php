@@ -73,6 +73,13 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $cid = empty(Yii::$app->request->get('cid')) ? 0 : intval(Yii::$app->request->get('cid'));
+        $where = [
+            'post_status'=>1,
+            'post_type'=>1,
+        ];
+        if ($cid) {
+            $where['category_id'] = $cid;
+        }
         // 关联查询
         $query = \backend\models\Article::find()
                 ->select(['feehi_article.id', 'post_title', 'user_id', 'post_hits', 'post_content', 'post_excerpt', 'published_time'])
@@ -82,7 +89,7 @@ class SiteController extends Controller
                     },
                     'categorys'
                 ])
-                ->where(['post_status'=>1, 'post_type'=>1, 'category_id'=>$cid])
+                ->where($where)
                 ->groupBy(['post_id'])
                 ->orderBy('published_time DESC')
                 // ->asArray()
