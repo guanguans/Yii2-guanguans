@@ -37,17 +37,23 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    $menuItems = frontend\models\Menu::find()
+    $menuItemsDropdown = frontend\models\Menu::find()
         ->where(['is_display'=>1, 'type'=>1])
         ->orderBy('sort ASC')
         ->asArray()
         ->all();
-    foreach ($menuItems as $key => &$value) {
+    foreach ($menuItemsDropdown as $key => &$value) {
         $value['label'] = $value['name'];
+        $value['url'] = Url::to([$value['url'], 'cid'=>$value['icon']]);
     }
+
+    $menuItems[] = ['label' => 'Home', 'url' => ['/']];
+    $menuItems[] = [
+        'label' => '分类',
+        'items' => $menuItemsDropdown,
+    ];
     $menuItems[] = ['label' => 'About', 'url' => ['/site/about']];
     $menuItems[] = ['label' => 'Contact', 'url' => ['/site/contact']];
-
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
@@ -67,7 +73,6 @@ AppAsset::register($this);
     ]);
     NavBar::end();
     ?>
-
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],

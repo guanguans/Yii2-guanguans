@@ -4,6 +4,7 @@ namespace backend\models;
 
 use Yii;
 use backend\models\CategoryArticle;
+use backend\models\AdminUser;
 
 
 /**
@@ -105,9 +106,15 @@ class Article extends \yii\db\ActiveRecord
     public function getCategorys()
     {
         // 文章和分类文章通过 CategoryArticle.post_id -> id 关联建立一对多关系
-        return $this->hasMany(CategoryArticle::className(), ['post_id' => 'id'])
-                   ->select(['category_id']);
+        return $this->hasMany(CategoryArticle::className(), ['post_id' => 'id']);
+                   // ->select(['category_id']);
                    // ->asArray();
+    }
+
+    public function getAdminUser()
+    {
+        // 文章和分类文章通过 CategoryArticle.post_id -> id 关联建立一对一关系
+        return $this->hasOne(AdminUser::className(), ['id' => 'user_id']);
     }
 
     /**

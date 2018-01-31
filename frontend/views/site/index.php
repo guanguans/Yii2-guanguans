@@ -16,16 +16,29 @@ $this->title = Yii::$app->name;
 	        </a>
 	      </div>
 	      <div class="media-body">
-	        <h4 class="media-heading"><?= $value->post_title ?></h4>
+	        <a href="<?= Url::to(['site/article', 'id'=>$value->id]) ?>">
+	        	<h4 class="media-heading text-info lead"><?= $value->post_title ?></h4>
+	        </a>
 	        <p>
 	        	<?= mb_substr($value->post_excerpt, 0, 100) ?>...&nbsp;&nbsp;&nbsp;
 	        	<a href="<?= Url::to(['site/article', 'id'=>$value->id]) ?>" title="" class="pull-right">阅读全文&nbsp;&nbsp;&nbsp;>></a>
 	    	</p>
 	        <p class="row">
-	        	<span class="fa fa-user col-md-2">&nbsp;<?= $value->user_id ?></span>
-	        	<span class="fa fa-list col-md-2">&nbsp;</span>
-	        	<span class="fa fa-eye col-md-2">&nbsp;<?= $value->post_hits ?></span>
-	        	<span class="fa fa-star-o col-md-2">&nbsp;</span>
+	        	<?php
+	        		$cids = yii\helpers\ArrayHelper::getColumn($value->categorys, 'category_id');
+
+	        		$categoryNames = implode(',', yii\helpers\ArrayHelper::getColumn(\backend\models\Category::find()
+	        			->select(['name'])
+	        			->where(['id'=>$cids])
+	        			->asArray()
+	        			->all(), 'name')
+	        		);
+	        		// pp($categoryNames);
+	        	?>
+	        	<span class="fa fa-user col-md-2">&nbsp;<?= $value->adminUser['username'] ?></span>
+	        	<span class="fa fa-list col-md-4">&nbsp;<?= $categoryNames ?></span>
+	        	<span class="fa fa-eye col-md-1">&nbsp;<?= $value->post_hits ?></span>
+	        	<span class="fa fa-star-o col-md-1">&nbsp;</span>
 	        	<span class="fa fa-clock-o col-md-4">&nbsp;<?= date('Y-m-d H:i:s', $value->published_time) ?></span>
 	        </p>
 	      </div>
@@ -61,13 +74,13 @@ $this->title = Yii::$app->name;
 	    <div class="list-group">
 	      <a href="#" class="list-group-item active">排行榜</a>
 	      <?php foreach ($top as $key => $value): ?>
-	      <a href="<?= Url::to(['article/view', 'id'=>$value->id]) ?>" class="list-group-item"><?= mb_substr($value->post_title, 0, 15)?>...<span class="badge"><?= $value->post_hits ?></span></a>
+	      <a href="<?= Url::to(['site/article', 'id'=>$value->id]) ?>" class="list-group-item"><?= mb_substr($value->post_title, 0, 15)?>...<span class="badge"><?= $value->post_hits ?></span></a>
 	      <?php endforeach ?>
 	    </div>
 	    <div class="list-group">
 	      <a href="#" class="list-group-item active">推荐</a>
 	      <?php foreach ($recommended as $key => $value): ?>
-	      <a href="<?= Url::to(['article/view', 'id'=>$value->id]) ?>" class="list-group-item"><?= mb_substr($value->post_title, 0, 15)?>...<span class="badge"><?= $value->post_hits ?></span></a>
+	      <a href="<?= Url::to(['site/article', 'id'=>$value->id]) ?>" class="list-group-item"><?= mb_substr($value->post_title, 0, 15)?>...<span class="badge"><?= $value->post_hits ?></span></a>
 	      <?php endforeach ?>
 	    </div>
 	    <div class="list-group">

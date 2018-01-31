@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2018-01-30 18:06:28
+Date: 2018-01-31 18:07:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,7 +29,7 @@ CREATE TABLE `feehi_admin_log` (
   PRIMARY KEY (`id`),
   KEY `fk_user_id` (`user_id`),
   CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `feehi_admin_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of feehi_admin_log
@@ -74,6 +74,10 @@ INSERT INTO `feehi_admin_log` VALUES ('71', '1', 'friend-link/delete', '{{%ADMIN
 INSERT INTO `feehi_admin_log` VALUES ('72', '1', 'article/delete', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} backend\\models\\Article [ {{%article}} ]  {{%DELETED%}} {{%ID%}} 63 {{%RECORD%}}: <br>ID(id) => 63,<br>parent_id(parent_id) => 0,<br>类型,1:文章;2:页面(post_type) => 1,<br>内容格式;1:html;2:md(post_format) => 1,<br>作者(user_id) => 1,<br>状态;1:已发布;0:未发布;(post_status) => 0,<br>评论状态;1:允许;0:不允许(comment_status) => 1,<br>是否置顶;1:置顶;0:不置顶(is_top) => 1,<br>是否推荐;1:推荐;0:不推荐(recommended) => 1,<br>点击量(post_hits) => 0,<br>点赞量(post_like) => 0,<br>评论量(comment_count) => 0,<br>创建时间(create_time) => 0,<br>更新时间(update_time) => 0,<br>发布时间(published_time) => 1515832535,<br>删除时间(delete_time) => 0,<br>标题(post_title) => php是最好的语言,<br>关键词(post_keywords) => [\"php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a00php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a00php\\u662f\\u6700\\u597d\\u7684\\u8bed\\u8a00\"],<br>摘要(post_excerpt) => php是最好的语言php是最好的语言php是最好的语言php是最好的语言php是最好的语言,<br>文章来源(post_source) => php是最好的语言php是最好的语言php是最好的语言php是最好的语言,<br>内容(post_content) => <p>php是最好的语言php是最好的语言php是最好的语言php是最好的语言</p>,<br>处理过的文章内容(post_content_filtered) => ,<br>扩展属性,如缩略图;格式为json(more) => {\"thumbnail\":\"\",\"photos\":\"\",\"files\":\"\"}', '1517218452', '1517218452');
 INSERT INTO `feehi_admin_log` VALUES ('73', '1', 'menu/update', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} backend\\models\\Menu [ {{%menu}} ]  {{%UPDATED%}} {{%ID%}} 19 {{%RECORD%}}: <br>名称(name) : 首页=>Home', '1517294159', '1517294159');
 INSERT INTO `feehi_admin_log` VALUES ('74', '1', 'menu/update', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} backend\\models\\Menu [ {{%menu}} ]  {{%UPDATED%}} {{%ID%}} 22 {{%RECORD%}}: <br>状态(is_display) : 1=>0,<br>更新时间(updated_at) : 0=>', '1517295163', '1517295163');
+INSERT INTO `feehi_admin_log` VALUES ('75', '1', 'menu/update', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} backend\\models\\Menu [ {{%menu}} ]  {{%UPDATED%}} {{%ID%}} 19 {{%RECORD%}}: <br>名称(name) : Home=>PHP,<br>操作路由(url) : /=>site/index,<br>图标(icon) : =>1', '1517382217', '1517382217');
+INSERT INTO `feehi_admin_log` VALUES ('76', '1', 'menu/update', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} backend\\models\\Menu [ {{%menu}} ]  {{%UPDATED%}} {{%ID%}} 20 {{%RECORD%}}: <br>名称(name) : php=>java,<br>操作路由(url) : cat/php=>site/index,<br>图标(icon) : =>2,<br>更新时间(updated_at) : 0=>', '1517382263', '1517382263');
+INSERT INTO `feehi_admin_log` VALUES ('77', '1', 'menu/update', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} backend\\models\\Menu [ {{%menu}} ]  {{%UPDATED%}} {{%ID%}} 21 {{%RECORD%}}: <br>名称(name) : java=>javascript,<br>操作路由(url) : cat/java=>site/index,<br>图标(icon) : =>3,<br>更新时间(updated_at) : 0=>', '1517382298', '1517382298');
+INSERT INTO `feehi_admin_log` VALUES ('78', '1', 'menu/update', '{{%ADMIN_USER%}} [ admin ] {{%BY%}} backend\\models\\Menu [ {{%menu}} ]  {{%UPDATED%}} {{%ID%}} 22 {{%RECORD%}}: <br>名称(name) : javascript=>linux,<br>操作路由(url) : cat/javascript=>site/index,<br>图标(icon) : =>8', '1517382357', '1517382357');
 
 -- ----------------------------
 -- Table structure for feehi_admin_roles
@@ -844,27 +848,39 @@ CREATE TABLE `feehi_category_article` (
   `status` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '状态,1:发布;0:不发布',
   PRIMARY KEY (`id`),
   KEY `term_taxonomy_id` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8 COMMENT='portal应用 分类文章对应表';
+) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8 COMMENT='portal应用 分类文章对应表';
 
 -- ----------------------------
 -- Records of feehi_category_article
 -- ----------------------------
-INSERT INTO `feehi_category_article` VALUES ('65', '64', '1', '10000', '1');
-INSERT INTO `feehi_category_article` VALUES ('66', '64', '7', '10000', '1');
-INSERT INTO `feehi_category_article` VALUES ('67', '64', '9', '10000', '1');
-INSERT INTO `feehi_category_article` VALUES ('68', '64', '6', '10000', '1');
-INSERT INTO `feehi_category_article` VALUES ('69', '64', '10', '10000', '1');
-INSERT INTO `feehi_category_article` VALUES ('70', '64', '11', '10000', '1');
-INSERT INTO `feehi_category_article` VALUES ('71', '64', '13', '10000', '1');
-INSERT INTO `feehi_category_article` VALUES ('72', '64', '2', '10000', '1');
-INSERT INTO `feehi_category_article` VALUES ('73', '64', '5', '10000', '1');
-INSERT INTO `feehi_category_article` VALUES ('74', '64', '3', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('74', '64', '1', '10000', '1');
 INSERT INTO `feehi_category_article` VALUES ('75', '63', '7', '10000', '1');
 INSERT INTO `feehi_category_article` VALUES ('76', '63', '10', '10000', '1');
 INSERT INTO `feehi_category_article` VALUES ('107', '62', '1', '10000', '1');
-INSERT INTO `feehi_category_article` VALUES ('108', '62', '7', '10000', '1');
-INSERT INTO `feehi_category_article` VALUES ('109', '62', '6', '10000', '1');
-INSERT INTO `feehi_category_article` VALUES ('110', '65', '7', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('110', '65', '1', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('111', '66', '1', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('112', '67', '1', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('113', '68', '1', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('114', '69', '1', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('115', '70', '1', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('116', '71', '1', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('117', '72', '2', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('118', '73', '2', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('119', '74', '2', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('120', '75', '2', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('121', '76', '2', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('122', '77', '2', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('123', '78', '2', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('124', '79', '2', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('125', '80', '2', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('126', '81', '3', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('127', '82', '3', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('128', '83', '3', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('129', '84', '4', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('130', '85', '4', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('131', '66', '4', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('132', '66', '4', '10000', '1');
+INSERT INTO `feehi_category_article` VALUES ('133', '66', '4', '10000', '1');
 
 -- ----------------------------
 -- Table structure for feehi_comment
@@ -965,10 +981,10 @@ INSERT INTO `feehi_menu` VALUES ('15', '0', '25', '管理员', 'admin-user/index
 INSERT INTO `feehi_menu` VALUES ('16', '0', '25', '角色', 'admin-roles/index', '', '10', '_blank', '0', '1', '1', '1470065689', '1488804907');
 INSERT INTO `feehi_menu` VALUES ('17', '0', '0', '友情链接', 'friend-link/index', 'fa fa-link', '5', '_blank', '0', '1', '0', '1470065784', '1488805061');
 INSERT INTO `feehi_menu` VALUES ('18', '0', '0', '日志', 'log/index', 'fa fa-history', '9', '_blank', '0', '1', '1', '1470065819', '1488804401');
-INSERT INTO `feehi_menu` VALUES ('19', '1', '0', 'Home', '/', '', '0', '_self', '0', '1', '0', '1470111187', '1478347757');
-INSERT INTO `feehi_menu` VALUES ('20', '1', '0', 'php', 'cat/php', '', '0', '_self', '0', '1', '0', '1470111200', '0');
-INSERT INTO `feehi_menu` VALUES ('21', '1', '0', 'java', 'cat/java', '', '0', '_self', '0', '1', '0', '1470111209', '0');
-INSERT INTO `feehi_menu` VALUES ('22', '1', '0', 'javascript', 'cat/javascript', '', '0', '_self', '0', '0', '0', '1470111222', null);
+INSERT INTO `feehi_menu` VALUES ('19', '1', '0', 'PHP', 'site/index', '1', '0', '_self', '0', '1', '0', '1470111187', '1478347757');
+INSERT INTO `feehi_menu` VALUES ('20', '1', '0', 'java', 'site/index', '2', '0', '_self', '0', '1', '0', '1470111200', null);
+INSERT INTO `feehi_menu` VALUES ('21', '1', '0', 'javascript', 'site/index', '3', '0', '_self', '0', '1', '0', '1470111209', null);
+INSERT INTO `feehi_menu` VALUES ('22', '1', '0', 'linux', 'site/index', '8', '0', '_self', '0', '0', '0', '1470111222', null);
 INSERT INTO `feehi_menu` VALUES ('24', '0', '13', '前台用户', 'user/index', '', '1', '_self', '0', '1', '1', '1476711715', '1488804296');
 INSERT INTO `feehi_menu` VALUES ('25', '0', '13', '后台用户', '', '', '2', '_self', '0', '1', '0', '1476711746', '1488805123');
 INSERT INTO `feehi_menu` VALUES ('26', '0', '0', '缓存', 'clear', 'fa fa-file', '8', '_self', '0', '1', '0', '1476711824', '1488805098');
