@@ -41,22 +41,11 @@ $this->title = Yii::$app->name;
 	        	<span class="fa fa-list col-md-4">&nbsp;<?= $categoryNames ?></span>
 	        	<span class="fa fa-eye col-md-1">&nbsp;<?= $value->post_hits ?></span>
         		<?php if (\frontend\models\UserFavorite::findOne(['user_id'=>Yii::$app->user->id, 'object_id'=>$value->id])): ?>
-        			<span class="fa fa-star col-md-1" title="已经收藏" style="cursor: pointer;">&nbsp;</span>
+        			<span class="fa fa-star col-md-1" title="已经收藏" onclick="alert('已经收藏过了');" style="cursor: pointer;">&nbsp;</span>
         		<?php else: ?>
-        			<span class="fa fa-star-o col-md-1" title="加入收藏" style="cursor: pointer;">&nbsp;</span>
+        			<span class="fa fa-star-o col-md-1" onclick="favorite(this);" data-id="<?= $value->id ?>" title="加入收藏" style="cursor: pointer;">&nbsp;</span>
         		<?php endif ?>
 	        	<span class="fa fa-clock-o col-md-4">&nbsp;<?= date('Y-m-d H:i:s', $value->published_time) ?></span>
-	        	<?php $this->beginBlock('starjs'); ?>
-		        	$(function(){
-		        		$('.fa-star-o').click(function(){
-		        			$.get("<?= Url::to(['site/favorite', 'object_id'=>$value->id]) ?>", {object_idddd: 333}, function(info){
-		        				console.log(info);
-		        			});
-
-			        	});
-		        	});
-	        	<?php $this->endBlock(); ?>
-	        	<?php $this->registerJs($this->blocks['starjs'], View::POS_END); ?>
 	        </p>
 	      </div>
 	    </div>
@@ -66,6 +55,19 @@ $this->title = Yii::$app->name;
 			    'pagination' => $pages,
 		]);?>
 		</div>
+    	<?php $this->beginBlock('starjs'); ?>
+    		function favorite(span){
+				var object_id = $(span).attr('data-id');
+				$.get("<?= Url::to(['site/favorite']) ?>", {object_id: object_id}, function(data){
+        			if (data == 1) {
+						$(span).attr('class', 'fa fa-star col-md-1');
+        			} else {
+						alert('已经收藏过了');
+        			}
+        		});
+    		}
+    	<?php $this->endBlock(); ?>
+    	<?php $this->registerJs($this->blocks['starjs'], View::POS_END); ?>
 	</div>
 	<?php
 		$top = backend\models\Article::find()

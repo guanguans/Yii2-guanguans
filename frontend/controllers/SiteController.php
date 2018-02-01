@@ -282,7 +282,6 @@ class SiteController extends Controller
      */
     public function actionFavorite()
     {
-        exit(123);
         if (Yii::$app->user->isGuest) {
             return $this->redirect(['site/login']);
         }
@@ -296,14 +295,9 @@ class SiteController extends Controller
             $model->object_id   = $object_id;
             $model->create_time = time();
             $model->save();
-            echo 111;
-            die;
+            echo 1; exit;
         } else {
-            echo 222;
-            die;
-            return $this->redirect('/');
+            echo 0; exit;
         }
-        echo 333;
-        return $this->redirect('/');
     }
 }
