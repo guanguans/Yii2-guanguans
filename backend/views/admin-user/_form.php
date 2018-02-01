@@ -16,6 +16,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'password')->passwordInput() ?>
+
     <?= $form->field($model, 'status')->dropDownList(['10'=>'正常', '0'=>'拉黑'], ['prompt'=>'请选择']) ?>
 
     <div class="form-group">

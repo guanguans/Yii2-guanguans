@@ -21,13 +21,15 @@ use common\models\User;
  */
 class AdminUser extends User
 {
+	public $password;
+
 	/**
 	 * @inheritdoc
 	 */
 	public function rules()
 	{
 	    return [
-	        [['username', 'auth_key', 'password_hash', 'email', 'created_at'], 'required'],
+	        [['username', 'email'], 'required'],
 	        [['status', 'created_at', 'updated_at'], 'integer'],
 	        [['username', 'password_hash', 'password_reset_token', 'email', 'avatar'], 'string', 'max' => 255],
 	        [['auth_key'], 'string', 'max' => 32],
@@ -70,6 +72,26 @@ class AdminUser extends User
 	public function getAdminRoleUsers()
 	{
 	    return $this->hasMany(AdminRoleUser::className(), ['uid' => 'id']);
+	}
+
+	/**
+	 * Signs user up.
+	 *
+	 * @return User|null the saved model or null if saving fails
+	 */
+	public function signup()
+	{
+	    if (!$this->validate()) {
+            hintInfo(['code'=>0,'data'=>'添加失败'], $this);
+	        return null;
+	    }
+	    $user = new User();
+	    $user->username = $this->username;
+	    $user->email = $this->email;
+	    $user->setPassword($this->password);
+	    $user->generateAuthKey();
+
+	    return $user->save() ? $user : null;
 	}
 
 }
