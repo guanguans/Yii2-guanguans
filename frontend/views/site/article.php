@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
     	  		<span class="fa fa-user col-md-2"> <?= $article[0]['adminUser']['username'] ?></span>
     	  		<span class="fa fa-list col-md-4"> <?= $categoryNames ?></span>
     	  		<span class="fa fa-eye col-md-2"> <?= $article[0]['post_hits'] ?></span>
-    	  		<span class="fa fa-star-o col-md-1">&nbsp;</span>
+    	  		<a href="" title="加入收藏"><span class="fa fa-star-o col-md-1" style="cursor: pointer;">&nbsp;</span></a>
     	  		<span class="fa fa-clock-o col-md-3"> <?= date('Y-m-d H:i:s', $article[0]['published_time']) ?></span>
     	  	</div>
     	  </div>

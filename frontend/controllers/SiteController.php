@@ -98,7 +98,7 @@ class SiteController extends Controller
         // pp($countQuery->createCommand()->getRawSql());
         $countQuery = clone $query;
         $pages = new \yii\data\Pagination(['totalCount' => $countQuery->count()]);
-        $pages->defaultPageSize = 6;
+        $pages->defaultPageSize = 10;
         $models = $query->offset($pages->offset)
                 ->limit($pages->limit)
                 ->all();
@@ -183,7 +183,9 @@ class SiteController extends Controller
     public function actionArticle($id)
     {
         // $article = \backend\models\Article::findOne($id);
-
+        $model = \backend\models\Article::findOne($id);
+        $model->post_hits++;
+        $model->save();
 
         $article = \backend\models\Article::find()
                 ->select(['feehi_article.id', 'post_title', 'user_id', 'post_hits', 'post_content', 'post_excerpt', 'published_time'])
@@ -271,5 +273,37 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+
+    /**
+     * Signs user up.
+     *
+     * @return mixed
+     */
+    public function actionFavorite()
+    {
+        exit(123);
+        if (Yii::$app->user->isGuest) {
+            return $this->redirect(['site/login']);
+        }
+
+        $object_id = Yii::$app->request->get('object_id');
+        $model = \frontend\models\UserFavorite::findOne(['object_id'=>$object_id, 'user_id'=>Yii::$app->user->id]);
+        if (empty($model)) {
+            $model = new \frontend\models\UserFavorite();
+            $model->user_id     = Yii::$app->user->id;
+            $model->url         = json_encode(['site/article', 'id'=>$object_id]);
+            $model->object_id   = $object_id;
+            $model->create_time = time();
+            $model->save();
+            echo 111;
+            die;
+        } else {
+            echo 222;
+            die;
+            return $this->redirect('/');
+        }
+        echo 333;
+        return $this->redirect('/');
     }
 }

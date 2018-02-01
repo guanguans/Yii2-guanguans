@@ -3,6 +3,8 @@
 /* @var $this yii\web\View */
 use yii\helpers\Url;
 use yii\helpers\StringHelper;
+use yii\web\View;
+
 $this->title = Yii::$app->name;
 ?>
 <div class="site-index row">
@@ -38,8 +40,23 @@ $this->title = Yii::$app->name;
 	        	<span class="fa fa-user col-md-2">&nbsp;<?= $value->adminUser['username'] ?></span>
 	        	<span class="fa fa-list col-md-4">&nbsp;<?= $categoryNames ?></span>
 	        	<span class="fa fa-eye col-md-1">&nbsp;<?= $value->post_hits ?></span>
-	        	<span class="fa fa-star-o col-md-1">&nbsp;</span>
+        		<?php if (\frontend\models\UserFavorite::findOne(['user_id'=>Yii::$app->user->id, 'object_id'=>$value->id])): ?>
+        			<span class="fa fa-star col-md-1" title="已经收藏" style="cursor: pointer;">&nbsp;</span>
+        		<?php else: ?>
+        			<span class="fa fa-star-o col-md-1" title="加入收藏" style="cursor: pointer;">&nbsp;</span>
+        		<?php endif ?>
 	        	<span class="fa fa-clock-o col-md-4">&nbsp;<?= date('Y-m-d H:i:s', $value->published_time) ?></span>
+	        	<?php $this->beginBlock('starjs'); ?>
+		        	$(function(){
+		        		$('.fa-star-o').click(function(){
+		        			$.get("<?= Url::to(['site/favorite', 'object_id'=>$value->id]) ?>", {object_idddd: 333}, function(info){
+		        				console.log(info);
+		        			});
+
+			        	});
+		        	});
+	        	<?php $this->endBlock(); ?>
+	        	<?php $this->registerJs($this->blocks['starjs'], View::POS_END); ?>
 	        </p>
 	      </div>
 	    </div>
