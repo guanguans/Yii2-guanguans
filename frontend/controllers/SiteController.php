@@ -43,7 +43,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    // 'logout' => ['post'],
                 ],
             ],
         ];
@@ -299,5 +299,18 @@ class SiteController extends Controller
         } else {
             echo 0; exit;
         }
+    }
+
+    /**
+     * 我的收藏
+     */
+    public function actionFavoriteList(){
+        $user_id = Yii::$app->user->id;
+        if (empty($user_id)) {
+            return $this->goHome();
+        }
+        $model = \frontend\models\UserFavorite::findAll(['user_id'=>$user_id]);
+
+        return $this->render('favorite', ['model'=>$model]);
     }
 }

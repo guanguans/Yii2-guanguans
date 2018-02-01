@@ -49,7 +49,7 @@ AppAsset::register($this);
 
     $menuItems[] = ['label' => 'Home', 'url' => ['/']];
     $menuItems[] = [
-        'label' => '分类',
+        'label' => 'Category',
         'items' => $menuItemsDropdown,
     ];
     $menuItems[] = ['label' => 'About', 'url' => ['/site/about']];
@@ -58,7 +58,16 @@ AppAsset::register($this);
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
-        $menuItems[] = '<li>'
+        $menuItems[] = [
+            'label' => 'Personal Center',
+            'items' => [
+                ['label'=>'My Favorite', 'url'=>Url::to(['site/favorite-list'])],
+                '<li class="divider"></li>',
+                ['label'=>'Logout', 'url'=>Url::to(['site/logout'])],
+            ],
+        ];
+
+        $logoutLi = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
                 'Logout (' . Yii::$app->user->identity->username . ')',
