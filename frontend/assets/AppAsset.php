@@ -14,8 +14,11 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
         'static/font-awesome/css/font-awesome.css?v=4.3.0',
+        'static/share.js/dist/css/share.min.css',
     ];
     public $js = [
+        'static/share.js/src/js/social-share.js',
+        'static/share.js/src/js/qrcode.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

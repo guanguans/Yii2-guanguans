@@ -89,5 +89,10 @@ $this->title = Yii::$app->name;
 	      <a href="<?= $value->url ?>" class="list-group-item" target="<?= $value->target ?>"><?= $value->name ?></a>
 	      <?php endforeach ?>
 	    </div>
+	    <div class="list-group">
+	        <div class="social-share" data-mode="prepend">
+	        	<a href="javascript:" class="social-share-icon icon-heart"></a>
+	        </div>
+	    </div>
 	</div>
 </div>

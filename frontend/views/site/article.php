@@ -59,5 +59,10 @@ $this->params['breadcrumbs'][] = $this->title;
 	      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
 	      <a href="#" class="list-group-item">Vestibulum at eros</a>
 	    </div>
+	    <div class="list-group">
+	        <div class="social-share" data-mode="prepend">
+	        	<a href="javascript:" class="social-share-icon icon-heart"></a>
+	        </div>
+	    </div>
 	</div>
 </div>
