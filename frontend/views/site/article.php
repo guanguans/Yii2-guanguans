@@ -9,14 +9,28 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about row">
     <div class="col-sm-9">
+    	<?php
+    		// pp($article);
+    	?>
+    	<?php
+    		$cids = yii\helpers\ArrayHelper::getColumn($article[0]['categorys'], 'category_id');
+
+    		$categoryNames = implode(',', yii\helpers\ArrayHelper::getColumn(\backend\models\Category::find()
+    			->select(['name'])
+    			->where(['id'=>$cids])
+    			->asArray()
+    			->all(), 'name')
+    		);
+    		// pp($categoryNames);
+    	?>
     	<h1 class="text-center"><?= $article[0]['post_title'] ?></h1>
     	<div class="panel panel-default">
     	  <div class="panel-heading">
     	  	<div class="row">
-    	  		<span class="fa fa-user col-md-2"> <?= $article[0]['user_id'] ?></span>
-    	  		<span class="fa fa-list col-md-2"> <?= $article[0]['user_id'] ?></span>
-    	  		<span class="fa fa-eye col-md-2"> <?= $article[0]['user_id'] ?></span>
-    	  		<span class="fa fa-star-o col-md-2"> <?= $article[0]['user_id'] ?></span>
+    	  		<span class="fa fa-user col-md-2"> <?= $article[0]['adminUser']['username'] ?></span>
+    	  		<span class="fa fa-list col-md-4"> <?= $categoryNames ?></span>
+    	  		<span class="fa fa-eye col-md-2"> <?= $article[0]['post_hits'] ?></span>
+    	  		<span class="fa fa-star-o col-md-1">&nbsp;</span>
     	  		<span class="fa fa-clock-o col-md-3"> <?= date('Y-m-d H:i:s', $article[0]['published_time']) ?></span>
     	  	</div>
     	  </div>

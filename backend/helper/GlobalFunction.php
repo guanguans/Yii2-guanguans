@@ -42,16 +42,17 @@ function system_info(){
     $mysql = \Yii::$app->db->createCommand("SELECT VERSION() AS version")->queryAll();
     $mysql = $mysql[0]['version'];
     $system_info = array(
-		'操作系统'    => PHP_OS,
-		'运行环境'    =>  $_SERVER["SERVER_SOFTWARE"],
-		'PHP版本'   => PHP_VERSION,
-		'PHP版本'   => phpversion(),
-		'PHP运行方式' => php_sapi_name(),
-		'MYSQL版本' =>$mysql,
-		'上传附件限制'  => ini_get('upload_max_filesize'),
-		'执行时间限制'  => ini_get('max_execution_time') . "s",
-		'剩余空间'    => round((@disk_free_space(".") / (1024 * 1024)), 2) . 'M',
+        '操作系统'    => PHP_OS,
+        '运行环境'    => $_SERVER["SERVER_SOFTWARE"],
+        'PHP版本'   => PHP_VERSION,
+        'PHP版本'   => phpversion(),
+        'PHP运行方式' => php_sapi_name(),
+        'MYSQL版本' =>$mysql,
+        '上传附件限制'  => ini_get('upload_max_filesize'),
+        '执行时间限制'  => ini_get('max_execution_time') . "s",
+        '剩余空间'    => round((@disk_free_space(".") / (1024 * 1024)), 2) . 'M',
     );
+
     return $system_info;
 }
 
@@ -86,8 +87,8 @@ function hintInfo($info, $model=''){
 	        $err .= $v[0] . '<br>';
 	    }
 	    $info = [
-			'code' => 0,
-			'data' => $err,
+            'code' => 0,
+            'data' => $err,
 		];
 	}
 	yii::$app->session->setFlash('info', json_encode($info));
