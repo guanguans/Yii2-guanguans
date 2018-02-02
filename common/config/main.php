@@ -9,15 +9,15 @@ return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
         'cache' => [
-            /*// File
+            // File
             'class' => 'yii\caching\FileCache',
-            'cachePath' => '',*/
+            'cachePath' => '@frontend/runtime/runtime',
 
             /*// Apc
             'class' => 'yii\caching\ApcCache',
             'keyPrefix' => 'apc_', // 唯一键前缀*/
 
-            // MemCache
+            /*// MemCache
             'class' => 'yii\caching\MemCache',
             'keyPrefix' => 'memcache_',
             'servers' => [
@@ -25,7 +25,7 @@ return [
                     'host' => 'localhost',
                     'port' => 11211,
                 ]
-            ],
+            ],*/
 
             /*'class' => 'yii\redis\Cache',
             'keyPrefix' => 'redis_',*/
