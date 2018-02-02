@@ -80,9 +80,13 @@ class SiteController extends Controller
         if ($cid) {
             $where['category_id'] = $cid;
         }
+
+        Yii::$app->cache->delete('index_artcle_list_models');
+        Yii::$app->cache->delete('index_artcle_list_pages');
+
         if (Yii::$app->cache->get('index_artcle_list_models') && Yii::$app->cache->get('index_artcle_list_pages')) {
             $models = Yii::$app->cache->get('index_artcle_list_models');
-            $pages = Yii::$app->cache->get('index_artcle_list_pages');
+            $pages  = Yii::$app->cache->get('index_artcle_list_pages');
         } else {
             // 关联查询
             $query = \backend\models\Article::find()
@@ -95,10 +99,8 @@ class SiteController extends Controller
                     ])
                     ->where($where)
                     ->groupBy(['post_id'])
-                    ->orderBy('published_time DESC')
-                    // ->asArray()
-                    // ->all()
-                    ;
+                    ->orderBy('published_time DESC');
+
             // pp($countQuery->createCommand()->getRawSql());
             $countQuery = clone $query;
             $pages = new \yii\data\Pagination(['totalCount' => $countQuery->count()]);
@@ -109,7 +111,6 @@ class SiteController extends Controller
 
             Yii::$app->cache->set('index_artcle_list_models', $models, 30 * 60);
             Yii::$app->cache->set('index_artcle_list_pages', $pages, 30 * 60);
-            // sleep(13);
         }
 
         return $this->render('index', [
@@ -181,6 +182,20 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
+        if (false) {
+            set_time_limit(0);
+            $connection = \Yii::$app->db;
+            $command = $connection->createCommand("SELECT post_id FROM feehi_category_article ORDER BY id DESC limit 1");
+            $lastId = $command->queryOne()['post_id'];
+            $endId = $lastId + 500;
+            for ($i = $lastId; $i <= $endId ; $i++) {
+                $sql = "INSERT INTO `yiiblog`.`feehi_category_article` (`post_id`, `category_id`, `list_order`, `status`) VALUES ($i, '1', '10000', '1')";
+                $command = $connection->createCommand($sql);
+                $command->execute();
+            }
+            pp(true);
+        }
+
         return $this->render('about');
     }
 

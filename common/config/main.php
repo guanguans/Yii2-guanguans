@@ -15,21 +15,20 @@ return [
 
             /*// Apc
             'class' => 'yii\caching\ApcCache',
-            'keyPrefix' => 'myapp', // 唯一键前缀*/
+            'keyPrefix' => 'apc_', // 唯一键前缀*/
 
-            /*// MemCache
+            // MemCache
             'class' => 'yii\caching\MemCache',
-            'keyPrefix' => 'myapp',
+            'keyPrefix' => 'memcache_',
             'servers' => [
                 [
                     'host' => 'localhost',
                     'port' => 11211,
-                    'weight' => 100,
                 ]
-            ],*/
+            ],
 
-            'class' => 'yii\redis\Cache',
-            'keyPrefix' => 'myblog_',
+            /*'class' => 'yii\redis\Cache',
+            'keyPrefix' => 'redis_',*/
         ],
         'redis' => [
             'class' => 'yii\redis\Connection',
