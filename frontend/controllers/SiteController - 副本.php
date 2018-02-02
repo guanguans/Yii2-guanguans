@@ -80,37 +80,28 @@ class SiteController extends Controller
         if ($cid) {
             $where['category_id'] = $cid;
         }
-        if (Yii::$app->cache->get('index_artcle_list_models') && Yii::$app->cache->get('index_artcle_list_pages')) {
-            $models = Yii::$app->cache->get('index_artcle_list_models');
-            $pages = Yii::$app->cache->get('index_artcle_list_pages');
-        } else {
-            // 关联查询
-            $query = \backend\models\Article::find()
-                    ->select(['feehi_article.id', 'post_title', 'user_id', 'post_hits', 'post_content', 'post_excerpt', 'published_time'])
-                    ->joinWith([
-                        'adminUser' => function($query){
-                            $query->select(['id', 'username']);
-                        },
-                        'categorys'
-                    ])
-                    ->where($where)
-                    ->groupBy(['post_id'])
-                    ->orderBy('published_time DESC')
-                    // ->asArray()
-                    // ->all()
-                    ;
-            // pp($countQuery->createCommand()->getRawSql());
-            $countQuery = clone $query;
-            $pages = new \yii\data\Pagination(['totalCount' => $countQuery->count()]);
-            $pages->defaultPageSize = 10;
-            $models = $query->offset($pages->offset)
-                    ->limit($pages->limit)
-                    ->all();
-
-            Yii::$app->cache->set('index_artcle_list_models', $models, 30 * 60);
-            Yii::$app->cache->set('index_artcle_list_pages', $pages, 30 * 60);
-            // sleep(13);
-        }
+        // 关联查询
+        $query = \backend\models\Article::find()
+                ->select(['feehi_article.id', 'post_title', 'user_id', 'post_hits', 'post_content', 'post_excerpt', 'published_time'])
+                ->joinWith([
+                    'adminUser' => function($query){
+                        $query->select(['id', 'username']);
+                    },
+                    'categorys'
+                ])
+                ->where($where)
+                ->groupBy(['post_id'])
+                ->orderBy('published_time DESC')
+                // ->asArray()
+                // ->all()
+                ;
+        // pp($countQuery->createCommand()->getRawSql());
+        $countQuery = clone $query;
+        $pages = new \yii\data\Pagination(['totalCount' => $countQuery->count()]);
+        $pages->defaultPageSize = 10;
+        $models = $query->offset($pages->offset)
+                ->limit($pages->limit)
+                ->all();
 
         return $this->render('index', [
              'models' => $models,

@@ -9,9 +9,34 @@ return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
         'cache' => [
+            /*// File
             'class' => 'yii\caching\FileCache',
-        ],
+            'cachePath' => '',*/
 
+            /*// Apc
+            'class' => 'yii\caching\ApcCache',
+            'keyPrefix' => 'myapp', // 唯一键前缀*/
+
+            /*// MemCache
+            'class' => 'yii\caching\MemCache',
+            'keyPrefix' => 'myapp',
+            'servers' => [
+                [
+                    'host' => 'localhost',
+                    'port' => 11211,
+                    'weight' => 100,
+                ]
+            ],*/
+
+            'class' => 'yii\redis\Cache',
+            'keyPrefix' => 'myblog_',
+        ],
+        'redis' => [
+            'class' => 'yii\redis\Connection',
+            'hostname' => 'localhost',
+            'port' => 6379,
+            'database' => 0,
+        ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             'viewPath' => '@common/mail',
