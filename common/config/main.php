@@ -9,13 +9,17 @@ return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
         'cache' => [
-            // File
+            /*// File
             'class' => 'yii\caching\FileCache',
-            'cachePath' => '@frontend/runtime/runtime',
+            'cachePath' => '@frontend/runtime/runtime',*/
 
             /*// Apc
             'class' => 'yii\caching\ApcCache',
             'keyPrefix' => 'apc_', // 唯一键前缀*/
+
+            // XCache
+            'class' => 'yii\caching\XCache',
+            'keyPrefix' => 'XCache_', // 唯一键前缀
 
             /*// MemCache
             'class' => 'yii\caching\MemCache',
