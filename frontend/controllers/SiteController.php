@@ -81,8 +81,10 @@ class SiteController extends Controller
             $where['category_id'] = $cid;
         }
 
-        Yii::$app->cache->delete('index_artcle_list_models');
-        Yii::$app->cache->delete('index_artcle_list_pages');
+        /*Yii::$app->cache->delete('index_artcle_list_models');
+        Yii::$app->cache->delete('index_artcle_list_pages');*/
+        // 缓存依赖
+        $dependency = new \yii\caching\DbDependency(['sql' => 'SELECT COUNT(*) FROM feehi_article']);
 
         if (Yii::$app->cache->get('index_artcle_list_models') && Yii::$app->cache->get('index_artcle_list_pages')) {
             $models = Yii::$app->cache->get('index_artcle_list_models');
@@ -108,9 +110,10 @@ class SiteController extends Controller
             $models = $query->offset($pages->offset)
                     ->limit($pages->limit)
                     ->all();
-
-            Yii::$app->cache->set('index_artcle_list_models', $models, 30 * 60);
-            Yii::$app->cache->set('index_artcle_list_pages', $pages, 30 * 60);
+            // 数据缓存
+            Yii::$app->cache->set('index_artcle_list_models', $models, 30 * 60, $dependency);
+            Yii::$app->cache->set('index_artcle_list_pages', $pages, 30 * 60, $dependency);
+            sleep(5);
         }
 
         return $this->render('index', [

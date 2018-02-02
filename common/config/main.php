@@ -17,9 +17,9 @@ return [
             'class' => 'yii\caching\ApcCache',
             'keyPrefix' => 'apc_', // 唯一键前缀*/
 
-            // XCache
+            /*// XCache
             'class' => 'yii\caching\XCache',
-            'keyPrefix' => 'XCache_', // 唯一键前缀
+            'keyPrefix' => 'XCache_', // 唯一键前缀*/
 
             /*// MemCache
             'class' => 'yii\caching\MemCache',
@@ -31,8 +31,8 @@ return [
                 ]
             ],*/
 
-            /*'class' => 'yii\redis\Cache',
-            'keyPrefix' => 'redis_',*/
+            'class' => 'yii\redis\Cache',
+            'keyPrefix' => 'redis_',
         ],
         'redis' => [
             'class' => 'yii\redis\Connection',
