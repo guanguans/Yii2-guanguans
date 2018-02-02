@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
     	  <div class="panel-heading">
     	  	<div class="row">
     	  		<span class="fa fa-user col-md-2"> <?= $article[0]['adminUser']['username'] ?></span>
-    	  		<span class="fa fa-list col-md-4"> <?= $categoryNames ?></span>
+    	  		<span class="fa fa-list col-md-4"> <?= mb_substr($categoryNames, 0, 30) ?>...</span>
     	  		<span class="fa fa-eye col-md-2"> <?= $article[0]['post_hits'] ?></span>
                 <?php if (\frontend\models\UserFavorite::findOne(['user_id'=>Yii::$app->user->id, 'object_id'=>$article[0]['id']])): ?>
                     <span class="fa fa-star col-md-1" title="已经收藏" onclick="alert('已经收藏过了');" style="cursor: pointer;">&nbsp;</span>

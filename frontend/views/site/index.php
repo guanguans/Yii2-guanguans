@@ -38,7 +38,7 @@ $this->title = Yii::$app->name;
 	        		// pp($categoryNames);
 	        	?>
 	        	<span class="fa fa-user col-md-2">&nbsp;<?= $value->adminUser['username'] ?></span>
-	        	<span class="fa fa-list col-md-4">&nbsp;<?= $categoryNames ?></span>
+	        	<span class="fa fa-list col-md-4">&nbsp;<?= mb_substr($categoryNames, 0, 25) ?>...</span>
 	        	<span class="fa fa-eye col-md-1">&nbsp;<?= $value->post_hits ?></span>
         		<?php if (\frontend\models\UserFavorite::findOne(['user_id'=>Yii::$app->user->id, 'object_id'=>$value->id])): ?>
         			<span class="fa fa-star col-md-1" title="已经收藏" onclick="alert('已经收藏过了');" style="cursor: pointer;">&nbsp;</span>
