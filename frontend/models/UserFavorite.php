@@ -56,4 +56,12 @@ class UserFavorite extends \yii\db\ActiveRecord
             'create_time' => Yii::t('app', '收藏时间'),
         ];
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function getArticle()
+    {
+        return $this->hasOne(\backend\models\Article::className(), ['id' => 'object_id']);
+    }
 }

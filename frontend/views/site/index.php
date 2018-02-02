@@ -57,6 +57,7 @@ $this->title = Yii::$app->name;
 		</div>
     	<?php $this->beginBlock('starjs'); ?>
     		function favorite(span){
+    			$(span).attr('class', 'fa fa-star col-md-1');
 				var object_id = $(span).attr('data-id');
 				$.get("<?= Url::to(['site/favorite']) ?>", {object_id: object_id}, function(data){
         			if (data == 1) {

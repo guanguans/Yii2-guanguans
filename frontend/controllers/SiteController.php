@@ -290,7 +290,9 @@ class SiteController extends Controller
         $model = \frontend\models\UserFavorite::findOne(['object_id'=>$object_id, 'user_id'=>Yii::$app->user->id]);
         if (empty($model)) {
             $model = new \frontend\models\UserFavorite();
+
             $model->user_id     = Yii::$app->user->id;
+            $model->title       = \backend\models\Article::find(66)->select('post_title')->one()->post_title;
             $model->url         = json_encode(['site/article', 'id'=>$object_id]);
             $model->object_id   = $object_id;
             $model->create_time = time();
@@ -309,8 +311,38 @@ class SiteController extends Controller
         if (empty($user_id)) {
             return $this->goHome();
         }
-        $model = \frontend\models\UserFavorite::findAll(['user_id'=>$user_id]);
 
-        return $this->render('favorite', ['model'=>$model]);
+        $query = \frontend\models\UserFavorite::find()
+                ->joinWith([
+                    'article' => function($query){
+                        $query->select(['id', 'post_title']);
+                    }
+                ])
+                ->where(['feehi_user_favorite.user_id'=>$user_id])
+                ->orderBy('create_time DESC');
+                // ->all();
+        $countQuery = clone $query;
+        $pages = new \yii\data\Pagination(['totalCount' => $countQuery->count()]);
+        $pages->defaultPageSize = 15;
+        $models = $query->offset($pages->offset)
+                ->limit($pages->limit)
+                ->all();
+
+        return $this->render('favorite', [
+            'models'=>$models,
+            'pages' => $pages
+        ]);
+    }
+
+    /**
+     * 取消收藏
+     */
+    public function actionFavoriteDelete(){
+        $user_id = Yii::$app->user->id;
+        if (empty($user_id)) {
+            return $this->goHome();
+        }
+        $res = \frontend\models\UserFavorite::findOne(Yii::$app->request->get('id'))->delete();
+        return $this->redirect(['site/favorite-list']);
     }
 }
