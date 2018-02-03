@@ -46,6 +46,20 @@ class SiteController extends Controller
                     // 'logout' => ['post'],
                 ],
             ],
+            [
+                // 页面缓存
+                'class' => 'yii\filters\PageCache',
+                'only' => ['index'],
+                'duration' => 60,
+                'variations' => [
+                    Yii::$app->language,
+                    Yii::$app->request->get('page'),
+                ],
+                'dependency' => [
+                    'class' => 'yii\caching\DbDependency',
+                    'sql' => 'SELECT COUNT(*) FROM feehi_article',
+                ],
+            ],
         ];
     }
 
@@ -113,7 +127,6 @@ class SiteController extends Controller
             // 数据缓存
             Yii::$app->cache->set('index_artcle_list_models', $models, 30 * 60, $dependency);
             Yii::$app->cache->set('index_artcle_list_pages', $pages, 30 * 60, $dependency);
-            sleep(5);
         }
 
         return $this->render('index', [
