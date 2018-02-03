@@ -9,9 +9,9 @@ return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
         'cache' => [
-            /*// File
+            // File
             'class' => 'yii\caching\FileCache',
-            'cachePath' => '@frontend/runtime/runtime',*/
+            'cachePath' => '@frontend/runtime/runtime',
 
             /*// Apc
             'class' => 'yii\caching\ApcCache',
@@ -31,8 +31,8 @@ return [
                 ]
             ],*/
 
-            'class' => 'yii\redis\Cache',
-            'keyPrefix' => 'redis_',
+            /*'class' => 'yii\redis\Cache',
+            'keyPrefix' => 'redis_',*/
         ],
         'redis' => [
             'class' => 'yii\redis\Connection',

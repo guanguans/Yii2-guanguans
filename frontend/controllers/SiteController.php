@@ -64,7 +64,7 @@ class SiteController extends Controller
             [
                 // HTTP 缓存
                 'class' => 'yii\filters\HttpCache',
-                'only' => ['index', 'article'],
+                'only' => ['article'],
                 'lastModified' => function ($action, $params) {
                     $q = new \yii\db\Query();
                     return $q->from('feehi_article')->max('update_time');
