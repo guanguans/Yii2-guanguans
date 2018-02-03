@@ -54,11 +54,25 @@ class SiteController extends Controller
                 'variations' => [
                     Yii::$app->language,
                     Yii::$app->request->get('page'),
+                    Yii::$app->request->get('cid'),
                 ],
                 'dependency' => [
                     'class' => 'yii\caching\DbDependency',
                     'sql' => 'SELECT COUNT(*) FROM feehi_article',
                 ],
+            ],
+            [
+                // HTTP 缓存
+                'class' => 'yii\filters\HttpCache',
+                'only' => ['index', 'article'],
+                'lastModified' => function ($action, $params) {
+                    $q = new \yii\db\Query();
+                    return $q->from('feehi_article')->max('update_time');
+                },
+                'etagSeed' => function ($action, $params) {
+                    $article = \backend\models\Article::findOne(Yii::$app->request->get('id'));
+                    return serialize([$article->post_title, $article->post_content]);
+                },
             ],
         ];
     }
