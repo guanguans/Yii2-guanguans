@@ -89,6 +89,11 @@ $this->title = Yii::$app->name;
 			->where(['status'=>1])
 			->orderBy('sort ASC')
             ->all();
+
+        $dependency = [
+            'class' => 'yii\caching\DbDependency',
+            'sql' => 'SELECT name,url FROM feehi_friend_link',
+        ];
 	?>
 	<div class="col-md-3">
 	    <div class="list-group">
@@ -103,12 +108,17 @@ $this->title = Yii::$app->name;
 	      <a href="<?= Url::to(['site/article', 'id'=>$value->id]) ?>" class="list-group-item"><?= mb_substr($value->post_title, 0, 15)?>...<span class="badge"><?= $value->post_hits ?></span></a>
 	      <?php endforeach ?>
 	    </div>
-	    <div class="list-group">
-	      <a href="#" class="list-group-item active">友情链接</a>
-	      <?php foreach ($friendLink as $key => $value): ?>
-	      <a href="<?= $value->url ?>" class="list-group-item" target="<?= $value->target ?>"><?= $value->name ?></a>
-	      <?php endforeach ?>
-	    </div>
+	    <!-- 片段缓存 -->
+	    <?php if ($this->beginCache('friendLink', ['duration' => 30 * 60, 'variations' => [Yii::$app->language], 'dependency' => $dependency])): ?>
+	        <div class="list-group">
+	          <a href="#" class="list-group-item active">友情链接</a>
+	          <?php foreach ($friendLink as $key => $value): ?>
+	          <a href="<?= $value->url ?>" class="list-group-item" target="<?= $value->target ?>"><?= $value->name ?></a>
+	          <?php endforeach ?>
+	        </div>
+
+	        <?php $this->endCache('friendLink'); ?>
+	    <?php endif ?>
 	    <div class="list-group">
 	        <div class="social-share" data-mode="prepend">
 	        	<a href="javascript:" class="social-share-icon icon-heart"></a>

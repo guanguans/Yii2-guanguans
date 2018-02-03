@@ -53,32 +53,58 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php $this->endBlock(); ?>
         <?php $this->registerJs($this->blocks['starjs'], View::POS_END); ?>
     </div>
+    <?php
+        $top = backend\models\Article::find()
+            ->select(['id', 'post_title', 'post_hits', 'published_time'])
+            ->where(['post_status'=>1, 'post_type'=>1])
+            ->orderBy('post_hits DESC')
+            ->limit(5)
+            ->all();
+        $recommended = backend\models\Article::find()
+            ->select(['id', 'post_title', 'post_hits', 'published_time'])
+            ->where(['post_status'=>1, 'post_type'=>1, 'recommended'=>1])
+            ->orderBy('post_hits DESC')
+            ->limit(5)
+            ->all();
+
+        $friendLink = backend\models\FriendLink::find()
+            ->where(['status'=>1])
+            ->orderBy('sort ASC')
+            ->all();
+        $dependency = [
+            'class' => 'yii\caching\DbDependency',
+            'sql' => 'SELECT name,url FROM feehi_friend_link',
+        ];
+    ?>
+
     <div class="col-md-3">
-	    <div class="list-group">
-	      <a href="#" class="list-group-item active">排行榜</a>
-	      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-	      <a href="#" class="list-group-item">Morbi leo risus</a>
-	      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-	      <a href="#" class="list-group-item">Vestibulum at eros</a>
-	    </div>
-	    <div class="list-group">
-	      <a href="#" class="list-group-item active">推荐</a>
-	      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-	      <a href="#" class="list-group-item">Morbi leo risus</a>
-	      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-	      <a href="#" class="list-group-item">Vestibulum at eros</a>
-	    </div>
-	    <div class="list-group">
-	      <a href="#" class="list-group-item active">友情链接</a>
-	      <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-	      <a href="#" class="list-group-item">Morbi leo risus</a>
-	      <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-	      <a href="#" class="list-group-item">Vestibulum at eros</a>
-	    </div>
-	    <div class="list-group">
-	        <div class="social-share" data-mode="prepend">
-	        	<a href="javascript:" class="social-share-icon icon-heart"></a>
-	        </div>
-	    </div>
-	</div>
+        <div class="list-group">
+          <a href="#" class="list-group-item active">排行榜</a>
+          <?php foreach ($top as $key => $value): ?>
+          <a href="<?= Url::to(['site/article', 'id'=>$value->id]) ?>" class="list-group-item"><?= mb_substr($value->post_title, 0, 15)?>...<span class="badge"><?= $value->post_hits ?></span></a>
+          <?php endforeach ?>
+        </div>
+        <div class="list-group">
+          <a href="#" class="list-group-item active">推荐</a>
+          <?php foreach ($recommended as $key => $value): ?>
+          <a href="<?= Url::to(['site/article', 'id'=>$value->id]) ?>" class="list-group-item"><?= mb_substr($value->post_title, 0, 15)?>...<span class="badge"><?= $value->post_hits ?></span></a>
+          <?php endforeach ?>
+        </div>
+        <!-- 片段缓存 -->
+        <?php if ($this->beginCache('friendLink', ['duration' => 30 * 60, 'variations' => [Yii::$app->language], 'dependency' => $dependency])): ?>
+            <div class="list-group">
+              <a href="#" class="list-group-item active">友情链接</a>
+              <?php foreach ($friendLink as $key => $value): ?>
+              <a href="<?= $value->url ?>" class="list-group-item" target="<?= $value->target ?>"><?= $value->name ?></a>
+              <?php endforeach ?>
+            </div>
+
+            <?php $this->endCache('friendLink'); ?>
+        <?php endif ?>
+        <div class="list-group">
+            <div class="social-share" data-mode="prepend">
+                <a href="javascript:" class="social-share-icon icon-heart"></a>
+            </div>
+        </div>
+    </div>
 </div>
