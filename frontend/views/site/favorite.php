@@ -10,6 +10,14 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about">
     <div class="row">
+        <div class="col-md-3" style="margin-top: 38px;">
+            <div class="list-group">
+              <a href="#" class="list-group-item active">个人信息</a>
+              <a href="#" class="list-group-item "><span class="fa fa-user"></span> <?= $user->username ?></a>
+              <a href="#" class="list-group-item "><span class="fa fa-envelope"></span> <?= $user->email ?></a>
+              <a href="#" class="list-group-item "><span class="fa fa-calendar"></span> <?= date('Y-M-d H:i:s', $user->created_at) ?></a>
+            </div>
+        </div>
     	<div class="col-md-9">
     		<table class="table table-bordered table-hover table-bordered table-responsive">
     		  <caption class=" text-center">My Favorite</caption>

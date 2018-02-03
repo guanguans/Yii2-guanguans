@@ -359,6 +359,7 @@ class SiteController extends Controller
         if (empty($user_id)) {
             return $this->goHome();
         }
+        $user = \backend\models\AdminUser::findOne($user_id);
 
         $query = \frontend\models\UserFavorite::find()
                 ->joinWith([
@@ -378,7 +379,8 @@ class SiteController extends Controller
 
         return $this->render('favorite', [
             'models'=>$models,
-            'pages' => $pages
+            'pages' => $pages,
+            'user' => $user,
         ]);
     }
 
