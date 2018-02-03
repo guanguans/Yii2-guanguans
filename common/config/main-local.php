@@ -27,7 +27,7 @@ return [
             ],
             'messageConfig'=>[
                 'charset'=>'UTF-8',
-                'from'=>['798314049@qq.com'=>'客服名称']
+                'from'=>['798314049@qq.com'=>'琯琯博客']
             ],
         ],
     ],

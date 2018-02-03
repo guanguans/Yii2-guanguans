@@ -10,6 +10,15 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about">
     <div class="row">
+        <div class="col-sm-12">
+            <?php if (Yii::$app->session->getFlash('registerInfo')): ?>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>Warning!</strong>
+                    <?= Yii::$app->session->getFlash('registerInfo') ?>
+                </div>
+            <?php endif ?>
+        </div>
         <div class="col-md-3" style="margin-top: 38px;">
             <div class="list-group">
               <a href="#" class="list-group-item active">个人信息</a>

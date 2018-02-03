@@ -262,9 +262,20 @@ class SiteController extends Controller
     {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
+            $object = Yii::$app->request->post('SignupForm')['email'];
+            $object = '798314049@qq.com';
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
+                    // return $this->goHome();
+                    $title   = '[琯琯博客] 邮箱激活通知';
+                    $sender  = '琯琯博客';
+                    $verifyAddress = 'www.baidu.com';
+                    $verifyCode = 'www.baidu.com';
+                    $content = email_blade($object, $verifyAddress, $sender);
+                    send_email($object, $title, $content);
+                    Yii::$app->session->setFlash('registerInfo', '注册成功，请尽快验证邮箱！');
+
+                    return $this->redirect(['site/favorite-list']);
                 }
             }
         }
@@ -395,4 +406,15 @@ class SiteController extends Controller
         $res = \frontend\models\UserFavorite::findOne(Yii::$app->request->get('id'))->delete();
         return $this->redirect(['site/favorite-list']);
     }
+
+    /**
+     * 取消收藏
+     */
+    public function actionVerifyEmail(){
+        // $this->layout = false;
+        return $this->render('verifyEmail');
+    }
 }
+
+
+
