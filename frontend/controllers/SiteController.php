@@ -95,39 +95,26 @@ class SiteController extends Controller
             $where['category_id'] = $cid;
         }
 
-        /*Yii::$app->cache->delete('index_artcle_list_models');
-        Yii::$app->cache->delete('index_artcle_list_pages');*/
-        // 缓存依赖
-        $dependency = new \yii\caching\DbDependency(['sql' => 'SELECT COUNT(*) FROM feehi_article']);
+        // 关联查询
+        $query = \backend\models\Article::find()
+                ->select(['feehi_article.id', 'post_title', 'user_id', 'post_hits', 'post_content', 'post_excerpt', 'published_time'])
+                ->joinWith([
+                    'adminUser' => function($query){
+                        $query->select(['id', 'username']);
+                    },
+                    'categorys'
+                ])
+                ->where($where)
+                ->groupBy(['post_id'])
+                ->orderBy('published_time DESC');
 
-        if (Yii::$app->cache->get('index_artcle_list_models') && Yii::$app->cache->get('index_artcle_list_pages')) {
-            $models = Yii::$app->cache->get('index_artcle_list_models');
-            $pages  = Yii::$app->cache->get('index_artcle_list_pages');
-        } else {
-            // 关联查询
-            $query = \backend\models\Article::find()
-                    ->select(['feehi_article.id', 'post_title', 'user_id', 'post_hits', 'post_content', 'post_excerpt', 'published_time'])
-                    ->joinWith([
-                        'adminUser' => function($query){
-                            $query->select(['id', 'username']);
-                        },
-                        'categorys'
-                    ])
-                    ->where($where)
-                    ->groupBy(['post_id'])
-                    ->orderBy('published_time DESC');
-
-            // pp($countQuery->createCommand()->getRawSql());
-            $countQuery = clone $query;
-            $pages = new \yii\data\Pagination(['totalCount' => $countQuery->count()]);
-            $pages->defaultPageSize = 10;
-            $models = $query->offset($pages->offset)
-                    ->limit($pages->limit)
-                    ->all();
-            // 数据缓存
-            Yii::$app->cache->set('index_artcle_list_models', $models, 30 * 60, $dependency);
-            Yii::$app->cache->set('index_artcle_list_pages', $pages, 30 * 60, $dependency);
-        }
+        // pp($countQuery->createCommand()->getRawSql());
+        $countQuery = clone $query;
+        $pages = new \yii\data\Pagination(['totalCount' => $countQuery->count()]);
+        $pages->defaultPageSize = 10;
+        $models = $query->offset($pages->offset)
+                ->limit($pages->limit)
+                ->all();
 
         return $this->render('index', [
              'models' => $models,
@@ -222,26 +209,33 @@ class SiteController extends Controller
      */
     public function actionArticle($id)
     {
-        // $article = \backend\models\Article::findOne($id);
         $model = \backend\models\Article::findOne($id);
         $model->post_hits++;
         $model->save();
 
-        $article = \backend\models\Article::find()
-                ->select(['feehi_article.id', 'post_title', 'user_id', 'post_hits', 'post_content', 'post_excerpt', 'published_time'])
-                ->joinWith([
-                    'adminUser' => function($query){
-                        $query->select(['id', 'username']);
-                    },
-                    'categorys'
-                ])
-                ->where(['feehi_article.id'=>$id])
-                ->groupBy(['post_id'])
-                ->orderBy('published_time DESC')
-                ->asArray()
-                ->all()
-                ;
-                // pp($article);
+        // 缓存依赖
+        $dependency = new \yii\caching\DbDependency(['sql' => 'SELECT post_title,published_time FROM feehi_article WHERE id = '.$id]);
+        if (Yii::$app->cache->get('artcle_model')) {
+            $article = Yii::$app->cache->get('artcle_model');
+        } else {
+            $article = \backend\models\Article::find()
+                    ->select(['feehi_article.id', 'post_title', 'user_id', 'post_hits', 'post_content', 'post_excerpt', 'published_time'])
+                    ->joinWith([
+                        'adminUser' => function($query){
+                            $query->select(['id', 'username']);
+                        },
+                        'categorys'
+                    ])
+                    ->where(['feehi_article.id'=>$id])
+                    ->groupBy(['post_id'])
+                    ->orderBy('published_time DESC')
+                    ->asArray()
+                    ->all();
+            // 数据缓存
+            Yii::$app->cache->set('artcle_model', $article, 30*60, $dependency);
+        }
+
+        // pp($article);
         return $this->render('article', ['article'=>$article]);
     }
 
