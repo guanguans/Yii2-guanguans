@@ -11,11 +11,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-about">
     <div class="row">
         <div class="col-sm-12">
-            <?php if (Yii::$app->session->getFlash('registerInfo')): ?>
+            <?php if (json_decode($user->email_verify, 1)['is_verify'] == 0): ?>
                 <div class="alert alert-danger alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <strong>Warning!</strong>
-                    <?= Yii::$app->session->getFlash('registerInfo') ?>
+                    邮箱未激活，请激活邮箱！
                 </div>
             <?php endif ?>
         </div>
@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
               <a href="#" class="list-group-item active">个人信息</a>
               <a href="#" class="list-group-item "><span class="fa fa-user"></span> <?= $user->username ?></a>
               <a href="#" class="list-group-item "><span class="fa fa-envelope"></span> <?= $user->email ?></a>
-              <a href="#" class="list-group-item "><span class="fa fa-calendar"></span> <?= date('Y-M-d H:i:s', $user->created_at) ?></a>
+              <a href="#" class="list-group-item "><span class="fa fa-calendar"></span> <?= date('Y-m-d H:i:s', $user->created_at) ?></a>
             </div>
         </div>
     	<div class="col-md-9">

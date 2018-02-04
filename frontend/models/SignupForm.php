@@ -52,7 +52,7 @@ class SignupForm extends Model
         $user->email = $this->email;
         $user->setPassword($this->password);
         $user->generateAuthKey();
-        $user->email_verify = json_encode(['is_verify'=>0, 'verify_token'=>'dsfsdfsdfdsfdsfsdfds']);
+        $user->email_verify = json_encode(['is_verify'=>0, 'verify_token'=>generate_random_string(200)]);
 
         return $user->save() ? $user : null;
     }

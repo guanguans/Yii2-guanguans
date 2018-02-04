@@ -263,15 +263,15 @@ class SiteController extends Controller
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             $object = Yii::$app->request->post('SignupForm')['email'];
-            $object = '798314049@qq.com';
+            // $object = '798314049@qq.com';
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
                     // return $this->goHome();
-                    $title   = '[琯琯博客] 邮箱激活通知';
-                    $sender  = '琯琯博客';
-                    $verifyAddress = 'www.baidu.com';
-                    $verifyCode = 'www.baidu.com';
-                    $content = email_blade($object, $verifyAddress, $sender);
+                    $title         = '[琯琯博客] 邮箱激活通知';
+                    $sender        = '琯琯博客';
+                    $verifyCode    = json_decode($user->email_verify, 1)['verify_token'];
+                    $verifyAddress = Yii::$app->request->hostInfo.\yii\helpers\Url::to(['site/verify-email', 'verifyCode'=>$verifyCode]);
+                    $content       = email_blade($object, $verifyAddress, $sender);
                     send_email($object, $title, $content);
                     Yii::$app->session->setFlash('registerInfo', '注册成功，请尽快验证邮箱！');
 
@@ -408,11 +408,19 @@ class SiteController extends Controller
     }
 
     /**
-     * 取消收藏
+     * 邮箱验证
      */
     public function actionVerifyEmail(){
+        $verifyCode = Yii::$app->request->get('verifyCode');
+        $user = \backend\models\AdminUser::findOne(Yii::$app->user->id);
+        $verify_token = json_decode($user->email_verify, 1)['verify_token'];
+        if ($verifyCode === $verify_token) {
+            $user->email_verify = json_encode(['is_verify'=>1, 'verify_token'=>$verify_token]);
+            $user->save();
+            return $this->render('verifyEmail', ['is_verify'=>true]);
+        }
         // $this->layout = false;
-        return $this->render('verifyEmail');
+        return $this->render('verifyEmail', ['is_verify'=>false]);
     }
 }
 
