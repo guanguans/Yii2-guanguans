@@ -1,11 +1,3 @@
-<?php
-use yii\helpers\Html;
-use yii\helpers\Url;
-
-/* @var $this yii\web\View */
-/* @var $user common\models\User */
-$verifyAddress = Yii::$app->urlManager->createAbsoluteUrl(['site/verify-email', 'verifyCode' => $verifyCode]);
-?>
 <div class="password-reset">
     <tr>
       <td style="background-color: #fff;border-radius:6px;padding:40px 40px 0;">

@@ -8,11 +8,11 @@ class SendEmailJob extends BaseObject implements \yii\queue\JobInterface
 {
     public $object;
     public $title;
-    public $verifyCode;
+    public $verifyAddress;
     public $sender;
 
     public function execute($queue)
     {
-        send_email($this->object, $this->title, $this->verifyCode, $this->sender);
+        send_email($this->object, $this->title, $this->verifyAddress, $this->sender);
     }
 }

@@ -199,17 +199,6 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-
-        // send_email('798314049@qq.com', '[琯琯博客] 邮箱激活通知', '343243243242343244444444', '[琯琯博客]');
-
-        $queueId = Yii::$app->queue->push(new \frontend\components\SendEmailJob([
-            'object' => '798314049@qq.com',
-            'title' => '[琯琯博客] 邮箱激活通知',
-            'verifyCode' => 'fdgfdgfdgfdgdfgdfgfgdfgfdgfdg',
-            'sender' => 'redis 队列测试',
-        ]));
-        pp();
-        // pp($queueId);
         if (false) {
             set_time_limit(0);
             $connection = \Yii::$app->db;
@@ -281,15 +270,14 @@ class SiteController extends Controller
                     $title         = '[琯琯博客] 邮箱激活通知';
                     $sender        = '琯琯博客';
                     $verifyCode    = json_decode($user->email_verify, 1)['verify_token'];
-                    // send_email($object, $title, $verifyCode, $sender);
-                    // $queueId = Yii::$app->queue->delay(30)->push(new \frontend\components\SendEmailJob([
-                    $queueId = Yii::$app->queue->push(new \frontend\components\SendEmailJob([
-                        'object'     => $object,
-                        'title'      => $title,
-                        'verifyCode' => $verifyCode,
-                        'sender'     => $sender,
+                    $verifyAddress = Yii::$app->urlManager->createAbsoluteUrl(['site/verify-email', 'verifyCode' => $verifyCode]);
+                    // 执行任务时避免外部依赖(数据必须直接给)
+                    $queueId = Yii::$app->queue->delay(30)->push(new \frontend\components\SendEmailJob([
+                        'object'        => $object,
+                        'title'         => $title,
+                        'verifyAddress' => $verifyAddress,
+                        'sender'        => $sender,
                     ]));
-                    pp($queueId);
                     if ($queueId) {
                         Yii::$app->session->setFlash('registerInfo', '注册成功，请尽快验证邮箱！');
                     }

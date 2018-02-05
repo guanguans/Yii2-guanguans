@@ -43,6 +43,7 @@ return [
         ],
         'queue' => [
             'class' => \yii\queue\redis\Queue::class,
+            'as log' => \yii\queue\LogBehavior::class,
             'redis' => 'redis', // 连接组件或它的配置
             'channel' => 'queue', // Queue channel key
         ],

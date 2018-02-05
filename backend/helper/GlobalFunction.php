@@ -60,16 +60,16 @@ function system_info(){
  * 发送邮件
  * @return string
  */
-function send_email($object, $title, $verifyCode, $sender){
+function send_email($object, $title, $verifyAddress, $sender){
 	$mail= Yii::$app->mailer->compose('register-html',[
         'object'     =>$object,
-        'verifyCode' =>$verifyCode,
+        'verifyAddress' =>$verifyAddress,
         'sender'     =>$sender,
     ]);
 	$mail->setTo($object);
 	$mail->setSubject($title);
 	// $mail->setTextBody($object);
-	// $mail->setHtmlBody($content);
+	// $mail->setHtmlBody();
 
 	if(!$mail->send()){
 		return false;
