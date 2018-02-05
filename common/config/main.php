@@ -7,6 +7,7 @@ return [
     'language' => 'zh-CN',//默认语言
     'timeZone' => 'Asia/Shanghai',//默认时区
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
+    'bootstrap' => ['queue'],
     'components' => [
         'cache' => [
             // File
@@ -39,6 +40,11 @@ return [
             'hostname' => 'localhost',
             'port' => 6379,
             'database' => 0,
+        ],
+        'queue' => [
+            'class' => \yii\queue\redis\Queue::class,
+            'redis' => 'redis', // 连接组件或它的配置
+            'channel' => 'queue', // Queue channel key
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',

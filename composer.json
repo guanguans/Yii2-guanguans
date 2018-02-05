@@ -27,7 +27,10 @@
         "bailangzhan/yii2-webuploader": "dev-master",
         "kartik-v/yii2-widget-fileinput": "@dev",
         "2amigos/yii2-file-upload-widget": "~1.0",
-        "yiisoft/yii2-redis": "^2.0"
+        "yiisoft/yii2-redis": "^2.0",
+        "urbanindo/yii2-queue": "*",
+        "yiisoft/yii2-queue": "^2.0",
+        "shmilyzxt/yii2-queue": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

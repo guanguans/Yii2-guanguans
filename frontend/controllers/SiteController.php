@@ -199,6 +199,14 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
+
+        // send_email('798314049@qq.com', '[琯琯博客] 邮箱激活通知', '普通测试');
+        /*$queueId = Yii::$app->queue->delay(30)->push(new \frontend\components\SendEmailJob([
+            'object' => '798314049@qq.com',
+            'title' => '[琯琯博客] 邮箱激活通知',
+            'content' => 'redis 队列测试',
+        ]));
+        pp($queueId);*/
         if (false) {
             set_time_limit(0);
             $connection = \Yii::$app->db;
@@ -272,8 +280,15 @@ class SiteController extends Controller
                     $verifyCode    = json_decode($user->email_verify, 1)['verify_token'];
                     $verifyAddress = Yii::$app->request->hostInfo.\yii\helpers\Url::to(['site/verify-email', 'verifyCode'=>$verifyCode]);
                     $content       = email_blade($object, $verifyAddress, $sender);
-                    send_email($object, $title, $content);
-                    Yii::$app->session->setFlash('registerInfo', '注册成功，请尽快验证邮箱！');
+                    // send_email($object, $title, $content);
+                    $queueId = Yii::$app->queue->delay(30)->push(new \frontend\components\SendEmailJob([
+                        'object'  => $object,
+                        'title'   =>  $title,
+                        'content' => $content,
+                    ]));
+                    if ($queueId) {
+                        Yii::$app->session->setFlash('registerInfo', '注册成功，请尽快验证邮箱！');
+                    }
 
                     return $this->redirect(['site/favorite-list']);
                 }
