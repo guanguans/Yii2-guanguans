@@ -41,11 +41,18 @@ return [
             'port' => 6379,
             'database' => 0,
         ],
-        'queue' => [
+        /*'queue' => [
             'class' => \yii\queue\redis\Queue::class,
             'as log' => \yii\queue\LogBehavior::class,
             'redis' => 'redis', // 连接组件或它的配置
             'channel' => 'queue', // Queue channel key
+        ],*/
+        'queue' => [
+            'class' => \yii\queue\db\Queue::class,
+            'db' => 'db', // DB 连接组件或它的配置
+            'tableName' => '{{%queue}}', // 表名
+            'channel' => 'default', // Queue channel key
+            'mutex' => \yii\mutex\MysqlMutex::class, // Mutex that used to sync queries
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',

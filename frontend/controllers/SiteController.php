@@ -263,7 +263,7 @@ class SiteController extends Controller
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             $object = Yii::$app->request->post('SignupForm')['email'];
-            $object = '798314049@qq.com';
+            // $object = '798314049@qq.com';
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
                     // return $this->goHome();
@@ -272,7 +272,7 @@ class SiteController extends Controller
                     $verifyCode    = json_decode($user->email_verify, 1)['verify_token'];
                     $verifyAddress = Yii::$app->urlManager->createAbsoluteUrl(['site/verify-email', 'verifyCode' => $verifyCode]);
                     // 执行任务时避免外部依赖(数据必须直接给)
-                    $queueId = Yii::$app->queue->delay(30)->push(new \frontend\components\SendEmailJob([
+                    $queueId = Yii::$app->queue->delay(3)->push(new \frontend\components\SendEmailJob([
                         'object'        => $object,
                         'title'         => $title,
                         'verifyAddress' => $verifyAddress,
