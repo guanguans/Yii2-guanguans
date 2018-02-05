@@ -60,12 +60,16 @@ function system_info(){
  * 发送邮件
  * @return string
  */
-function send_email($object, $title, $content){
-	$mail= Yii::$app->mailer->compose();
+function send_email($object, $title, $verifyCode, $sender){
+	$mail= Yii::$app->mailer->compose('register-html',[
+        'object'     =>$object,
+        'verifyCode' =>$verifyCode,
+        'sender'     =>$sender,
+    ]);
 	$mail->setTo($object);
 	$mail->setSubject($title);
 	// $mail->setTextBody($object);
-	$mail->setHtmlBody($content);
+	// $mail->setHtmlBody($content);
 
 	if(!$mail->send()){
 		return false;
@@ -75,29 +79,29 @@ function send_email($object, $title, $content){
 }
 
 /**
- * 随机字符串 
+ * 随机字符串
  */
 
-function generate_random_string($length = 10) { 
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
-    $randomString = ''; 
-    for ($i = 0; $i < $length; $i++) { 
-        $randomString .= $characters[rand(0, strlen($characters) - 1)]; 
-    } 
-    return $randomString; 
+function generate_random_string($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, strlen($characters) - 1)];
+    }
+    return $randomString;
 }
 
 /**
  * 加密解密
  */
-function encrypt_decrypt($key, $string, $decrypt){ 
-    if($decrypt){ 
-        $decrypted = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5($key), base64_decode($string), MCRYPT_MODE_CBC, md5(md5($key))), "12"); 
-        return $decrypted; 
-    }else{ 
-        $encrypted = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($key), $string, MCRYPT_MODE_CBC, md5(md5($key)))); 
-        return $encrypted; 
-    } 
+function encrypt_decrypt($key, $string, $decrypt){
+    if($decrypt){
+        $decrypted = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5($key), base64_decode($string), MCRYPT_MODE_CBC, md5(md5($key))), "12");
+        return $decrypted;
+    }else{
+        $encrypted = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($key), $string, MCRYPT_MODE_CBC, md5(md5($key))));
+        return $encrypted;
+    }
 }
 
 /**

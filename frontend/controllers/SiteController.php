@@ -200,13 +200,16 @@ class SiteController extends Controller
     public function actionAbout()
     {
 
-        // send_email('798314049@qq.com', '[琯琯博客] 邮箱激活通知', '普通测试');
-        /*$queueId = Yii::$app->queue->delay(30)->push(new \frontend\components\SendEmailJob([
+        // send_email('798314049@qq.com', '[琯琯博客] 邮箱激活通知', '343243243242343244444444', '[琯琯博客]');
+
+        $queueId = Yii::$app->queue->push(new \frontend\components\SendEmailJob([
             'object' => '798314049@qq.com',
             'title' => '[琯琯博客] 邮箱激活通知',
-            'content' => 'redis 队列测试',
+            'verifyCode' => 'fdgfdgfdgfdgdfgdfgfgdfgfdgfdg',
+            'sender' => 'redis 队列测试',
         ]));
-        pp($queueId);*/
+        pp();
+        // pp($queueId);
         if (false) {
             set_time_limit(0);
             $connection = \Yii::$app->db;
@@ -271,21 +274,22 @@ class SiteController extends Controller
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             $object = Yii::$app->request->post('SignupForm')['email'];
-            // $object = '798314049@qq.com';
+            $object = '798314049@qq.com';
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
                     // return $this->goHome();
                     $title         = '[琯琯博客] 邮箱激活通知';
                     $sender        = '琯琯博客';
                     $verifyCode    = json_decode($user->email_verify, 1)['verify_token'];
-                    $verifyAddress = Yii::$app->request->hostInfo.\yii\helpers\Url::to(['site/verify-email', 'verifyCode'=>$verifyCode]);
-                    $content       = email_blade($object, $verifyAddress, $sender);
-                    // send_email($object, $title, $content);
-                    $queueId = Yii::$app->queue->delay(30)->push(new \frontend\components\SendEmailJob([
-                        'object'  => $object,
-                        'title'   =>  $title,
-                        'content' => $content,
+                    // send_email($object, $title, $verifyCode, $sender);
+                    // $queueId = Yii::$app->queue->delay(30)->push(new \frontend\components\SendEmailJob([
+                    $queueId = Yii::$app->queue->push(new \frontend\components\SendEmailJob([
+                        'object'     => $object,
+                        'title'      => $title,
+                        'verifyCode' => $verifyCode,
+                        'sender'     => $sender,
                     ]));
+                    pp($queueId);
                     if ($queueId) {
                         Yii::$app->session->setFlash('registerInfo', '注册成功，请尽快验证邮箱！');
                     }
