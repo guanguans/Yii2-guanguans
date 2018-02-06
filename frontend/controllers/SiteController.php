@@ -55,6 +55,7 @@ class SiteController extends Controller
                     Yii::$app->language,
                     Yii::$app->request->get('page'),
                     Yii::$app->request->get('cid'),
+                    Yii::$app->request->get('search'),
                 ],
                 'dependency' => [
                     'class' => 'yii\caching\DbDependency',
@@ -101,6 +102,8 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $cid = empty(Yii::$app->request->get('cid')) ? 0 : intval(Yii::$app->request->get('cid'));
+        $search = empty(Yii::$app->request->get('search')) ? '' : Yii::$app->request->get('search');
+
         $where = [
             'post_status'=>1,
             'post_type'=>1,
@@ -119,10 +122,14 @@ class SiteController extends Controller
                     'categorys'
                 ])
                 ->where($where)
+
                 ->groupBy(['post_id'])
                 ->orderBy('published_time DESC');
+        if ($search) {
+            $query->andWhere(['like', 'post_title', $search]);
+        }
 
-        // pp($countQuery->createCommand()->getRawSql());
+        // pp($query->createCommand()->getRawSql());
         $countQuery = clone $query;
         $pages = new \yii\data\Pagination(['totalCount' => $countQuery->count()]);
         $pages->defaultPageSize = 10;

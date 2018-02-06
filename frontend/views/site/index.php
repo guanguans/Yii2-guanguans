@@ -96,6 +96,16 @@ $this->title = Yii::$app->name;
         ];
 	?>
 	<div class="col-md-3">
+		<div class="list-group">
+			<form action="<?= Url::to(['site/index']) ?>" method="get" accept-charset="utf-8">
+			    <div class="input-group">
+			      <input type="text" class="form-control" name="search" placeholder="Search for..." required>
+			      <span class="input-group-btn">
+			        <button class="btn btn-default" type="submit">Go!</button>
+			      </span>
+			    </div>
+			</form>
+		</div>
 	    <div class="list-group">
 	      <a href="#" class="list-group-item active">排行榜</a>
 	      <?php foreach ($top as $key => $value): ?>
