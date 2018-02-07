@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5709b4b37e4c57a2be69a6eae4a18365",
+    "content-hash": "cae2b298560872adb5febe272b45a7a8",
     "packages": [
         {
             "name": "2amigos/yii2-file-upload-widget",
@@ -1188,6 +1188,47 @@
             "time": "2016-08-06T14:39:51+00:00"
         },
         {
+            "name": "shmilyzxt/yii2-queue",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shmilyzxt/yii2-queue.git",
+                "reference": "5516aacad6728b8cea6ac40106ef892cb7ad38cd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shmilyzxt/yii2-queue/zipball/5516aacad6728b8cea6ac40106ef892cb7ad38cd",
+                "reference": "5516aacad6728b8cea6ac40106ef892cb7ad38cd",
+                "shasum": ""
+            },
+            "require": {
+                "jeremeamia/superclosure": "*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "\\shmilyzxt\\queue\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "shmilyzxt",
+                    "email": "49783121@qq.com"
+                }
+            ],
+            "description": "a yii2 extension to make simple to use queue.",
+            "keywords": [
+                "extension",
+                "yii2"
+            ],
+            "time": "2017-11-27T06:06:30+00:00"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.8",
             "source": {
@@ -1644,6 +1685,55 @@
                 "yii2"
             ],
             "time": "2016-12-20T13:26:02+00:00"
+        },
+        {
+            "name": "yiisoft/yii2-elasticsearch",
+            "version": "2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-elasticsearch.git",
+                "reference": "c752e9ef2eb0bf6807f6b3a4fadc885f6f7fef59"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-elasticsearch/zipball/c752e9ef2eb0bf6807f6b3a4fadc885f6f7fef59",
+                "reference": "c752e9ef2eb0bf6807f6b3a4fadc885f6f7fef59",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii\\elasticsearch\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Carsten Brandt",
+                    "email": "mail@cebe.cc"
+                }
+            ],
+            "description": "Elasticsearch integration and ActiveRecord for the Yii framework",
+            "keywords": [
+                "active-record",
+                "elasticsearch",
+                "fulltext",
+                "search",
+                "yii2"
+            ],
+            "time": "2016-03-17T04:45:15+00:00"
         },
         {
             "name": "yiisoft/yii2-imagine",
@@ -4207,7 +4297,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "bailangzhan/yii2-webuploader": 20,
-        "kartik-v/yii2-widget-fileinput": 20
+        "kartik-v/yii2-widget-fileinput": 20,
+        "shmilyzxt/yii2-queue": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
