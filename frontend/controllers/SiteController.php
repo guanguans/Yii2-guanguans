@@ -206,6 +206,28 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
+        // elasticsearch 测试
+        if (true) {
+            $searchModel = \frontend\models\ArticleElasticSearch::find()->query([
+                "multi_match" => [
+                    "query" => '更新',
+                    "fields" => ["post_title", "post_excerpt"]
+                ],
+            ]);
+            $highlight = [
+                "pre_tags" => ["<b style='color: red;' >"],
+                "post_tags" => ["</b>"],
+                "fields" => [
+                    "post_title" => new \stdClass(),
+                    "post_excerpt" => new \stdClass()
+                ]
+            ];
+
+            $searchModel = $searchModel->highlight($highlight)->asArray()->all();
+            pp($searchModel);
+        }
+
+        // 批量添加数据
         if (false) {
             set_time_limit(0);
             $connection = \Yii::$app->db;
