@@ -74,51 +74,139 @@ menu;
         pp(Article::deleteIndex());
     }
 
-    /**
-     * Delete this model's index
-     */
-    public function actionAddDataOne()
-    {
-        $model = new Article();
-        $model->article_id   = 6;
-        // $model->primaryKey   = 6;
-        $model->post_title   = '文章';
-        $model->post_excerpt = '描述';
-        echo $this->url();
-        pp($model->save(false));
-    }
 
     /**
-     * Delete this model's index
+     * actionAddDataAll
      */
     public function actionAddDataAll()
     {
         set_time_limit(0);
-        $data = \backend\models\Article::find()->select(['id', 'post_title', 'post_excerpt'])->asArray()->all();
+        $data = \backend\models\Article::find()
+            ->select(['feehi_article.id', 'post_title', 'post_excerpt'])
+            ->joinWith([
+                'categorys' => function($query){
+                    $query->select(['post_id', 'category_id']);
+                }
+            ])
+            ->asArray()
+            ->all();
+        // pp($data);     
         $model = new Article();
         foreach($data as $attributes){
-            $_model = clone $model;
-            $_model->primaryKey   = $attributes['id'];
-            $_model->article_id   = $attributes['id'];
-            $_model->post_title   = $attributes['post_title'];
-            $_model->post_excerpt = $attributes['post_excerpt'];
+            $_model                      = clone $model;
+            $_model->primaryKey          = $attributes['id'];
+            $_model->article_id          = $attributes['id'];
+            $_model->post_title          = $attributes['post_title'];
+            $_model->post_excerpt        = $attributes['post_excerpt'];
+            $category_ids                = yii\helpers\ArrayHelper::getColumn(
+                                                $attributes['categorys'],
+                                                'category_id'
+                                            );
+            $categorys = [];
+            $categorys['category_names'] = implode(
+                                                yii\helpers\ArrayHelper::getColumn(
+                                                \backend\models\Category::find()
+                                                ->select(['name'])
+                                                ->where(['id'=>$category_ids])
+                                                ->asArray()
+                                                ->all(), 'name'),
+                                                ','
+                                            );
+            $_model->categorys    = $categorys;
             $_model->save();
             unset($_model);
         }
         unset($data);
         unset($model);
         echo $this->url();
-        pp(1);
+        pp('添加成功');
     }
 
     /**
-     * Delete this model's index
+     * actionAddDataOne
+     */
+    public function actionAddDataOne()
+    {
+        try {
+            $model = new Article();
+            $model->article_id   = Yii::$app->request->get('article_id');
+            $model->primaryKey   = Yii::$app->request->get('article_id');
+            $model->post_title   = Yii::$app->request->get('post_title');
+            $model->post_excerpt = Yii::$app->request->get('post_excerpt');
+            echo $this->url();
+            pp($model->save(false));
+        } catch (\Exception $e) {
+            pp($e->getMessage());
+        }
+    }
+    
+    /**
+     * actionUpdateDataAll
+     */
+    public function actionUpdateDataAll()
+    {
+        set_time_limit(0);
+        $data = \backend\models\Article::find()
+            ->select(['feehi_article.id', 'post_title', 'post_excerpt'])
+            ->joinWith([
+                'categorys' => function($query){
+                    $query->select(['post_id', 'category_id']);
+                }
+            ])
+            ->asArray()
+            ->all();
+        foreach($data as $attributes){
+            $model = Article::get($attributes['id']);
+            
+            $model->article_id   = $attributes['id'];
+            $model->post_title   = $attributes['post_title'];
+            $model->post_excerpt = $attributes['post_excerpt'];
+            $category_ids        = yii\helpers\ArrayHelper::getColumn(
+                                        $attributes['categorys'],
+                                        'category_id'
+                                    );
+            $categorys           = [];
+            $categorys['category_names'] = implode(
+                                                yii\helpers\ArrayHelper::getColumn(
+                                                \backend\models\Category::find()
+                                                ->select(['name'])
+                                                ->where(['id'=>$category_ids])
+                                                ->asArray()
+                                                ->all(), 'name'),
+                                                ','
+                                            );
+            $model->categorys    = $categorys;
+            $model->update();
+            unset($model);
+        }
+        unset($data);
+        unset($model);
+        echo $this->url();
+        pp('跟新成功');
+    }
+
+    /**
+     * actionDeleteDataAll
      */
     public function actionDeleteDataAll()
     {
-        $model = new Article();
         echo $this->url();
-        pp($model->deleteAll());
+        pp(Article::deleteAll());
+    }
+
+    /**
+     * actionDeleteDataOne
+     */
+    public function actionDeleteDataOne()
+    {
+        $article_id = Yii::$app->request->get('article_id');
+        try{
+            $record = Article::get($article_id);
+            echo $this->url();
+            pp($record->delete());
+        } catch (\Exception $e){
+            pp($e->getMessage());
+        }
     }
 }
 

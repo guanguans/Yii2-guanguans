@@ -13,7 +13,8 @@ class Article extends ActiveRecord
         return [
             "article_id",
             "post_title",
-            "post_excerpt"
+            "post_excerpt",
+            "categorys",
         ];
     }
 
@@ -52,7 +53,7 @@ class Article extends ActiveRecord
             static::type() => [
                 'properties' => [
                     'article_id'   => [
-                        'type' => 'long'
+                        'type'     => 'long'
                     ],
                     'post_title'   => [
                         'type'     => 'string',
@@ -64,11 +65,10 @@ class Article extends ActiveRecord
                         "index"    => "analyzed",
                         "analyzer" => "ik"
                     ],
-                    'categorys'      => [
+                    'categorys'    => [
                         'type'      => 'nested',
                         'properties' => [
-                            'category_id'  => ['type' => 'long'],
-                            'category_name' => ['type' => 'string', 'index' => 'not_analyzed'],
+                            'category_names' => ['type' => 'string', 'index' => 'not_analyzed'],
                         ]
                     ]
                 ]
@@ -95,7 +95,7 @@ class Article extends ActiveRecord
         $command = $db->createCommand();
         $command->createIndex(static::index(), [
             'settings' => [
-                "refresh_interval" => "5s", //5秒后刷新
+                "refresh_interval" => "3s", //5秒后刷新
                 "number_of_shards" => 1,    //分片，目前1台机器，所以为1
                 "number_of_replicas" => 0   //副本为0
             ],
@@ -116,50 +116,47 @@ class Article extends ActiveRecord
         $command->deleteIndex(static::index(), static::type());
     }
 
-    public static function updateRecord($book_id, $columns){
+    public static function updateRecord($article_id, $columns = []){
        try{
-            $record = self::get($book_id);
+            $record = self::get($article_id);
             foreach($columns as $key => $value){
                  $record->$key = $value;
             }
 
             return $record->update();
-        }
-        catch(\Exception $e){
+        } catch (\Exception $e){
             //handle error here
             return false;
         }
     }
 
-    public static function deleteRecord($book_id)
+    public static function deleteRecord($article_id)
     {
         try{
-            $record = self::get($book_id);
+            $record = self::get($article_id);
             $record->delete();
             return 1;
-        }
-        catch(\Exception $e){
+        } catch (\Exception $e){
             //handle error here
             return false;
         }
     }
 
-    public static function addRecord(Book $book){
+    public static function addRecord(Article $article){
         $isExist = false;
 
         try{
-            $record = self::get($book->id);
+            $record = self::get($article->id);
             if(!$record){
                 $record = new self();
-                $record->setPrimaryKey($book->id);
+                $record->setPrimaryKey($article->id);
             }
             else{
                 $isExist = true;
             }
-        }
-        catch(\Exception $e){
+        } catch (\Exception $e){
             $record = new self();
-            $record->setPrimaryKey($book->id);
+            $record->setPrimaryKey($article->id);
         }
 
         $suppliers = [
@@ -167,8 +164,8 @@ class Article extends ActiveRecord
              ['id' => '2', 'name' => 'XYZ'],
         ];
 
-        $record->id   = $book->id;
-        $record->name = $book->name;
+        $record->id   = $article->id;
+        $record->name = $article->name;
         $record->author_name = $image->author_name;
         $record->status = 1;
         $record->suppliers = $suppliers;
@@ -180,8 +177,7 @@ class Article extends ActiveRecord
             else{
                 $result = $record->update();
             }
-        }
-        catch(\Exception $e){
+        } catch (\Exception $e){
             $result = false;
             //handle error here
         }
