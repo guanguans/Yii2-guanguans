@@ -52,7 +52,7 @@ AppAsset::register($this);
         'label' => 'Category',
         'items' => $menuItemsDropdown,
     ];
-    $menuItems[] = ['label' => 'About', 'url' => ['/site/about']];
+    $menuItems[] = ['label' => 'Elastic', 'url' => ['/site/elastic-search']];
     $menuItems[] = ['label' => 'Contact', 'url' => ['/site/contact']];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];

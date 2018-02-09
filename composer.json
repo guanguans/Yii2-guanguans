@@ -31,7 +31,8 @@
         "urbanindo/yii2-queue": "*",
         "yiisoft/yii2-queue": "^2.0",
         "shmilyzxt/yii2-queue": "dev-master",
-        "yiisoft/yii2-elasticsearch": "^2.0"
+        "yiisoft/yii2-elasticsearch": "^2.0",
+        "elasticsearch/elasticsearch": "2.2.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

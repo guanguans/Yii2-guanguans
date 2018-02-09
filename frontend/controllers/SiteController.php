@@ -204,10 +204,10 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionAbout()
+    public function actionElasticSearch()
     {
         // elasticsearch 测试
-        if (true) {
+        if (false) {
             $searchModel = \frontend\models\ArticleElasticSearch::find()->query([
                 "multi_match" => [
                     "query" => '更新',
@@ -242,7 +242,7 @@ class SiteController extends Controller
             pp(true);
         }
 
-        return $this->render('about');
+        return $this->render('elasticSearch');
     }
 
     /**
