@@ -38,9 +38,27 @@ return [
             'errorAction' => 'site/error',
         ],
         'urlManager' => [
+            // 指是否开启路由美化
             'enablePrettyUrl' => true,
+            // 是否忽略脚本名index.php
+            'enableStrictParsing' => false,
+            // 指是否显示 index.php
             'showScriptName' => false,
+            // 伪装成 html 静态文件
+            // 'suffix' => '.html',
             'rules' => [
+                // /xxx/yyy?id=1 优化为 /xxx/yyy/1
+                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                // // /site/signup 优化为 /signup ; /site/login 优化为 /login
+                // '<alias:login|signup|contact|elastic-search>' => 'site/<alias>',
+                // // 指定 /site/index 为默认首页
+                // '/' => 'site/index',
+                // // /column/index 优化为 /columns
+                // 'columns' => 'column/index',
+                // // /column/view?id=1 优化为 /column/1
+                // 'column/<id:\d+>' => 'column/view',
+                // // 搜索的时候 /column/index?category_id=1&name=forecho 优化为 /column/search-1-forecho
+                // 'column/search-<category_id:\d+>-<name:\w+>' => 'column/index',
             ],
         ],
     ],

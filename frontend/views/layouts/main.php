@@ -47,16 +47,16 @@ AppAsset::register($this);
         $value['url'] = Url::to([$value['url'], 'cid'=>$value['icon']]);
     }
 
-    $menuItems[] = ['label' => 'Home', 'url' => ['/']];
+    $menuItems[] = ['label' => 'Home', 'url' => Url::to(['/'])];
     $menuItems[] = [
         'label' => 'Category',
         'items' => $menuItemsDropdown,
     ];
-    $menuItems[] = ['label' => 'Elastic', 'url' => ['/site/elastic-search']];
-    $menuItems[] = ['label' => 'Contact', 'url' => ['/site/contact']];
+    $menuItems[] = ['label' => 'Elastic', 'url' => Url::to(['site/elastic-search'])];
+    $menuItems[] = ['label' => 'Contact', 'url' => Url::to(['site/contact'])];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => 'Signup', 'url' => Url::to(['site/signup'])];
+        $menuItems[] = ['label' => 'Login', 'url' => Url::to(['site/login'])];
     } else {
         $menuItems[] = [
             'label' => 'Personal Center',
@@ -68,7 +68,7 @@ AppAsset::register($this);
         ];
 
         $logoutLi = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
+            . Html::beginForm(Url::to(['site/logout']), 'post')
             . Html::submitButton(
                 'Logout (' . Yii::$app->user->identity->username . ')',
                 ['class' => 'btn btn-link logout']
