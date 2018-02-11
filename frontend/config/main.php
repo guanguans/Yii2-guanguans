@@ -47,18 +47,19 @@ return [
             // 伪装成 html 静态文件
             // 'suffix' => '.html',
             'rules' => [
-                // /xxx/yyy?id=1 优化为 /xxx/yyy/1
-                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-                // // /site/signup 优化为 /signup ; /site/login 优化为 /login
-                // '<alias:login|signup|contact|elastic-search>' => 'site/<alias>',
-                // // 指定 /site/index 为默认首页
-                // '/' => 'site/index',
-                // // /column/index 优化为 /columns
-                // 'columns' => 'column/index',
-                // // /column/view?id=1 优化为 /column/1
-                // 'column/<id:\d+>' => 'column/view',
-                // // 搜索的时候 /column/index?category_id=1&name=forecho 优化为 /column/search-1-forecho
-                // 'column/search-<category_id:\d+>-<name:\w+>' => 'column/index',
+                // /xxx/yyy?cid=1 优化为 /xxx/yyy/1
+                '<controller:\w+>/<action:\w+>/<cid:\d+>' => '<controller>/<action>',
+                // /site/signup 优化为 /signup ; /site/login 优化为 /login
+                '<alias:login|signup|contact|elastic-search>' => 'site/<alias>',
+                // 指定 /site/index 为默认首页
+                '/' => 'site/index',
+                
+                /*// 搜索的时候 /column/index?category_id=1&name=forecho 优化为 /column/search-1-forecho
+                'column/search-<category_id:\d+>-<name:\w+>' => 'column/index',
+                // /column/index 优化为 /columns
+                'columns' => 'column/index',
+                // /column/view?id=1 优化为 /column/1
+                'column/<id:\d+>' => 'column/view',*/
             ],
         ],
     ],
