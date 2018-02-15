@@ -4,4 +4,4 @@
 
 ## 功能
 
-	+ 集成了 yii2-admin、share.js、yii2-Elasticsearch、elasticsearch-jdbc、yii2-redis
+ * 集成了 yii2-admin、share.js、yii2-Elasticsearch、elasticsearch-jdbc、yii2-redis
